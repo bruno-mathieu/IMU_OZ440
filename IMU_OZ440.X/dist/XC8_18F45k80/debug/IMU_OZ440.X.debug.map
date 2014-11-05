@@ -3,10 +3,10 @@ Microchip MPLAB XC8 Compiler V1.30 ()
 Linker command line:
 
 --edf=C:\Program Files (x86)\Microchip\xc8\v1.30\dat\en_msgs.txt -cs \
-  -h+dist/XC8_18F45k80/production\IMU_OZ440.X.production.sym \
-  --cmf=dist/XC8_18F45k80/production\IMU_OZ440.X.production.cmf -z \
-  -Q18F45K80 -oC:\Users\Bruno\AppData\Local\Temp\s568.6 \
-  -Mdist/XC8_18F45k80/production/IMU_OZ440.X.production.map -E1 -ver=XC8 \
+  -h+dist/XC8_18F45k80/debug\IMU_OZ440.X.debug.sym \
+  --cmf=dist/XC8_18F45k80/debug\IMU_OZ440.X.debug.cmf -z -Q18F45K80 \
+  -oC:\Users\Bruno\AppData\Local\Temp\s11k.6 \
+  -Mdist/XC8_18F45k80/debug/IMU_OZ440.X.debug.map -E1 -ver=XC8 \
   -ASTACK=0290h-09ffh -pstack=STACK -ACODE=00h-07FFFh -ACONST=00h-07FFFh \
   -ASMALLCONST=0F00h-0FFFhx113 -AMEDIUMCONST=0F00h-07FFFh -ACOMRAM=01h-05Fh \
   -AABS1=00h-0E40h -ABIGRAM=01h-0E40h \
@@ -16,7 +16,7 @@ Linker command line:
   -ABANK7=0700h-07FFh -ABANK8=0800h-08FFh -ABANK9=0900h-09FFh \
   -ABANK10=0A00h-0AFFh -ABANK11=0B00h-0BFFh -ABANK12=0C00h-0CFFh \
   -ABANK13=0D00h-0DFFh -ABANK14=0E00h-0E40h \
-  -ASFR=0E41h-0EFFh,0F00h-0F5Fh,0F60h-0FFFh \
+  -ASFR=0E41h-0EFFh,0F00h-0F5Fh,0F60h-0FFCh \
   -preset_vec=00h,intcode=08h,intcodelo=018h,powerup,init,end_init \
   -pramtop=0F00h -psmallconst=SMALLCONST -pmediumconst=MEDIUMCONST \
   -pconst=CONST -AFARRAM=00h-00h -ACONFIG=0300000h-030000Dh -pconfig=CONFIG \
@@ -26,8 +26,8 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE \
-  C:\Users\Bruno\AppData\Local\Temp\s568.obj \
-  dist/XC8_18F45k80/production\IMU_OZ440.X.production.obj 
+  C:\Users\Bruno\AppData\Local\Temp\s11k.obj \
+  dist/XC8_18F45k80/debug\IMU_OZ440.X.debug.obj 
 
 Object code version is 3.11
 
@@ -39,12 +39,12 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Bruno\AppData\Local\Temp\s568.obj
+C:\Users\Bruno\AppData\Local\Temp\s11k.obj
                 end_init                             E6       E6        4        C       0
-                reset_vec                             0        0        4        0       0
+                reset_vec                             0        0        6        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
-dist/XC8_18F45k80/production\IMU_OZ440.X.production.obj
+dist/XC8_18F45k80/debug\IMU_OZ440.X.debug.obj
                 intcodelo                            18       18       CE        C       0
                 intcode                               8        8        C        4       0
                 text35                             142A     142A      174        C       0
@@ -98,7 +98,7 @@ TOTAL           Name                               Link     Load   Length     Sp
                 end_init                             E6       E6        4         0
                 intcodelo                            18       18       CE         0
                 intcode                               8        8        C         0
-                reset_vec                             0        0        4         0
+                reset_vec                             0        0        6         0
                 text35                             142A     142A      174         0
                 text34                             1710     1710      166         0
                 text33                             1E9E     1E9E       7E         0
@@ -203,7 +203,7 @@ TOTAL           Name                               Link     Load   Length     Sp
 
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
-                reset_vec                      000000  000004  000004         0       0  CODE    
+                reset_vec                      000000  000006  000006         0       0  CODE    
                 cstackCOMRAM                   000001  00003E  00003F         1       1  COMRAM  
                 intcode                        000008  00000C  000014         4       0  CODE    
                 intcodelo                      000018  002336  00234E         C       0  CODE    
@@ -236,11 +236,11 @@ UNUSED ADDRESS RANGES
                          0000C4-0000FF               3C
                          0001C5-0001FF               3B
                          000290-000E40              BB1
-        CODE             000004-000007                4
+        CODE             000006-000007                2
                          000014-000017                4
                          00234E-007FFF             5CB2
         COMRAM           00003F-00005F               21
-        CONST            000004-000007                4
+        CONST            000006-000007                2
                          000014-000017                4
                          00234E-007FFF             5CB2
         EEDATA           F00000-F003FF              400
@@ -248,7 +248,7 @@ UNUSED ADDRESS RANGES
         RAM              0000C4-0000FF               3C
                          0001C5-0001FF               3B
                          000290-000E40              100
-        SFR              000E41-000FFF               BF
+        SFR              000E41-000FFC               BF
         SMALLCONST       00234E-007FFF              100
         STACK            000290-0009FF              770
 
@@ -553,7 +553,7 @@ __Hramtop                      ramtop       000F00
 __Hrbit                        rbit         000000
 __Hrbss                        rbss         000000
 __Hrdata                       rdata        000000
-__Hreset_vec                   reset_vec    000004
+__Hreset_vec                   reset_vec    000006
 __Hrparam                      rparam       000000
 __Hsfr                         sfr          000000
 __Hsmallconst                  smallconst   000000

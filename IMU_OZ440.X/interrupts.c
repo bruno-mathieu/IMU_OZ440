@@ -92,18 +92,28 @@ void low_isr(void)
 
     }
     
-    else if(PIR1bits.RCIF)          //USART1 receive interrupt
+    if(PIR1bits.RCIF)          //USART1 receive interrupt
     {
         PIR1bits.RCIF=0;            // Clear interrupt flag
         temp= RCREG;
         PutUSART1RxFifo(temp);
-    }
+        if(RCSTA1bits.OERR)         //if overrun error, disable and enable receiver again (occurs only during startup)
+        {
+            RCSTA1bits.CREN=0;
+            RCSTA1bits.CREN=1;
+        }
+     }
 
-    else if(PIR3bits.RC2IF)          //USART2 receive interrupt
+    if(PIR3bits.RC2IF)          //USART2 receive interrupt
     {
         PIR3bits.RC2IF=0;            // Clear interrupt flag
         temp= RCREG2;
         PutUSART2RxFifo(temp);
+        if(RCSTA2bits.OERR)         //if overrun error, disable and enable receiver again (occurs only during startup)
+        {
+            RCSTA2bits.CREN=0;
+            RCSTA2bits.CREN=1;
+        }
     }
 
 }

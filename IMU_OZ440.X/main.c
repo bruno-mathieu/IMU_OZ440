@@ -71,7 +71,8 @@ void main(void)
     /* Configure the oscillator for the CPU */
     ConfigureOscillator();
     __delay_ms(10);             // wait for Oscillator to be stabilized
-    
+
+
     // configure CPU GPIO for IMU board
     ConfigureGPIO();
 
@@ -118,7 +119,21 @@ void main(void)
     IMUInitRegisters();         // init of BMX055 chip
     IMUAutotestResult=IMUAutotest();              // launch IMU autotest
 
-    LED1=1;                     // everything is initialized: enable the PWR/booted LED
+    
+    //----------------------------------------------------
+    //----------      GSM startup delay        -----------
+    //----------------------------------------------------
+
+    GSM_RTS=1;
+    for(char i=0;i<200;i++)
+    {
+        __delay_ms(10);
+    }
+    GSM_RTS=0;
+
+    __delay_ms(10);
+    __delay_ms(10);
+
 
     //----------------------------------------------------
     //----------    Ready to go in main loop:  -----------
@@ -126,6 +141,20 @@ void main(void)
     //----------------------------------------------------
 
     ConfigureInterrupts();
+    LED1=1;                     // everything is initialized: enable the PWR/booted LED
+
+    //----------------------------------------------------
+    //----------     GSM dummy AT command      -----------
+    //----------------------------------------------------
+
+    USART1Write('A');
+    USART1Write('T');
+    USART1Write(0x0D);
+
+    for(char i=0;i<10;i++)
+    {
+        __delay_ms(10);
+    }
 
     //-----------------------------------------------------
     //-------------  infinite main loop ----------
@@ -134,9 +163,6 @@ void main(void)
 
     while(1)
     {
-       
-        //USART1Write(0x7E);      //test for USART1
-        //USART2Write(0x55);      //test for USART2
 
         //--------------------------------------------------------------------------------
         //-------------  periodic tasks occures according to TickCounter variable----------
@@ -267,6 +293,14 @@ void main(void)
                 TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
                 PutCANTxFifo(TempCANTxMsg);
             }
+
+             // ------------------   Send data to GSM if requested by canBUS     ------------------
+
+            if( TempCANRxMsg.id == (CAN_MESSAGE_GSM_TYPE << 7 | CAN_DEVICE_ADRESS <<4 | GSM_DATATX_MESSAGE_ADRESS ) && TempCANRxMsg.dataLen==GSM_DATATX_MESSAGE_LEN )
+            {
+                USART1Write(TempCANRxMsg.data_RX[0]);
+            }
+
         }
 
 
@@ -285,6 +319,20 @@ void main(void)
 
             PutCANTxFifo(TempCANTxMsg);
 
+         }
+
+         //--------------------------------------------------------------------------------
+        // --------  Check if GSM RX fifo is empty and send to CAN Fifo ------------------
+        //--------------------------------------------------------------------------------
+
+        if(!USART1RxFifo.FifoEmpty && !CANTxFifo.Fifofull)       // if USART is not empty, and CANTX Fifo is not full...
+        {
+            TempVar = GetUSART1RxFifo();                        // read from USART FIFO
+            TempCANTxMsg.data_TX[0]=TempVar;
+            TempCANTxMsg.dataLen= GSM_DATARX_MESSAGE_LEN;
+            TempCANTxMsg.id = (CAN_MESSAGE_GSM_TYPE << 7 | CAN_DEVICE_ADRESS <<4 | GSM_DATARX_MESSAGE_ADRESS );
+            TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
+            PutCANTxFifo(TempCANTxMsg);
          }
 
         //--------------------------------------------------------------------------------

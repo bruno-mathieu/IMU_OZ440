@@ -1,106 +1,41 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"45 interrupts.c
-[c E19327 8 16 32 64 128 .. ]
-[n E19327 _ECAN_RX_MSG_FLAGS ECAN_RX_OVERFLOW ECAN_RX_INVALID_MSG ECAN_RX_XTD_FRAME ECAN_RX_RTR_FRAME ECAN_RX_DBL_BUFFERED  ]
-"56 system.h
-[s S2672 `ul 1 `uc -> 8 `i `uc 1 `E19327 1 ]
-[n S2672 CANRxMsg id data_RX dataLen flags ]
-[s S2100 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2100 . RXB0IF RXB1IF TXB0IF TXB1IF TXB2IF ERRIF WAKIF IRXIF ]
-[s S2101 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S2101 . FIFOWMIF RXBnIF . TXBnIF ]
-[u S2099 `S2100 1 `S2101 1 ]
-[n S2099 . . . ]
-"32238 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
-[v _PIR5bits `VS2099 ~T0 @X0 0 e@3959 ]
-"55 interrupts.c
-[c E18559 0 1 .. ]
-[n E18559 _BOOL FALSE TRUE  ]
-"313 ECANPoll.h
-[v _ECANReceiveMessage `(E18559 ~T0 @X0 0 ef4`*ul`*uc`*uc`*E19327 ]
-"29 Can_HL.h
-[v _PutCANRxFifo `(v ~T0 @X0 0 ef1`S2672 ]
-[s S2591 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2591 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
-[s S2592 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2592 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
-[s S2593 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2593 . . GIEL GIEH ]
-[s S2594 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2594 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
-[s S2595 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2595 . . GIEL GIEH ]
-[u S2590 `S2591 1 `S2592 1 `S2593 1 `S2594 1 `S2595 1 ]
-[n S2590 . . . . . . ]
-"40122 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
-[v _INTCONbits `VS2590 ~T0 @X0 0 e@4082 ]
-"40 system.h
-[s S2670 `uc 1 `uc 1 `uc 1 ]
-[n S2670 RTC_counter AccelTick_ms GyroTick_ms MagnetTick_ms ]
-"23 interrupts.c
-[v _TickCounter `S2670 ~T0 @X0 0 e ]
-"39315 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
-[v _TMR0H `Vuc ~T0 @X0 0 e@4055 ]
-"39296
-[v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
-[s S2248 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2248 . TMR1IF TMR2IF TMR1GIF SSPIF TX1IF RC1IF ADIF PSPIF ]
-[s S2249 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2249 . . TXIF RCIF ]
-[u S2247 `S2248 1 `S2249 1 ]
-[n S2247 . . . ]
-"34563
-[v _PIR1bits `VS2247 ~T0 @X0 0 e@3998 ]
-"36249
-[v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
-"129 system.h
-[v _PutUSART1RxFifo `(v ~T0 @X0 0 ef1`uc ]
-[s S2312 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2312 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
-[s S2313 :1 `uc 1 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S2313 . RCD8 . ADEN . RC9 ]
-[s S2314 :6 `uc 1 :1 `uc 1 ]
-[n S2314 . . NOT_RC8 ]
-[s S2315 :6 `uc 1 :1 `uc 1 ]
-[n S2315 . . nRC8 ]
-[s S2316 :6 `uc 1 :1 `uc 1 ]
-[n S2316 . . RC8_9 ]
-[s S2317 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2317 . RX9D1 OERR1 FERR1 ADDEN1 CREN1 SREN1 RX91 SPEN1 ]
-[s S2318 :5 `uc 1 :1 `uc 1 ]
-[n S2318 . . SRENA ]
-[u S2311 `S2312 1 `S2313 1 `S2314 1 `S2315 1 `S2316 1 `S2317 1 `S2318 1 ]
-[n S2311 . . . . . . . . ]
-"35638 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
-[v _RCSTA1bits `VS2311 ~T0 @X0 0 e@4011 ]
-[s S2271 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2271 . . CCP1IF CCP2IF CTMUIF TX2IF RC2IF ]
-[s S2272 :1 `uc 1 :1 `uc 1 ]
-[n S2272 . . RXBNIF ]
-[s S2273 :4 `uc 1 :1 `uc 1 ]
-[n S2273 . . TXBNIF ]
-[u S2270 `S2271 1 `S2272 1 `S2273 1 ]
-[n S2270 . . . . ]
-"34973
-[v _PIR3bits `VS2270 ~T0 @X0 0 e@4004 ]
-"32433
-[v _RCREG2 `Vuc ~T0 @X0 0 e@3962 ]
-"132 system.h
-[v _PutUSART2RxFifo `(v ~T0 @X0 0 ef1`uc ]
-[s S2279 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2279 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
-[s S2280 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2280 . RX9D2 OERR2 FERR2 ADDEN2 CREN2 SREN2 RX92 SPEN2 ]
-[s S2281 :6 `uc 1 :1 `uc 1 ]
-[n S2281 . . RC8_92 ]
-[s S2282 :6 `uc 1 :1 `uc 1 ]
-[n S2282 . . RC92 ]
-[s S2283 :1 `uc 1 ]
-[n S2283 . RCD82 ]
-[u S2278 `S2279 1 `S2280 1 `S2281 1 `S2282 1 `S2283 1 ]
-[n S2278 . . . . . . ]
-"35112 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
-[v _RCSTA2bits `VS2278 ~T0 @X0 0 e@4006 ]
+"25 IMUModule.h
+[v _IMUWrite `(v ~T0 @X0 0 ef3`uc`uc`uc ]
+[v F19259 `(v ~T0 @X0 1 tf1`ul ]
+"147 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18.h
+[v __delay `JF19259 ~T0 @X0 0 e ]
+[p i __delay ]
+"24 IMUModule.h
+[v _IMURead `(uc ~T0 @X0 0 ef2`uc`uc ]
+"20 system.h
+[s S2669 `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 ]
+[n S2669 IMUData XAccelerationData YAccelerationData ZAccelerationData XGyroscopeData YGyroscopeData ZGyroscopeData XMagnetData YMagnetData ZMagnetData MagnetResistance Temperature ]
+[s S2190 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2190 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
+[s S2191 :1 `uc 1 ]
+[n S2191 . LC0 ]
+[s S2192 :1 `uc 1 :1 `uc 1 ]
+[n S2192 . . LC1 ]
+[s S2193 :2 `uc 1 :1 `uc 1 ]
+[n S2193 . . LC2 ]
+[s S2194 :3 `uc 1 :1 `uc 1 ]
+[n S2194 . . LC3 ]
+[s S2195 :4 `uc 1 :1 `uc 1 ]
+[n S2195 . . LC4 ]
+[s S2196 :5 `uc 1 :1 `uc 1 ]
+[n S2196 . . LC5 ]
+[s S2197 :6 `uc 1 :1 `uc 1 ]
+[n S2197 . . LC6 ]
+[s S2198 :7 `uc 1 :1 `uc 1 ]
+[n S2198 . . LC7 ]
+[u S2189 `S2190 1 `S2191 1 `S2192 1 `S2193 1 `S2194 1 `S2195 1 `S2196 1 `S2197 1 `S2198 1 ]
+[n S2189 . . . . . . . . . . ]
+"33532 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
+[v _LATCbits `VS2189 ~T0 @X0 0 e@3979 ]
+"123 system.h
+[v _SPIWrite `(c ~T0 @X0 0 ef1`uc ]
+"124
+[v _SPIRead `(uc ~T0 @X0 0 ef1`uc ]
 [; ;htc.h: 22: extern void __builtin_software_breakpoint(void);
 [; ;pic18f45k80.h: 44: extern volatile unsigned char RXERRCNT @ 0xE41;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
@@ -17665,35 +17600,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 147: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 149: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 151: extern __nonreentrant void _delay3(unsigned char);
-[; ;stdint.h: 13: typedef signed char int8_t;
-[; ;stdint.h: 20: typedef signed int int16_t;
-[; ;stdint.h: 28: typedef signed short long int int24_t;
-[; ;stdint.h: 36: typedef signed long int int32_t;
-[; ;stdint.h: 43: typedef unsigned char uint8_t;
-[; ;stdint.h: 49: typedef unsigned int uint16_t;
-[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
-[; ;stdint.h: 63: typedef unsigned long int uint32_t;
-[; ;stdint.h: 71: typedef signed char int_least8_t;
-[; ;stdint.h: 78: typedef signed int int_least16_t;
-[; ;stdint.h: 90: typedef signed short long int int_least24_t;
-[; ;stdint.h: 98: typedef signed long int int_least32_t;
-[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
-[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
-[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
-[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
-[; ;stdint.h: 137: typedef signed char int_fast8_t;
-[; ;stdint.h: 144: typedef signed int int_fast16_t;
-[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
-[; ;stdint.h: 164: typedef signed long int int_fast32_t;
-[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
-[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
-[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
-[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
-[; ;stdint.h: 200: typedef int32_t intmax_t;
-[; ;stdint.h: 205: typedef uint32_t uintmax_t;
-[; ;stdint.h: 210: typedef int16_t intptr_t;
-[; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;ECANPoll.h: 79: typedef unsigned char BYTE;
 [; ;ECANPoll.h: 81: typedef union _BYTE_VAL
 [; ;ECANPoll.h: 82: {
@@ -17826,166 +17732,434 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;system.h: 129: void PutUSART1RxFifo(char ByteToWrite);
 [; ;system.h: 131: char GetUSART2RxFifo(void);
 [; ;system.h: 132: void PutUSART2RxFifo(char ByteToWrite);
-[; ;Can_HL.h: 24: void CANTxFifoInit(void);
-[; ;Can_HL.h: 25: void CANRxFifoInit(void);
-[; ;Can_HL.h: 27: void PutCANTxFifo(struct CANTxMsg PutMessage);
-[; ;Can_HL.h: 28: struct CANTxMsg GetCANTxFifo(void);
-[; ;Can_HL.h: 29: void PutCANRxFifo(struct CANRxMsg PutMessage);
-[; ;Can_HL.h: 30: struct CANRxMsg GetCANRxFifo(void);
-[; ;Can_HL.h: 32: void ECANFiltersInit(void);
-[; ;interrupts.c: 23: extern struct RTC_counter TickCounter;
-[; ;interrupts.c: 24: extern struct USARTRxFifo USART1RxFifo;
-[; ;interrupts.c: 25: extern struct USARTRxFifo USART2RxFifo;
-[; ;interrupts.c: 26: extern struct CANRxFifo CANRxFifo;
-[v F19454 `(v ~T0 @X0 1 tf ]
-"35 interrupts.c
-[v _high_isr `IF19454 ~T0 @X0 1 e ]
-"44
+[; ;IMUModule.h: 24: char IMURead(char adress,char Device);
+[; ;IMUModule.h: 25: void IMUWrite(char adress,char data,char Device);
+[; ;IMUModule.h: 27: void IMUInitRegisters(void);
+[; ;IMUModule.h: 28: struct IMUData IMUUpdateData(void);
+[; ;IMUModule.h: 30: unsigned char IMUAutotest(void);
+"31 IMUModule.c
+[v _IMUInitRegisters `(v ~T0 @X0 1 ef ]
+"32
 {
-[; ;interrupts.c: 35: void interrupt high_isr(void)
-[; ;interrupts.c: 44: {
-[e :U _high_isr ]
+[; ;IMUModule.c: 31: void IMUInitRegisters(void)
+[; ;IMUModule.c: 32: {
+[e :U _IMUInitRegisters ]
 [f ]
+[; ;IMUModule.c: 34: IMUWrite(0x10,0x00,2);
+"34
+[e ( _IMUWrite (3 , , -> -> 16 `i `uc -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;IMUModule.c: 35: _delay((unsigned long)((1)*(64000000/4000.0)));
+"35
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;IMUModule.c: 37: IMUWrite(0x0F,0x01,1);
+"37
+[e ( _IMUWrite (3 , , -> -> 15 `i `uc -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;IMUModule.c: 38: _delay((unsigned long)((1)*(64000000/4000.0)));
+"38
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;IMUModule.c: 39: IMUWrite(0x10,0x07,1);
+"39
+[e ( _IMUWrite (3 , , -> -> 16 `i `uc -> -> 7 `i `uc -> -> 1 `i `uc ]
+[; ;IMUModule.c: 40: _delay((unsigned long)((1)*(64000000/4000.0)));
+"40
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;IMUModule.c: 42: IMUWrite(0x4B,0x01,2);
+"42
+[e ( _IMUWrite (3 , , -> -> 75 `i `uc -> -> 1 `i `uc -> -> 2 `i `uc ]
+[; ;IMUModule.c: 43: _delay((unsigned long)((1)*(64000000/4000.0)));
+"43
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;IMUModule.c: 44: IMUWrite(0x4E,0x05,2);
+"44
+[e ( _IMUWrite (3 , , -> -> 78 `i `uc -> -> 5 `i `uc -> -> 2 `i `uc ]
+[; ;IMUModule.c: 45: _delay((unsigned long)((1)*(64000000/4000.0)));
 "45
-[v _CANRxNewMessage `S2672 ~T0 @X0 1 a ]
-[; ;interrupts.c: 45: struct CANRxMsg CANRxNewMessage;
-[; ;interrupts.c: 52: if(PIR5bits.RXB0IF==1 | PIR5bits.RXB1IF==1)
-"52
-[e $ ! | == -> . . _PIR5bits 0 0 `i -> 1 `i == -> . . _PIR5bits 0 1 `i -> 1 `i 2677  ]
-[; ;interrupts.c: 53: {
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;IMUModule.c: 46: IMUWrite(0x51,23,2);
+"46
+[e ( _IMUWrite (3 , , -> -> 81 `i `uc -> -> 23 `i `uc -> -> 2 `i `uc ]
+[; ;IMUModule.c: 47: _delay((unsigned long)((1)*(64000000/4000.0)));
+"47
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;IMUModule.c: 48: IMUWrite(0x51,82,2);
+"48
+[e ( _IMUWrite (3 , , -> -> 81 `i `uc -> -> 82 `i `uc -> -> 2 `i `uc ]
+[; ;IMUModule.c: 49: _delay((unsigned long)((1)*(64000000/4000.0)));
+"49
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;IMUModule.c: 50: IMUWrite(0x4C,0x28,2);
+"50
+[e ( _IMUWrite (3 , , -> -> 76 `i `uc -> -> 40 `i `uc -> -> 2 `i `uc ]
+[; ;IMUModule.c: 51: _delay((unsigned long)((1)*(64000000/4000.0)));
+"51
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;IMUModule.c: 53: }
 "53
-{
-[; ;interrupts.c: 55: ECANReceiveMessage(&CANRxNewMessage.id, CANRxNewMessage.data_RX, &CANRxNewMessage.dataLen, &CANRxNewMessage.flags);
-"55
-[e ( _ECANReceiveMessage (4 , , , &U . _CANRxNewMessage 0 &U . _CANRxNewMessage 1 &U . _CANRxNewMessage 2 &U . _CANRxNewMessage 3 ]
-[; ;interrupts.c: 56: PutCANRxFifo(CANRxNewMessage);
-"56
-[e ( _PutCANRxFifo (1 _CANRxNewMessage ]
-[; ;interrupts.c: 58: PIR5bits.RXB0IF=0;
-"58
-[e = . . _PIR5bits 0 0 -> -> 0 `i `uc ]
-[; ;interrupts.c: 59: PIR5bits.RXB1IF=0;
-"59
-[e = . . _PIR5bits 0 1 -> -> 0 `i `uc ]
-"60
-}
-[e :U 2677 ]
-[; ;interrupts.c: 60: }
-[; ;interrupts.c: 65: }
-"65
 [e :UE 2676 ]
 }
-[v F19458 `(v ~T0 @X0 1 tf ]
+"69
+[v _IMUAutotest `(uc ~T0 @X0 1 ef ]
 "70
-[v _low_isr `ILF19458 ~T0 @X0 1 e ]
-"78
 {
-[; ;interrupts.c: 70: void low_priority interrupt low_isr(void)
-[; ;interrupts.c: 78: {
-[e :U _low_isr ]
+[; ;IMUModule.c: 69: unsigned char IMUAutotest(void)
+[; ;IMUModule.c: 70: {
+[e :U _IMUAutotest ]
 [f ]
+"71
+[v _Result `uc ~T0 @X0 1 a ]
+[v _TempVar `uc ~T0 @X0 1 a ]
+[; ;IMUModule.c: 71: unsigned char Result, TempVar;
+[; ;IMUModule.c: 73: Result=0;
+"73
+[e = _Result -> -> 0 `i `uc ]
+[; ;IMUModule.c: 75: TempVar = IMURead(0x00,0);
+"75
+[e = _TempVar ( _IMURead (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;IMUModule.c: 76: if(TempVar==0xFA)
+"76
+[e $ ! == -> _TempVar `i -> 250 `i 2678  ]
+[; ;IMUModule.c: 77: Result = Result | 0x01;
+"77
+[e = _Result -> | -> _Result `i -> 1 `i `uc ]
+[e :U 2678 ]
+[; ;IMUModule.c: 79: TempVar = IMURead(0x00,1);
+"79
+[e = _TempVar ( _IMURead (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;IMUModule.c: 80: if(TempVar==0x0F)
 "80
-[v _temp `uc ~T0 @X0 1 a ]
-[; ;interrupts.c: 80: unsigned char temp;
-[; ;interrupts.c: 82: if(INTCONbits.TMR0IF)
-"82
-[e $ ! != -> . . _INTCONbits 0 2 `i -> -> -> 0 `i `Vuc `i 2679  ]
-[; ;interrupts.c: 83: {
-"83
-{
-[; ;interrupts.c: 84: INTCONbits.TMR0IF=0;
-"84
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-[; ;interrupts.c: 86: TickCounter.AccelTick_ms ++;
-"86
-[e ++ . _TickCounter 0 -> -> 1 `i `uc ]
-[; ;interrupts.c: 87: TickCounter.GyroTick_ms ++;
-"87
-[e ++ . _TickCounter 1 -> -> 1 `i `uc ]
-[; ;interrupts.c: 88: TickCounter.MagnetTick_ms ++;
-"88
-[e ++ . _TickCounter 2 -> -> 1 `i `uc ]
-[; ;interrupts.c: 90: TMR0H = 0xFB;
-"90
-[e = _TMR0H -> -> 251 `i `uc ]
-[; ;interrupts.c: 91: TMR0L = 0x1E;
-"91
-[e = _TMR0L -> -> 30 `i `uc ]
-"93
-}
+[e $ ! == -> _TempVar `i -> 15 `i 2679  ]
+[; ;IMUModule.c: 81: Result = Result | 0x02;
+"81
+[e = _Result -> | -> _Result `i -> 2 `i `uc ]
 [e :U 2679 ]
-[; ;interrupts.c: 93: }
-[; ;interrupts.c: 95: if(PIR1bits.RCIF)
-"95
-[e $ ! != -> . . _PIR1bits 1 2 `i -> -> -> 0 `i `Vuc `i 2680  ]
-[; ;interrupts.c: 96: {
-"96
-{
-[; ;interrupts.c: 97: PIR1bits.RCIF=0;
-"97
-[e = . . _PIR1bits 1 2 -> -> 0 `i `uc ]
-[; ;interrupts.c: 98: temp= RCREG;
-"98
-[e = _temp _RCREG ]
-[; ;interrupts.c: 99: PutUSART1RxFifo(temp);
-"99
-[e ( _PutUSART1RxFifo (1 _temp ]
-[; ;interrupts.c: 100: if(RCSTA1bits.OERR)
-"100
-[e $ ! != -> . . _RCSTA1bits 0 1 `i -> -> -> 0 `i `Vuc `i 2681  ]
-[; ;interrupts.c: 101: {
-"101
-{
-[; ;interrupts.c: 102: RCSTA1bits.CREN=0;
-"102
-[e = . . _RCSTA1bits 0 4 -> -> 0 `i `uc ]
-[; ;interrupts.c: 103: RCSTA1bits.CREN=1;
-"103
-[e = . . _RCSTA1bits 0 4 -> -> 1 `i `uc ]
-"104
-}
-[e :U 2681 ]
-"105
-}
+[; ;IMUModule.c: 83: TempVar = IMURead(0x40,2);
+"83
+[e = _TempVar ( _IMURead (2 , -> -> 64 `i `uc -> -> 2 `i `uc ]
+[; ;IMUModule.c: 84: if(TempVar==0x32)
+"84
+[e $ ! == -> _TempVar `i -> 50 `i 2680  ]
+[; ;IMUModule.c: 85: Result = Result | 0x04;
+"85
+[e = _Result -> | -> _Result `i -> 4 `i `uc ]
 [e :U 2680 ]
-[; ;interrupts.c: 104: }
-[; ;interrupts.c: 105: }
-[; ;interrupts.c: 107: if(PIR3bits.RC2IF)
+[; ;IMUModule.c: 87: return Result;
+"87
+[e ) _Result ]
+[e $UE 2677  ]
+[; ;IMUModule.c: 89: }
+"89
+[e :UE 2677 ]
+}
+"104
+[v _IMUUpdateData `(S2669 ~T0 @X0 1 ef ]
+"105
+{
+[; ;IMUModule.c: 104: struct IMUData IMUUpdateData(void)
+[; ;IMUModule.c: 105: {
+[e :U _IMUUpdateData ]
+[f ]
+"106
+[v _temp_data `S2669 ~T0 @X0 1 a ]
 "107
-[e $ ! != -> . . _PIR3bits 0 5 `i -> -> -> 0 `i `Vuc `i 2682  ]
-[; ;interrupts.c: 108: {
+[v _Temp_Var1 `ui ~T0 @X0 1 a ]
+[; ;IMUModule.c: 106: struct IMUData temp_data;
+[; ;IMUModule.c: 107: unsigned int Temp_Var1=0;
+[e = _Temp_Var1 -> -> 0 `i `ui ]
 "108
-{
-[; ;interrupts.c: 109: PIR3bits.RC2IF=0;
-"109
-[e = . . _PIR3bits 0 5 -> -> 0 `i `uc ]
-[; ;interrupts.c: 110: temp= RCREG2;
-"110
-[e = _temp _RCREG2 ]
-[; ;interrupts.c: 111: PutUSART2RxFifo(temp);
-"111
-[e ( _PutUSART2RxFifo (1 _temp ]
-[; ;interrupts.c: 112: if(RCSTA2bits.OERR)
+[v _Temp_Var2 `ui ~T0 @X0 1 a ]
+[; ;IMUModule.c: 108: unsigned int Temp_Var2=0;
+[e = _Temp_Var2 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 112: Temp_Var1= (IMURead(0x02,0) & 0xF0)>>4;
 "112
-[e $ ! != -> . . _RCSTA2bits 0 1 `i -> -> -> 0 `i `Vuc `i 2683  ]
-[; ;interrupts.c: 113: {
+[e = _Temp_Var1 -> >> & -> ( _IMURead (2 , -> -> 2 `i `uc -> -> 0 `i `uc `i -> 240 `i -> 4 `i `ui ]
+[; ;IMUModule.c: 113: Temp_Var2 = IMURead(0x03,0);
 "113
-{
-[; ;interrupts.c: 114: RCSTA2bits.CREN=0;
+[e = _Temp_Var2 -> ( _IMURead (2 , -> -> 3 `i `uc -> -> 0 `i `uc `ui ]
+[; ;IMUModule.c: 114: temp_data.XAccelerationData = (Temp_Var2<<4)|Temp_Var1;
 "114
-[e = . . _RCSTA2bits 0 4 -> -> 0 `i `uc ]
-[; ;interrupts.c: 115: RCSTA2bits.CREN=1;
-"115
-[e = . . _RCSTA2bits 0 4 -> -> 1 `i `uc ]
+[e = . _temp_data 0 | << _Temp_Var2 -> 4 `i _Temp_Var1 ]
+[; ;IMUModule.c: 116: Temp_Var1=0;
 "116
-}
-[e :U 2683 ]
+[e = _Temp_Var1 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 117: Temp_Var2=0;
 "117
-}
-[e :U 2682 ]
-[; ;interrupts.c: 116: }
-[; ;interrupts.c: 117: }
-[; ;interrupts.c: 119: }
+[e = _Temp_Var2 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 118: Temp_Var1= (IMURead(0x04,0) & 0xF0)>>4;
+"118
+[e = _Temp_Var1 -> >> & -> ( _IMURead (2 , -> -> 4 `i `uc -> -> 0 `i `uc `i -> 240 `i -> 4 `i `ui ]
+[; ;IMUModule.c: 119: Temp_Var2 = IMURead(0x05,0);
 "119
-[e :UE 2678 ]
+[e = _Temp_Var2 -> ( _IMURead (2 , -> -> 5 `i `uc -> -> 0 `i `uc `ui ]
+[; ;IMUModule.c: 120: temp_data.YAccelerationData = (Temp_Var2<<4)|Temp_Var1;
+"120
+[e = . _temp_data 1 | << _Temp_Var2 -> 4 `i _Temp_Var1 ]
+[; ;IMUModule.c: 122: Temp_Var1=0;
+"122
+[e = _Temp_Var1 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 123: Temp_Var2=0;
+"123
+[e = _Temp_Var2 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 124: Temp_Var1= (IMURead(0x06,0) & 0xF0)>>4;
+"124
+[e = _Temp_Var1 -> >> & -> ( _IMURead (2 , -> -> 6 `i `uc -> -> 0 `i `uc `i -> 240 `i -> 4 `i `ui ]
+[; ;IMUModule.c: 125: Temp_Var2 = IMURead(0x07,0);
+"125
+[e = _Temp_Var2 -> ( _IMURead (2 , -> -> 7 `i `uc -> -> 0 `i `uc `ui ]
+[; ;IMUModule.c: 126: temp_data.ZAccelerationData = (Temp_Var2<<4)|Temp_Var1;
+"126
+[e = . _temp_data 2 | << _Temp_Var2 -> 4 `i _Temp_Var1 ]
+[; ;IMUModule.c: 130: Temp_Var1=0;
+"130
+[e = _Temp_Var1 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 131: Temp_Var2=0;
+"131
+[e = _Temp_Var2 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 132: Temp_Var1= IMURead(0x02,1);
+"132
+[e = _Temp_Var1 -> ( _IMURead (2 , -> -> 2 `i `uc -> -> 1 `i `uc `ui ]
+[; ;IMUModule.c: 133: Temp_Var2 = IMURead(0x03,1);
+"133
+[e = _Temp_Var2 -> ( _IMURead (2 , -> -> 3 `i `uc -> -> 1 `i `uc `ui ]
+[; ;IMUModule.c: 134: temp_data.XGyroscopeData = (Temp_Var2<<8)|Temp_Var1;
+"134
+[e = . _temp_data 3 | << _Temp_Var2 -> 8 `i _Temp_Var1 ]
+[; ;IMUModule.c: 136: Temp_Var1=0;
+"136
+[e = _Temp_Var1 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 137: Temp_Var2=0;
+"137
+[e = _Temp_Var2 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 138: Temp_Var1= IMURead(0x04,1);
+"138
+[e = _Temp_Var1 -> ( _IMURead (2 , -> -> 4 `i `uc -> -> 1 `i `uc `ui ]
+[; ;IMUModule.c: 139: Temp_Var2 = IMURead(0x05,1);
+"139
+[e = _Temp_Var2 -> ( _IMURead (2 , -> -> 5 `i `uc -> -> 1 `i `uc `ui ]
+[; ;IMUModule.c: 140: temp_data.YGyroscopeData = (Temp_Var2<<8)|Temp_Var1;
+"140
+[e = . _temp_data 4 | << _Temp_Var2 -> 8 `i _Temp_Var1 ]
+[; ;IMUModule.c: 142: Temp_Var1=0;
+"142
+[e = _Temp_Var1 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 143: Temp_Var2=0;
+"143
+[e = _Temp_Var2 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 144: Temp_Var1= IMURead(0x06,1);
+"144
+[e = _Temp_Var1 -> ( _IMURead (2 , -> -> 6 `i `uc -> -> 1 `i `uc `ui ]
+[; ;IMUModule.c: 145: Temp_Var2 = IMURead(0x07,1);
+"145
+[e = _Temp_Var2 -> ( _IMURead (2 , -> -> 7 `i `uc -> -> 1 `i `uc `ui ]
+[; ;IMUModule.c: 146: temp_data.ZGyroscopeData = (Temp_Var2<<8)|Temp_Var1;
+"146
+[e = . _temp_data 5 | << _Temp_Var2 -> 8 `i _Temp_Var1 ]
+[; ;IMUModule.c: 150: Temp_Var1=0;
+"150
+[e = _Temp_Var1 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 151: Temp_Var2=0;
+"151
+[e = _Temp_Var2 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 152: Temp_Var1= (IMURead(0x42,2) & 0xF8)>>3;
+"152
+[e = _Temp_Var1 -> >> & -> ( _IMURead (2 , -> -> 66 `i `uc -> -> 2 `i `uc `i -> 248 `i -> 3 `i `ui ]
+[; ;IMUModule.c: 153: Temp_Var2 = IMURead(0x43,2);
+"153
+[e = _Temp_Var2 -> ( _IMURead (2 , -> -> 67 `i `uc -> -> 2 `i `uc `ui ]
+[; ;IMUModule.c: 154: temp_data.XMagnetData = (Temp_Var2<<5)|Temp_Var1;
+"154
+[e = . _temp_data 6 | << _Temp_Var2 -> 5 `i _Temp_Var1 ]
+[; ;IMUModule.c: 156: Temp_Var1=0;
+"156
+[e = _Temp_Var1 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 157: Temp_Var2=0;
+"157
+[e = _Temp_Var2 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 158: Temp_Var1= (IMURead(0x44,2) & 0xF8)>>3;
+"158
+[e = _Temp_Var1 -> >> & -> ( _IMURead (2 , -> -> 68 `i `uc -> -> 2 `i `uc `i -> 248 `i -> 3 `i `ui ]
+[; ;IMUModule.c: 159: Temp_Var2 = IMURead(0x45,2);
+"159
+[e = _Temp_Var2 -> ( _IMURead (2 , -> -> 69 `i `uc -> -> 2 `i `uc `ui ]
+[; ;IMUModule.c: 160: temp_data.YMagnetData = (Temp_Var2<<5)|Temp_Var1;
+"160
+[e = . _temp_data 7 | << _Temp_Var2 -> 5 `i _Temp_Var1 ]
+[; ;IMUModule.c: 162: Temp_Var1=0;
+"162
+[e = _Temp_Var1 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 163: Temp_Var2=0;
+"163
+[e = _Temp_Var2 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 164: Temp_Var1= (IMURead(0x46,2) & 0xF8)>>3;
+"164
+[e = _Temp_Var1 -> >> & -> ( _IMURead (2 , -> -> 70 `i `uc -> -> 2 `i `uc `i -> 248 `i -> 3 `i `ui ]
+[; ;IMUModule.c: 165: Temp_Var2 = IMURead(0x47,2);
+"165
+[e = _Temp_Var2 -> ( _IMURead (2 , -> -> 71 `i `uc -> -> 2 `i `uc `ui ]
+[; ;IMUModule.c: 166: temp_data.ZMagnetData = (Temp_Var2<<5)|Temp_Var1;
+"166
+[e = . _temp_data 8 | << _Temp_Var2 -> 5 `i _Temp_Var1 ]
+[; ;IMUModule.c: 168: Temp_Var1=0;
+"168
+[e = _Temp_Var1 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 169: Temp_Var2=0;
+"169
+[e = _Temp_Var2 -> -> 0 `i `ui ]
+[; ;IMUModule.c: 170: Temp_Var1= (IMURead(0x48,2) & 0xFC)>>2;
+"170
+[e = _Temp_Var1 -> >> & -> ( _IMURead (2 , -> -> 72 `i `uc -> -> 2 `i `uc `i -> 252 `i -> 2 `i `ui ]
+[; ;IMUModule.c: 171: Temp_Var2 = IMURead(0x49,2);
+"171
+[e = _Temp_Var2 -> ( _IMURead (2 , -> -> 73 `i `uc -> -> 2 `i `uc `ui ]
+[; ;IMUModule.c: 172: temp_data.MagnetResistance = (Temp_Var2<<6)|Temp_Var1;
+"172
+[e = . _temp_data 9 | << _Temp_Var2 -> 6 `i _Temp_Var1 ]
+[; ;IMUModule.c: 176: temp_data.Temperature = IMURead(0x08,0);
+"176
+[e = . _temp_data 10 ( _IMURead (2 , -> -> 8 `i `uc -> -> 0 `i `uc ]
+[; ;IMUModule.c: 177: return temp_data;
+"177
+[e ) _temp_data ]
+[e $UE 2681  ]
+[; ;IMUModule.c: 179: }
+"179
+[e :UE 2681 ]
+}
+"197
+[v _IMURead `(uc ~T0 @X0 1 ef2`uc`uc ]
+"198
+{
+[; ;IMUModule.c: 197: char IMURead(char adress,char Device)
+[; ;IMUModule.c: 198: {
+[e :U _IMURead ]
+"197
+[v _adress `uc ~T0 @X0 1 r1 ]
+[v _Device `uc ~T0 @X0 1 r2 ]
+"198
+[f ]
+"199
+[v _TempData `uc ~T0 @X0 1 a ]
+[; ;IMUModule.c: 199: char TempData=0;
+[e = _TempData -> -> 0 `i `uc ]
+"200
+[v _Result `uc ~T0 @X0 1 a ]
+[; ;IMUModule.c: 200: char Result=0;
+[e = _Result -> -> 0 `i `uc ]
+[; ;IMUModule.c: 203: TempData = (adress | 0b10000000);
+"203
+[e = _TempData -> | -> _adress `i -> 128 `i `uc ]
+[; ;IMUModule.c: 205: if(Device==0)
+"205
+[e $ ! == -> _Device `i -> 0 `i 2683  ]
+[; ;IMUModule.c: 206: LATCbits.LATC2 = 0;
+"206
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+[e $U 2684  ]
+"207
+[e :U 2683 ]
+[; ;IMUModule.c: 207: else if(Device==1)
+[e $ ! == -> _Device `i -> 1 `i 2685  ]
+[; ;IMUModule.c: 208: LATCbits.LATC1 = 0;
+"208
+[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
+[e $U 2686  ]
+"209
+[e :U 2685 ]
+[; ;IMUModule.c: 209: else if(Device==2)
+[e $ ! == -> _Device `i -> 2 `i 2687  ]
+[; ;IMUModule.c: 210: LATCbits.LATC0=0;
+"210
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[e :U 2687 ]
+"212
+[e :U 2686 ]
+[e :U 2684 ]
+[; ;IMUModule.c: 212: SPIWrite(TempData);
+[e ( _SPIWrite (1 _TempData ]
+[; ;IMUModule.c: 213: Result = SPIRead(0);
+"213
+[e = _Result ( _SPIRead (1 -> -> 0 `i `uc ]
+[; ;IMUModule.c: 215: LATCbits.LATC2 = 1;
+"215
+[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
+[; ;IMUModule.c: 216: LATCbits.LATC1 = 1;
+"216
+[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
+[; ;IMUModule.c: 217: LATCbits.LATC0= 1;
+"217
+[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
+[; ;IMUModule.c: 219: return Result;
+"219
+[e ) _Result ]
+[e $UE 2682  ]
+[; ;IMUModule.c: 221: }
+"221
+[e :UE 2682 ]
+}
+"238
+[v _IMUWrite `(v ~T0 @X0 1 ef3`uc`uc`uc ]
+"239
+{
+[; ;IMUModule.c: 238: void IMUWrite(char adress,char data,char Device)
+[; ;IMUModule.c: 239: {
+[e :U _IMUWrite ]
+"238
+[v _adress `uc ~T0 @X0 1 r1 ]
+[v _data `uc ~T0 @X0 1 r2 ]
+[v _Device `uc ~T0 @X0 1 r3 ]
+"239
+[f ]
+"240
+[v _TempData `uc ~T0 @X0 1 a ]
+[; ;IMUModule.c: 240: char TempData=0;
+[e = _TempData -> -> 0 `i `uc ]
+"241
+[v _Result `uc ~T0 @X0 1 a ]
+[; ;IMUModule.c: 241: char Result=0;
+[e = _Result -> -> 0 `i `uc ]
+[; ;IMUModule.c: 243: TempData = (adress & 0b01111111);
+"243
+[e = _TempData -> & -> _adress `i -> 127 `i `uc ]
+[; ;IMUModule.c: 245: if(Device==0)
+"245
+[e $ ! == -> _Device `i -> 0 `i 2689  ]
+[; ;IMUModule.c: 246: LATCbits.LATC2 = 0;
+"246
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+[e $U 2690  ]
+"247
+[e :U 2689 ]
+[; ;IMUModule.c: 247: else if(Device==1)
+[e $ ! == -> _Device `i -> 1 `i 2691  ]
+[; ;IMUModule.c: 248: LATCbits.LATC1 = 0;
+"248
+[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
+[e $U 2692  ]
+"249
+[e :U 2691 ]
+[; ;IMUModule.c: 249: else if(Device==2)
+[e $ ! == -> _Device `i -> 2 `i 2693  ]
+[; ;IMUModule.c: 250: LATCbits.LATC0=0;
+"250
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[e :U 2693 ]
+"253
+[e :U 2692 ]
+[e :U 2690 ]
+[; ;IMUModule.c: 253: SPIWrite(TempData);
+[e ( _SPIWrite (1 _TempData ]
+[; ;IMUModule.c: 254: SPIWrite(data);
+"254
+[e ( _SPIWrite (1 _data ]
+[; ;IMUModule.c: 256: LATCbits.LATC2 = 1;
+"256
+[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
+[; ;IMUModule.c: 257: LATCbits.LATC1 = 1;
+"257
+[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
+[; ;IMUModule.c: 258: LATCbits.LATC0=1;
+"258
+[e = . . _LATCbits 0 0 -> -> 1 `i `uc ]
+[; ;IMUModule.c: 261: }
+"261
+[e :UE 2688 ]
 }

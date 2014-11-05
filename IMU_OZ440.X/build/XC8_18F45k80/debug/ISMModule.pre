@@ -1,5 +1,5 @@
 
-# 1 "main.c"
+# 1 "ISMModule.c"
 
 
 # 21 "C:\Program Files (x86)\Microchip\xc8\v1.30\include\htc.h"
@@ -22117,162 +22117,6 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 13 "C:\Program Files (x86)\Microchip\xc8\v1.30\include\stdint.h"
-typedef signed char int8_t;
-
-# 20
-typedef signed int int16_t;
-
-# 28
-typedef signed short long int int24_t;
-
-# 36
-typedef signed long int int32_t;
-
-# 43
-typedef unsigned char uint8_t;
-
-# 49
-typedef unsigned int uint16_t;
-
-# 56
-typedef unsigned short long int uint24_t;
-
-# 63
-typedef unsigned long int uint32_t;
-
-# 71
-typedef signed char int_least8_t;
-
-# 78
-typedef signed int int_least16_t;
-
-# 90
-typedef signed short long int int_least24_t;
-
-# 98
-typedef signed long int int_least32_t;
-
-# 105
-typedef unsigned char uint_least8_t;
-
-# 111
-typedef unsigned int uint_least16_t;
-
-# 121
-typedef unsigned short long int uint_least24_t;
-
-# 128
-typedef unsigned long int uint_least32_t;
-
-# 137
-typedef signed char int_fast8_t;
-
-# 144
-typedef signed int int_fast16_t;
-
-# 156
-typedef signed short long int int_fast24_t;
-
-# 164
-typedef signed long int int_fast32_t;
-
-# 171
-typedef unsigned char uint_fast8_t;
-
-# 177
-typedef unsigned int uint_fast16_t;
-
-# 187
-typedef unsigned short long int uint_fast24_t;
-
-# 194
-typedef unsigned long int uint_fast32_t;
-
-# 200
-typedef int32_t intmax_t;
-
-
-
-
-typedef uint32_t uintmax_t;
-
-
-
-
-typedef int16_t intptr_t;
-
-
-
-
-typedef uint16_t uintptr_t;
-
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.30\include\stdbool.h"
-typedef unsigned char bool;
-
-# 7 "C:\Program Files (x86)\Microchip\xc8\v1.30\include\stdarg.h"
-typedef void * va_list[1];
-
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
-
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-
-# 23 "C:\Program Files (x86)\Microchip\xc8\v1.30\include\stdio.h"
-extern int errno;
-
-# 54
-struct __prbuf
-{
-char * ptr;
-void (* func)(char);
-};
-
-# 17 "C:\Program Files (x86)\Microchip\xc8\v1.30\include\conio.h"
-extern int errno;
-
-
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-# 31
-extern char * cgets(char *);
-extern void cputs(const char *);
-
-# 99 "C:\Program Files (x86)\Microchip\xc8\v1.30\include\stdio.h"
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
-
-
-
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-
-
-# 191
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...);
-extern int sscanf(const char *, const char *, ...);
-extern int vprintf(const char *, va_list);
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap);
-extern int vsscanf(const char *, const char *, va_list);
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
-
 # 79 "ECANPoll.h"
 typedef unsigned char BYTE;
 
@@ -22471,291 +22315,57 @@ char ISMReadData(void);
 
 void ISMWriteData(char data);
 
-# 24 "IMUModule.h"
-char IMURead(char adress,char Device);
-void IMUWrite(char adress,char data,char Device);
-
-void IMUInitRegisters(void);
-struct IMUData IMUUpdateData(void);
-
-unsigned char IMUAutotest(void);
-
-# 24 "Can_HL.h"
-void CANTxFifoInit(void);
-void CANRxFifoInit(void);
-
-void PutCANTxFifo(struct CANTxMsg PutMessage);
-struct CANTxMsg GetCANTxFifo(void);
-void PutCANRxFifo(struct CANRxMsg PutMessage);
-struct CANRxMsg GetCANRxFifo(void);
-
-void ECANFiltersInit(void);
-
-# 33 "main.c"
-struct RTC_counter TickCounter;
-
-
-struct CANTxFifo CANTxFifo;
-struct CANRxFifo CANRxFifo;
-
-
-struct USARTRxFifo USART1RxFifo;
-struct USARTRxFifo USART2RxFifo;
-
-# 47
-void main(void)
+# 17 "ISMModule.c"
+char ISMReadConfig(char adress)
 {
-char TempVar;
+char TempData=0;
+char Result=0;
 
+TempData = (adress & 0x1F);
+TempData = TempData << 1;
+TempData = (TempData | 0b01000000) & 0xFE;
 
-unsigned char IMUAutotestResult;
+LATEbits.LATE0 = 0;
+SPIWrite(TempData);
+Result = SPIRead(0);
+LATEbits.LATE0 = 1;
 
-
-struct IMUData CurrentIMUData;
-
-
-struct CANTxMsg TempCANTxMsg;
-
-
-struct CANRxMsg TempCANRxMsg;
-
-# 72
-ConfigureOscillator();
-_delay((unsigned long)((10)*(64000000/4000.0)));
-
-
-
-ConfigureGPIO();
-
-
-ConfigureUSART1();
-ConfigureUSART2();
-
-
-ConfigureSPI();
-
-
-ECANInitialize();
-
-ECANFiltersInit();
-
-
-ConfigureTimers();
-
-# 99
-TickCounter.AccelTick_ms=0;
-TickCounter.GyroTick_ms=1;
-TickCounter.MagnetTick_ms=2;
-
-
-CANTxFifoInit();
-CANRxFifoInit();
-
-
-USARTFifoInit ();
-
-# 115
-_delay((unsigned long)((10)*(64000000/4000.0)));
-
-LATDbits.LATD2 = 0;
-
-IMUInitRegisters();
-IMUAutotestResult=IMUAutotest();
-
-# 127
-LATAbits.LATA3=1;
-for(char i=0;i<200;i++)
-{
-_delay((unsigned long)((10)*(64000000/4000.0)));
-}
-LATAbits.LATA3=0;
-
-_delay((unsigned long)((10)*(64000000/4000.0)));
-_delay((unsigned long)((10)*(64000000/4000.0)));
-
-# 143
-ConfigureInterrupts();
-LATDbits.LATD0=1;
-
-# 150
-USART1Write('A');
-USART1Write('T');
-USART1Write(0x0D);
-
-for(char i=0;i<10;i++)
-{
-_delay((unsigned long)((10)*(64000000/4000.0)));
-}
-
-# 164
-while(1)
-{
-
-# 171
-if(TickCounter.AccelTick_ms>0)
-{
-
-LATDbits.LATD1=1;
-TickCounter.AccelTick_ms=0;
-CurrentIMUData = IMUUpdateData();
-
-
-
-TempCANTxMsg.data_TX[0]=(char)(CurrentIMUData.XAccelerationData>>8);
-TempCANTxMsg.data_TX[1]=(char)(CurrentIMUData.XAccelerationData);
-TempCANTxMsg.data_TX[2]=(char)(CurrentIMUData.YAccelerationData>>8);
-TempCANTxMsg.data_TX[3]=(char)(CurrentIMUData.YAccelerationData);
-TempCANTxMsg.data_TX[4]=(char)(CurrentIMUData.ZAccelerationData>>8);
-TempCANTxMsg.data_TX[5]=(char)(CurrentIMUData.ZAccelerationData);
-TempCANTxMsg.data_TX[6]=0;
-TempCANTxMsg.data_TX[7]=0;
-
-TempCANTxMsg.dataLen= 6;
-TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0x0 );
-TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-
-if(!CANTxFifo.Fifofull)
-PutCANTxFifo(TempCANTxMsg);
-
-LATDbits.LATD1=0;
+return Result;
 
 }
 
-if(TickCounter.GyroTick_ms>0)
+void ISMWriteConfig(char adress,char data)
+{
+char TempData=0;
+char Result=0;
+
+TempData = (adress & 0x1F);
+TempData = TempData << 1;
+TempData = (TempData ) & 0x3E;
+
+LATEbits.LATE0 = 0;
+SPIWrite(TempData);
+SPIWrite(data);
+LATEbits.LATE0 = 1;
+
+}
+
+char ISMReadData(void)
+{
+char Result;
+
+LATEbits.LATE1 = 0;
+Result = SPIRead(0);
+LATEbits.LATE1 = 1;
+
+return Result;
+}
+
+void ISMWriteData(char data)
 {
 
-TickCounter.GyroTick_ms=0;
-
-
-
-TempCANTxMsg.data_TX[0]=(char)(CurrentIMUData.XGyroscopeData>>8);
-TempCANTxMsg.data_TX[1]=(char)(CurrentIMUData.XGyroscopeData);
-TempCANTxMsg.data_TX[2]=(char)(CurrentIMUData.YGyroscopeData>>8);
-TempCANTxMsg.data_TX[3]=(char)(CurrentIMUData.YGyroscopeData);
-TempCANTxMsg.data_TX[4]=(char)(CurrentIMUData.ZGyroscopeData>>8);
-TempCANTxMsg.data_TX[5]=(char)(CurrentIMUData.ZGyroscopeData);
-
-TempCANTxMsg.dataLen= 6;
-TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0x1 );
-TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-
-if(!CANTxFifo.Fifofull)
-PutCANTxFifo(TempCANTxMsg);
-
+LATEbits.LATE1 = 0;
+SPIWrite(data);
+LATEbits.LATE1 = 1;
 
 }
-
-if(TickCounter.MagnetTick_ms>0)
-{
-
-TickCounter.MagnetTick_ms=0;
-
-
-
-TempCANTxMsg.data_TX[0]=(char)(CurrentIMUData.XMagnetData>>8);
-TempCANTxMsg.data_TX[1]=(char)(CurrentIMUData.XMagnetData);
-TempCANTxMsg.data_TX[2]=(char)(CurrentIMUData.YMagnetData>>8);
-TempCANTxMsg.data_TX[3]=(char)(CurrentIMUData.YMagnetData);
-TempCANTxMsg.data_TX[4]=(char)(CurrentIMUData.ZMagnetData>>8);
-TempCANTxMsg.data_TX[5]=(char)(CurrentIMUData.ZMagnetData);
-TempCANTxMsg.data_TX[6]=(char)(CurrentIMUData.MagnetResistance >>8);
-TempCANTxMsg.data_TX[7]=(char)(CurrentIMUData.MagnetResistance);
-
-TempCANTxMsg.dataLen= 8;
-TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0x2 );
-TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-
-if(!CANTxFifo.Fifofull)
-PutCANTxFifo(TempCANTxMsg);
-
-
-}
-
-# 258
-if(!CANRxFifo.FifoEmpty && !CANTxFifo.Fifofull)
-{
-TempCANRxMsg = GetCANRxFifo();
-
-
-
-if( TempCANRxMsg.id == (3 << 7 | 0 <<4 | 0x4 ) && TempCANRxMsg.flags== ECAN_RX_RTR_FRAME )
-{
-TempCANTxMsg.data_TX[0]=1;
-TempCANTxMsg.data_TX[1]=1;
-TempCANTxMsg.dataLen= 2;
-TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0x4 );
-TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-PutCANTxFifo(TempCANTxMsg);
-}
-
-
-
-if( TempCANRxMsg.id == (3 << 7 | 0 <<4 | 0xF ) && TempCANRxMsg.flags== ECAN_RX_RTR_FRAME )
-{
-TempCANTxMsg.data_TX[0]=1;
-TempCANTxMsg.data_TX[1]=1;
-TempCANTxMsg.dataLen= 2;
-TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0xF );
-TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-PutCANTxFifo(TempCANTxMsg);
-}
-
-
-
-if( TempCANRxMsg.id == (3 << 7 | 0 <<4 | 0x3 ) && TempCANRxMsg.flags== ECAN_RX_RTR_FRAME )
-{
-TempCANTxMsg.data_TX[0]=CurrentIMUData.Temperature;
-TempCANTxMsg.dataLen= 1;
-TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0x3 );
-TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-PutCANTxFifo(TempCANTxMsg);
-}
-
-
-
-if( TempCANRxMsg.id == (5 << 7 | 0 <<4 | 0x1 ) && TempCANRxMsg.dataLen==1 )
-{
-USART1Write(TempCANRxMsg.data_RX[0]);
-}
-
-}
-
-# 311
-if(!USART2RxFifo.FifoEmpty && !CANTxFifo.Fifofull)
-{
-TempVar = GetUSART2RxFifo();
-
-TempCANTxMsg.data_TX[0]=TempVar;
-TempCANTxMsg.dataLen= 1;
-TempCANTxMsg.id = (4 << 7 | 0 <<4 | 0x0 );
-TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-
-PutCANTxFifo(TempCANTxMsg);
-
-}
-
-# 328
-if(!USART1RxFifo.FifoEmpty && !CANTxFifo.Fifofull)
-{
-TempVar = GetUSART1RxFifo();
-TempCANTxMsg.data_TX[0]=TempVar;
-TempCANTxMsg.dataLen= 1;
-TempCANTxMsg.id = (5 << 7 | 0 <<4 | 0x0 );
-TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-PutCANTxFifo(TempCANTxMsg);
-}
-
-# 342
-if(!CANTxFifo.FifoEmpty && !TXB0CONbits.TXREQ)
-{
-LATDbits.LATD1=1;
-TempCANTxMsg=GetCANTxFifo();
-ECANSendMessage(TempCANTxMsg.id,TempCANTxMsg.data_TX,TempCANTxMsg.dataLen,TempCANTxMsg.flags);
-LATDbits.LATD1=0;
-}
-
-
-}
-
-}
-

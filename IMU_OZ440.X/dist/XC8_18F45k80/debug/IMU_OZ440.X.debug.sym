@@ -532,7 +532,7 @@ _ConfigureSPI 231E 0 CODE 0
 __CFG_CP1$OFF 0 0 ABS 0
 ECANReceiveMessage@dataLen 22 0 COMRAM 1
 __end_of_ECANFiltersInit 1710 0 CODE 0
-__Hreset_vec 4 0 CODE 0
+__Hreset_vec 6 0 CODE 0
 __Lreset_vec 0 0 CODE 0
 __CFG_CP2$OFF 0 0 ABS 0
 __end_of_USART1Write 2340 0 CODE 0
@@ -601,7 +601,7 @@ __size_of_GetUSART1RxFifo 0 0 ABS 0
 __size_of_GetUSART2RxFifo 0 0 ABS 0
 __end_of_IMUUpdateData 7F2 0 CODE 0
 %segments
-reset_vec 0 3 CODE 0 0
+reset_vec 0 5 CODE 0 0
 intcode 8 13 CODE 8 0
 intcodelo 18 234D CODE 18 0
 config 300000 30000D CONFIG 300000 0
@@ -611,7 +611,7 @@ cstackBANK0 60 C3 BANK0 60 1
 bssBANK1 100 1C4 BANK1 100 1
 bssBANK2 200 28F BANK2 200 1
 %locals
-dist/XC8_18F45k80/production\IMU_OZ440.X.production.obj
+dist/XC8_18F45k80/debug\IMU_OZ440.X.debug.obj
 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
 ECANPoll.h
@@ -742,7 +742,7 @@ main.c
 346 E7C 0 CODE 0
 347 EAC 0 CODE 0
 353 EB0 0 CODE 0
-C:\Users\Bruno\AppData\Local\Temp\s568.
+C:\Users\Bruno\AppData\Local\Temp\s11k.
 7931 2224 0 CODE 0
 7933 2224 0 CODE 0
 7936 2224 0 CODE 0

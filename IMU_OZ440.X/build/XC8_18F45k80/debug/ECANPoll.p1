@@ -1,106 +1,118 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"45 interrupts.c
-[c E19327 8 16 32 64 128 .. ]
-[n E19327 _ECAN_RX_MSG_FLAGS ECAN_RX_OVERFLOW ECAN_RX_INVALID_MSG ECAN_RX_XTD_FRAME ECAN_RX_RTR_FRAME ECAN_RX_DBL_BUFFERED  ]
-"56 system.h
-[s S2672 `ul 1 `uc -> 8 `i `uc 1 `E19327 1 ]
-[n S2672 CANRxMsg id data_RX dataLen flags ]
-[s S2100 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2100 . RXB0IF RXB1IF TXB0IF TXB1IF TXB2IF ERRIF WAKIF IRXIF ]
-[s S2101 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S2101 . FIFOWMIF RXBnIF . TXBnIF ]
-[u S2099 `S2100 1 `S2101 1 ]
-[n S2099 . . . ]
-"32238 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
-[v _PIR5bits `VS2099 ~T0 @X0 0 e@3959 ]
-"55 interrupts.c
+[s S2648 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2648 . b0 b1 b2 b3 b4 b5 b6 b7 ]
+[u S2647 `uc 1 `S2648 1 ]
+[n S2647 . Val bits ]
+"168 ECANPoll.c
+[c E19311 224 0 32 64 96 128 .. ]
+[n E19311 _ECAN_OP_MODE ECAN_OP_MODE_BITS ECAN_OP_MODE_NORMAL ECAN_OP_MODE_SLEEP ECAN_OP_MODE_LOOP ECAN_OP_MODE_LISTEN ECAN_OP_MODE_CONFIG  ]
+"385 ecanpoll.h
+[v _ECANSetOperationMode `(v ~T0 @X0 0 ef1`E19311 ]
+"182 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
+[v _BRGCON1 `Vuc ~T0 @X0 0 e@3651 ]
+"257
+[v _BRGCON2 `Vuc ~T0 @X0 0 e@3652 ]
+"341
+[v _BRGCON3 `Vuc ~T0 @X0 0 e@3653 ]
+"31850
+[v _CIOCON `Vuc ~T0 @X0 0 e@3952 ]
+"43195
+[v _MDSEL1 `Vb ~T0 @X0 0 e@31639 ]
+"43193
+[v _MDSEL0 `Vb ~T0 @X0 0 e@31638 ]
+"30207
+[v _RXB0CON `Vuc ~T0 @X0 0 e@3936 ]
+"26590
+[v _RXB1CON `Vuc ~T0 @X0 0 e@3888 ]
+"17721
+[v _RXF0SIDH `Vuc ~T0 @X0 0 e@3808 ]
+"17861
+[v _RXF0SIDL `Vuc ~T0 @X0 0 e@3809 ]
+"18260
+[v _RXF1SIDH `Vuc ~T0 @X0 0 e@3812 ]
+"18400
+[v _RXF1SIDL `Vuc ~T0 @X0 0 e@3813 ]
+"18799
+[v _RXF2SIDH `Vuc ~T0 @X0 0 e@3816 ]
+"18939
+[v _RXF2SIDL `Vuc ~T0 @X0 0 e@3817 ]
+"19338
+[v _RXF3SIDH `Vuc ~T0 @X0 0 e@3820 ]
+"19478
+[v _RXF3SIDL `Vuc ~T0 @X0 0 e@3821 ]
+"19877
+[v _RXF4SIDH `Vuc ~T0 @X0 0 e@3824 ]
+"20017
+[v _RXF4SIDL `Vuc ~T0 @X0 0 e@3825 ]
+"20416
+[v _RXF5SIDH `Vuc ~T0 @X0 0 e@3828 ]
+"20556
+[v _RXF5SIDL `Vuc ~T0 @X0 0 e@3829 ]
+"20955
+[v _RXM0SIDH `Vuc ~T0 @X0 0 e@3832 ]
+"21095
+[v _RXM0SIDL `Vuc ~T0 @X0 0 e@3833 ]
+"45083
+[v _RXM0EXIDM `Vb ~T0 @X0 0 e@30667 ]
+"21494
+[v _RXM1SIDH `Vuc ~T0 @X0 0 e@3836 ]
+"21634
+[v _RXM1SIDL `Vuc ~T0 @X0 0 e@3837 ]
+"45143
+[v _RXM1EXIDEN `Vb ~T0 @X0 0 e@30699 ]
+"614 ECANPoll.c
+[c E19280 3 0 1 2 3 32 0 32 64 0 64 .. ]
+[n E19280 _ECAN_TX_MSG_FLAGS ECAN_TX_PRIORITY_BITS ECAN_TX_PRIORITY_0 ECAN_TX_PRIORITY_1 ECAN_TX_PRIORITY_2 ECAN_TX_PRIORITY_3 ECAN_TX_FRAME_BIT ECAN_TX_STD_FRAME ECAN_TX_XTD_FRAME ECAN_TX_RTR_BIT ECAN_TX_NO_RTR_FRAME ECAN_TX_RTR_FRAME  ]
 [c E18559 0 1 .. ]
 [n E18559 _BOOL FALSE TRUE  ]
-"313 ECANPoll.h
-[v _ECANReceiveMessage `(E18559 ~T0 @X0 0 ef4`*ul`*uc`*uc`*E19327 ]
-"29 Can_HL.h
-[v _PutCANRxFifo `(v ~T0 @X0 0 ef1`S2672 ]
-[s S2591 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2591 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
-[s S2592 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2592 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
-[s S2593 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2593 . . GIEL GIEH ]
-[s S2594 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2594 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
-[s S2595 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2595 . . GIEL GIEH ]
-[u S2590 `S2591 1 `S2592 1 `S2593 1 `S2594 1 `S2595 1 ]
-[n S2590 . . . . . . ]
-"40122 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
-[v _INTCONbits `VS2590 ~T0 @X0 0 e@4082 ]
-"40 system.h
-[s S2670 `uc 1 `uc 1 `uc 1 ]
-[n S2670 RTC_counter AccelTick_ms GyroTick_ms MagnetTick_ms ]
-"23 interrupts.c
-[v _TickCounter `S2670 ~T0 @X0 0 e ]
-"39315 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
-[v _TMR0H `Vuc ~T0 @X0 0 e@4055 ]
-"39296
-[v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
-[s S2248 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2248 . TMR1IF TMR2IF TMR1GIF SSPIF TX1IF RC1IF ADIF PSPIF ]
-[s S2249 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2249 . . TXIF RCIF ]
-[u S2247 `S2248 1 `S2249 1 ]
-[n S2247 . . . ]
-"34563
-[v _PIR1bits `VS2247 ~T0 @X0 0 e@3998 ]
-"36249
-[v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
-"129 system.h
-[v _PutUSART1RxFifo `(v ~T0 @X0 0 ef1`uc ]
-[s S2312 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2312 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
-[s S2313 :1 `uc 1 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S2313 . RCD8 . ADEN . RC9 ]
-[s S2314 :6 `uc 1 :1 `uc 1 ]
-[n S2314 . . NOT_RC8 ]
-[s S2315 :6 `uc 1 :1 `uc 1 ]
-[n S2315 . . nRC8 ]
-[s S2316 :6 `uc 1 :1 `uc 1 ]
-[n S2316 . . RC8_9 ]
-[s S2317 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2317 . RX9D1 OERR1 FERR1 ADDEN1 CREN1 SREN1 RX91 SPEN1 ]
-[s S2318 :5 `uc 1 :1 `uc 1 ]
-[n S2318 . . SRENA ]
-[u S2311 `S2312 1 `S2313 1 `S2314 1 `S2315 1 `S2316 1 `S2317 1 `S2318 1 ]
-[n S2311 . . . . . . . . ]
-"35638 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
-[v _RCSTA1bits `VS2311 ~T0 @X0 0 e@4011 ]
-[s S2271 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2271 . . CCP1IF CCP2IF CTMUIF TX2IF RC2IF ]
-[s S2272 :1 `uc 1 :1 `uc 1 ]
-[n S2272 . . RXBNIF ]
-[s S2273 :4 `uc 1 :1 `uc 1 ]
-[n S2273 . . TXBNIF ]
-[u S2270 `S2271 1 `S2272 1 `S2273 1 ]
-[n S2270 . . . . ]
-"34973
-[v _PIR3bits `VS2270 ~T0 @X0 0 e@4004 ]
-"32433
-[v _RCREG2 `Vuc ~T0 @X0 0 e@3962 ]
-"132 system.h
-[v _PutUSART2RxFifo `(v ~T0 @X0 0 ef1`uc ]
-[s S2279 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2279 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
-[s S2280 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2280 . RX9D2 OERR2 FERR2 ADDEN2 CREN2 SREN2 RX92 SPEN2 ]
-[s S2281 :6 `uc 1 :1 `uc 1 ]
-[n S2281 . . RC8_92 ]
-[s S2282 :6 `uc 1 :1 `uc 1 ]
-[n S2282 . . RC92 ]
-[s S2283 :1 `uc 1 ]
-[n S2283 . RCD82 ]
-[u S2278 `S2279 1 `S2280 1 `S2281 1 `S2282 1 `S2283 1 ]
-[n S2278 . . . . . . ]
-"35112 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
-[v _RCSTA2bits `VS2278 ~T0 @X0 0 e@4006 ]
+"25071 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
+[v _TXB0CON `Vuc ~T0 @X0 0 e@3872 ]
+"23552
+[v _TXB1CON `Vuc ~T0 @X0 0 e@3856 ]
+"22033
+[v _TXB2CON `Vuc ~T0 @X0 0 e@3840 ]
+"1330 ecanpoll.h
+[v __CANIDToRegs `(v ~T0 @X0 0 ef3`*uc`ul`uc ]
+"800 ECANPoll.c
+[c E19298 8 16 32 64 128 .. ]
+[n E19298 _ECAN_RX_MSG_FLAGS ECAN_RX_OVERFLOW ECAN_RX_INVALID_MSG ECAN_RX_XTD_FRAME ECAN_RX_RTR_FRAME ECAN_RX_DBL_BUFFERED  ]
+"43757 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
+[v _RXB0FUL `Vb ~T0 @X0 0 e@31495 ]
+"43759
+[v _RXB0IF `Vb ~T0 @X0 0 e@31672 ]
+"43767
+[v _RXB0OVFL `Vb ~T0 @X0 0 e@31631 ]
+"43747
+[v _RXB0FILHIT0 `Vb ~T0 @X0 0 e@31488 ]
+"43989
+[v _RXB1FUL `Vb ~T0 @X0 0 e@31111 ]
+"43991
+[v _RXB1IF `Vb ~T0 @X0 0 e@31673 ]
+"43999
+[v _RXB1OVFL `Vb ~T0 @X0 0 e@31630 ]
+"44 ECANPoll.c
+[v __RegsToCANID `(v ~T0 @X0 0 ef3`*uc`*ul`uc ]
+"43009 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
+[v _IRXIF `Vb ~T0 @X0 0 e@31679 ]
+"31759
+[v _CANCON `Vuc ~T0 @X0 0 e@3951 ]
+"31649
+[v _CANSTAT `Vuc ~T0 @X0 0 e@3950 ]
+[s S2707 :3 `uc 1 :5 `uc 1 ]
+[n S2707 . SIDL SIDH ]
+[s S2708 :3 `uc 1 :5 `uc 1 ]
+[n S2708 . SIDHU EIDL_LN ]
+[s S2709 :3 `uc 1 :5 `uc 1 ]
+[n S2709 . EIDL_UN EIDH_LN ]
+[s S2710 :3 `uc 1 :2 `uc 1 :3 `uc 1 ]
+[n S2710 . EIDH_UN EIDHU . ]
+[s S2706 `S2707 1 `S2708 1 `S2709 1 `S2710 1 ]
+[n S2706 . BYTE1 BYTE2 BYTE3 BYTE4 ]
+[s S2711 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S2711 . BYTE_1 BYTE_2 BYTE_3 BYTE_4 ]
+"1058 ECANPoll.c
+[u S2705 `ul 1 `S2706 1 `S2711 1 ]
+[n S2705 _CAN_MESSAGE_ID ID ID_VALS BYTES ]
 [; ;htc.h: 22: extern void __builtin_software_breakpoint(void);
 [; ;pic18f45k80.h: 44: extern volatile unsigned char RXERRCNT @ 0xE41;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
@@ -17665,327 +17677,787 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 147: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 149: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 151: extern __nonreentrant void _delay3(unsigned char);
-[; ;stdint.h: 13: typedef signed char int8_t;
-[; ;stdint.h: 20: typedef signed int int16_t;
-[; ;stdint.h: 28: typedef signed short long int int24_t;
-[; ;stdint.h: 36: typedef signed long int int32_t;
-[; ;stdint.h: 43: typedef unsigned char uint8_t;
-[; ;stdint.h: 49: typedef unsigned int uint16_t;
-[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
-[; ;stdint.h: 63: typedef unsigned long int uint32_t;
-[; ;stdint.h: 71: typedef signed char int_least8_t;
-[; ;stdint.h: 78: typedef signed int int_least16_t;
-[; ;stdint.h: 90: typedef signed short long int int_least24_t;
-[; ;stdint.h: 98: typedef signed long int int_least32_t;
-[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
-[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
-[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
-[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
-[; ;stdint.h: 137: typedef signed char int_fast8_t;
-[; ;stdint.h: 144: typedef signed int int_fast16_t;
-[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
-[; ;stdint.h: 164: typedef signed long int int_fast32_t;
-[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
-[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
-[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
-[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
-[; ;stdint.h: 200: typedef int32_t intmax_t;
-[; ;stdint.h: 205: typedef uint32_t uintmax_t;
-[; ;stdint.h: 210: typedef int16_t intptr_t;
-[; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;ECANPoll.h: 79: typedef unsigned char BYTE;
-[; ;ECANPoll.h: 81: typedef union _BYTE_VAL
-[; ;ECANPoll.h: 82: {
-[; ;ECANPoll.h: 83: struct
-[; ;ECANPoll.h: 84: {
-[; ;ECANPoll.h: 85: unsigned int b0:1;
-[; ;ECANPoll.h: 86: unsigned int b1:1;
-[; ;ECANPoll.h: 87: unsigned int b2:1;
-[; ;ECANPoll.h: 88: unsigned int b3:1;
-[; ;ECANPoll.h: 89: unsigned int b4:1;
-[; ;ECANPoll.h: 90: unsigned int b5:1;
-[; ;ECANPoll.h: 91: unsigned int b6:1;
-[; ;ECANPoll.h: 92: unsigned int b7:1;
-[; ;ECANPoll.h: 93: } bits;
-[; ;ECANPoll.h: 94: BYTE Val;
-[; ;ECANPoll.h: 95: } BYTE_VAL;
-[; ;ECANPoll.h: 145: void ECANInitialize(void);
-[; ;ECANPoll.h: 157: typedef enum _ECAN_TX_MSG_FLAGS
-[; ;ECANPoll.h: 158: {
-[; ;ECANPoll.h: 159: ECAN_TX_PRIORITY_BITS = 0b00000011,
-[; ;ECANPoll.h: 160: ECAN_TX_PRIORITY_0 = 0b00000000,
-[; ;ECANPoll.h: 161: ECAN_TX_PRIORITY_1 = 0b00000001,
-[; ;ECANPoll.h: 162: ECAN_TX_PRIORITY_2 = 0b00000010,
-[; ;ECANPoll.h: 163: ECAN_TX_PRIORITY_3 = 0b00000011,
-[; ;ECANPoll.h: 165: ECAN_TX_FRAME_BIT = 0b00100000,
-[; ;ECANPoll.h: 166: ECAN_TX_STD_FRAME = 0b00000000,
-[; ;ECANPoll.h: 167: ECAN_TX_XTD_FRAME = 0b00100000,
-[; ;ECANPoll.h: 169: ECAN_TX_RTR_BIT = 0b01000000,
-[; ;ECANPoll.h: 170: ECAN_TX_NO_RTR_FRAME = 0b00000000,
-[; ;ECANPoll.h: 171: ECAN_TX_RTR_FRAME = 0b01000000
-[; ;ECANPoll.h: 172: } ECAN_TX_MSG_FLAGS;
-[; ;ECANPoll.h: 206: BOOL ECANSendMessage( unsigned long id,
-[; ;ECANPoll.h: 207: BYTE *data,
-[; ;ECANPoll.h: 208: BYTE dataLen,
-[; ;ECANPoll.h: 209: ECAN_TX_MSG_FLAGS msgFlags);
-[; ;ECANPoll.h: 270: typedef enum _ECAN_RX_MSG_FLAGS
-[; ;ECANPoll.h: 271: {
-[; ;ECANPoll.h: 272: ECAN_RX_OVERFLOW = 0b00001000,
-[; ;ECANPoll.h: 273: ECAN_RX_INVALID_MSG = 0b00010000,
-[; ;ECANPoll.h: 274: ECAN_RX_XTD_FRAME = 0b00100000,
-[; ;ECANPoll.h: 275: ECAN_RX_RTR_FRAME = 0b01000000,
-[; ;ECANPoll.h: 276: ECAN_RX_DBL_BUFFERED = 0b10000000
-[; ;ECANPoll.h: 277: } ECAN_RX_MSG_FLAGS;
-[; ;ECANPoll.h: 313: BOOL ECANReceiveMessage( unsigned long* id,
-[; ;ECANPoll.h: 314: BYTE *Data,
-[; ;ECANPoll.h: 315: BYTE *DataLen,
-[; ;ECANPoll.h: 316: ECAN_RX_MSG_FLAGS *MsgFlags);
-[; ;ECANPoll.h: 341: extern BYTE_VAL _ECANRxFilterHitInfo;
-[; ;ECANPoll.h: 354: typedef enum _ECAN_OP_MODE
-[; ;ECANPoll.h: 355: {
-[; ;ECANPoll.h: 356: ECAN_OP_MODE_BITS = 0xe0,
-[; ;ECANPoll.h: 357: ECAN_OP_MODE_NORMAL = 0x00,
-[; ;ECANPoll.h: 358: ECAN_OP_MODE_SLEEP = 0x20,
-[; ;ECANPoll.h: 359: ECAN_OP_MODE_LOOP = 0x40,
-[; ;ECANPoll.h: 360: ECAN_OP_MODE_LISTEN = 0x60,
-[; ;ECANPoll.h: 361: ECAN_OP_MODE_CONFIG = 0x80
-[; ;ECANPoll.h: 362: } ECAN_OP_MODE;
-[; ;ECANPoll.h: 385: void ECANSetOperationMode(ECAN_OP_MODE mode);
-[; ;ECANPoll.h: 1330: void _CANIDToRegs(BYTE* ptr,
-[; ;ECANPoll.h: 1331: unsigned long val,
-[; ;ECANPoll.h: 1332: BYTE type );
-"1705 ECANPoll.h
+[; ;ecanpoll.h: 79: typedef unsigned char BYTE;
+[; ;ecanpoll.h: 81: typedef union _BYTE_VAL
+[; ;ecanpoll.h: 82: {
+[; ;ecanpoll.h: 83: struct
+[; ;ecanpoll.h: 84: {
+[; ;ecanpoll.h: 85: unsigned int b0:1;
+[; ;ecanpoll.h: 86: unsigned int b1:1;
+[; ;ecanpoll.h: 87: unsigned int b2:1;
+[; ;ecanpoll.h: 88: unsigned int b3:1;
+[; ;ecanpoll.h: 89: unsigned int b4:1;
+[; ;ecanpoll.h: 90: unsigned int b5:1;
+[; ;ecanpoll.h: 91: unsigned int b6:1;
+[; ;ecanpoll.h: 92: unsigned int b7:1;
+[; ;ecanpoll.h: 93: } bits;
+[; ;ecanpoll.h: 94: BYTE Val;
+[; ;ecanpoll.h: 95: } BYTE_VAL;
+[; ;ecanpoll.h: 145: void ECANInitialize(void);
+[; ;ecanpoll.h: 157: typedef enum _ECAN_TX_MSG_FLAGS
+[; ;ecanpoll.h: 158: {
+[; ;ecanpoll.h: 159: ECAN_TX_PRIORITY_BITS = 0b00000011,
+[; ;ecanpoll.h: 160: ECAN_TX_PRIORITY_0 = 0b00000000,
+[; ;ecanpoll.h: 161: ECAN_TX_PRIORITY_1 = 0b00000001,
+[; ;ecanpoll.h: 162: ECAN_TX_PRIORITY_2 = 0b00000010,
+[; ;ecanpoll.h: 163: ECAN_TX_PRIORITY_3 = 0b00000011,
+[; ;ecanpoll.h: 165: ECAN_TX_FRAME_BIT = 0b00100000,
+[; ;ecanpoll.h: 166: ECAN_TX_STD_FRAME = 0b00000000,
+[; ;ecanpoll.h: 167: ECAN_TX_XTD_FRAME = 0b00100000,
+[; ;ecanpoll.h: 169: ECAN_TX_RTR_BIT = 0b01000000,
+[; ;ecanpoll.h: 170: ECAN_TX_NO_RTR_FRAME = 0b00000000,
+[; ;ecanpoll.h: 171: ECAN_TX_RTR_FRAME = 0b01000000
+[; ;ecanpoll.h: 172: } ECAN_TX_MSG_FLAGS;
+[; ;ecanpoll.h: 206: BOOL ECANSendMessage( unsigned long id,
+[; ;ecanpoll.h: 207: BYTE *data,
+[; ;ecanpoll.h: 208: BYTE dataLen,
+[; ;ecanpoll.h: 209: ECAN_TX_MSG_FLAGS msgFlags);
+[; ;ecanpoll.h: 270: typedef enum _ECAN_RX_MSG_FLAGS
+[; ;ecanpoll.h: 271: {
+[; ;ecanpoll.h: 272: ECAN_RX_OVERFLOW = 0b00001000,
+[; ;ecanpoll.h: 273: ECAN_RX_INVALID_MSG = 0b00010000,
+[; ;ecanpoll.h: 274: ECAN_RX_XTD_FRAME = 0b00100000,
+[; ;ecanpoll.h: 275: ECAN_RX_RTR_FRAME = 0b01000000,
+[; ;ecanpoll.h: 276: ECAN_RX_DBL_BUFFERED = 0b10000000
+[; ;ecanpoll.h: 277: } ECAN_RX_MSG_FLAGS;
+[; ;ecanpoll.h: 313: BOOL ECANReceiveMessage( unsigned long* id,
+[; ;ecanpoll.h: 314: BYTE *Data,
+[; ;ecanpoll.h: 315: BYTE *DataLen,
+[; ;ecanpoll.h: 316: ECAN_RX_MSG_FLAGS *MsgFlags);
+[; ;ecanpoll.h: 341: extern BYTE_VAL _ECANRxFilterHitInfo;
+[; ;ecanpoll.h: 354: typedef enum _ECAN_OP_MODE
+[; ;ecanpoll.h: 355: {
+[; ;ecanpoll.h: 356: ECAN_OP_MODE_BITS = 0xe0,
+[; ;ecanpoll.h: 357: ECAN_OP_MODE_NORMAL = 0x00,
+[; ;ecanpoll.h: 358: ECAN_OP_MODE_SLEEP = 0x20,
+[; ;ecanpoll.h: 359: ECAN_OP_MODE_LOOP = 0x40,
+[; ;ecanpoll.h: 360: ECAN_OP_MODE_LISTEN = 0x60,
+[; ;ecanpoll.h: 361: ECAN_OP_MODE_CONFIG = 0x80
+[; ;ecanpoll.h: 362: } ECAN_OP_MODE;
+[; ;ecanpoll.h: 385: void ECANSetOperationMode(ECAN_OP_MODE mode);
+[; ;ecanpoll.h: 1330: void _CANIDToRegs(BYTE* ptr,
+[; ;ecanpoll.h: 1331: unsigned long val,
+[; ;ecanpoll.h: 1332: BYTE type );
+"1705 ecanpoll.h
 [v _RXBODBEN `VNb ~T0 @X0 1 s@31490 ]
-[; ;ECANPoll.h: 1705: static volatile near bit RXBODBEN @ ((unsigned)&RXB0CON*8)+2;
-[; ;system.h: 20: struct IMUData {
-[; ;system.h: 22: unsigned int XAccelerationData;
-[; ;system.h: 23: unsigned int YAccelerationData;
-[; ;system.h: 24: unsigned int ZAccelerationData;
-[; ;system.h: 26: unsigned int XGyroscopeData;
-[; ;system.h: 27: unsigned int YGyroscopeData;
-[; ;system.h: 28: unsigned int ZGyroscopeData;
-[; ;system.h: 30: unsigned int XMagnetData;
-[; ;system.h: 31: unsigned int YMagnetData;
-[; ;system.h: 32: unsigned int ZMagnetData;
-[; ;system.h: 34: unsigned int MagnetResistance;
-[; ;system.h: 36: unsigned char Temperature;
-[; ;system.h: 38: };
-[; ;system.h: 40: struct RTC_counter {
-[; ;system.h: 41: unsigned char AccelTick_ms;
-[; ;system.h: 42: unsigned char GyroTick_ms;
-[; ;system.h: 43: unsigned char MagnetTick_ms;
-[; ;system.h: 45: };
-[; ;system.h: 47: struct CANTxMsg{
-[; ;system.h: 49: unsigned long id;
-[; ;system.h: 50: BYTE data_TX[8];
-[; ;system.h: 51: BYTE dataLen;
-[; ;system.h: 52: ECAN_TX_MSG_FLAGS flags;
-[; ;system.h: 54: };
-[; ;system.h: 56: struct CANRxMsg{
-[; ;system.h: 58: unsigned long id;
-[; ;system.h: 59: BYTE data_RX[8];
-[; ;system.h: 60: BYTE dataLen;
-[; ;system.h: 61: ECAN_RX_MSG_FLAGS flags;
-[; ;system.h: 63: };
-[; ;system.h: 65: struct CANTxFifo{
-[; ;system.h: 67: struct CANTxMsg CANMsg[10];
-[; ;system.h: 69: unsigned char LowIndex;
-[; ;system.h: 70: unsigned char HighIndex;
-[; ;system.h: 71: unsigned char Fifofull;
-[; ;system.h: 72: unsigned char FifoEmpty;
-[; ;system.h: 74: };
-[; ;system.h: 76: struct CANRxFifo{
-[; ;system.h: 78: struct CANRxMsg CANMsg[10];
-[; ;system.h: 80: unsigned char LowIndex;
-[; ;system.h: 81: unsigned char HighIndex;
-[; ;system.h: 82: unsigned char Fifofull;
-[; ;system.h: 83: unsigned char FifoEmpty;
-[; ;system.h: 85: };
-[; ;system.h: 87: struct USARTRxFifo {
-[; ;system.h: 89: unsigned char USARTMsg [10];
-[; ;system.h: 90: unsigned char LowIndex;
-[; ;system.h: 91: unsigned char HighIndex;
-[; ;system.h: 92: unsigned char Fifofull;
-[; ;system.h: 93: unsigned char FifoEmpty;
-[; ;system.h: 95: };
-[; ;system.h: 110: void ConfigureOscillator(void);
-[; ;system.h: 111: void ConfigureGPIO(void);
-[; ;system.h: 112: void ConfigureUSART1(void);
-[; ;system.h: 113: void ConfigureUSART2(void);
-[; ;system.h: 114: void ConfigureAnalog(void);
-[; ;system.h: 115: void ConfigureSPI(void);
-[; ;system.h: 116: void ConfigureInterrupts(void);
-[; ;system.h: 118: void ConfigureTimers(void);
-[; ;system.h: 120: void USART1Write(char data);
-[; ;system.h: 121: void USART2Write(char data);
-[; ;system.h: 123: signed char SPIWrite(char data);
-[; ;system.h: 124: char SPIRead(char DummyData);
-[; ;system.h: 126: void USARTFifoInit (void);
-[; ;system.h: 128: char GetUSART1RxFifo(void);
-[; ;system.h: 129: void PutUSART1RxFifo(char ByteToWrite);
-[; ;system.h: 131: char GetUSART2RxFifo(void);
-[; ;system.h: 132: void PutUSART2RxFifo(char ByteToWrite);
-[; ;Can_HL.h: 24: void CANTxFifoInit(void);
-[; ;Can_HL.h: 25: void CANRxFifoInit(void);
-[; ;Can_HL.h: 27: void PutCANTxFifo(struct CANTxMsg PutMessage);
-[; ;Can_HL.h: 28: struct CANTxMsg GetCANTxFifo(void);
-[; ;Can_HL.h: 29: void PutCANRxFifo(struct CANRxMsg PutMessage);
-[; ;Can_HL.h: 30: struct CANRxMsg GetCANRxFifo(void);
-[; ;Can_HL.h: 32: void ECANFiltersInit(void);
-[; ;interrupts.c: 23: extern struct RTC_counter TickCounter;
-[; ;interrupts.c: 24: extern struct USARTRxFifo USART1RxFifo;
-[; ;interrupts.c: 25: extern struct USARTRxFifo USART2RxFifo;
-[; ;interrupts.c: 26: extern struct CANRxFifo CANRxFifo;
-[v F19454 `(v ~T0 @X0 1 tf ]
-"35 interrupts.c
-[v _high_isr `IF19454 ~T0 @X0 1 e ]
-"44
+[; ;ecanpoll.h: 1705: static volatile near bit RXBODBEN @ ((unsigned)&RXB0CON*8)+2;
+[; ;ECANPoll.c: 41: void _CANIDToRegs(BYTE* ptr,
+[; ;ECANPoll.c: 42: unsigned long val,
+[; ;ECANPoll.c: 43: BYTE type);
+[; ;ECANPoll.c: 44: void _RegsToCANID(BYTE* ptr,
+[; ;ECANPoll.c: 45: unsigned long *val,
+[; ;ECANPoll.c: 46: BYTE type);
+"53 ECANPoll.c
+[v __ECANRxFilterHitInfo `S2647 ~T0 @X0 1 e ]
+[; ;ECANPoll.c: 53: BYTE_VAL _ECANRxFilterHitInfo;
+"164
+[v _ECANInitialize `(v ~T0 @X0 1 ef ]
+"165
 {
-[; ;interrupts.c: 35: void interrupt high_isr(void)
-[; ;interrupts.c: 44: {
-[e :U _high_isr ]
+[; ;ECANPoll.c: 164: void ECANInitialize(void)
+[; ;ECANPoll.c: 165: {
+[e :U _ECANInitialize ]
 [f ]
-"45
-[v _CANRxNewMessage `S2672 ~T0 @X0 1 a ]
-[; ;interrupts.c: 45: struct CANRxMsg CANRxNewMessage;
-[; ;interrupts.c: 52: if(PIR5bits.RXB0IF==1 | PIR5bits.RXB1IF==1)
-"52
-[e $ ! | == -> . . _PIR5bits 0 0 `i -> 1 `i == -> . . _PIR5bits 0 1 `i -> 1 `i 2677  ]
-[; ;interrupts.c: 53: {
-"53
-{
-[; ;interrupts.c: 55: ECANReceiveMessage(&CANRxNewMessage.id, CANRxNewMessage.data_RX, &CANRxNewMessage.dataLen, &CANRxNewMessage.flags);
-"55
-[e ( _ECANReceiveMessage (4 , , , &U . _CANRxNewMessage 0 &U . _CANRxNewMessage 1 &U . _CANRxNewMessage 2 &U . _CANRxNewMessage 3 ]
-[; ;interrupts.c: 56: PutCANRxFifo(CANRxNewMessage);
-"56
-[e ( _PutCANRxFifo (1 _CANRxNewMessage ]
-[; ;interrupts.c: 58: PIR5bits.RXB0IF=0;
-"58
-[e = . . _PIR5bits 0 0 -> -> 0 `i `uc ]
-[; ;interrupts.c: 59: PIR5bits.RXB1IF=0;
-"59
-[e = . . _PIR5bits 0 1 -> -> 0 `i `uc ]
-"60
+[; ;ECANPoll.c: 168: ECANSetOperationMode(ECAN_OP_MODE_CONFIG);
+"168
+[e ( _ECANSetOperationMode (1 -> . `E19311 5 `E19311 ]
+[; ;ECANPoll.c: 172: BRGCON1 = ((1-1) << 6) | (2-1);
+"172
+[e = _BRGCON1 -> | << - -> 1 `i -> 1 `i -> 6 `i - -> 2 `i -> 1 `i `uc ]
+[; ;ECANPoll.c: 173: BRGCON2 = (0 << 7) | (1 << 6) | ((7-1) << 3) | (1-1);
+"173
+[e = _BRGCON2 -> | | | << -> 0 `i -> 7 `i << -> 1 `i -> 6 `i << - -> 7 `i -> 1 `i -> 3 `i - -> 1 `i -> 1 `i `uc ]
+[; ;ECANPoll.c: 177: BRGCON3 = (0 << 7) |
+[; ;ECANPoll.c: 178: (0 << 6) |
+[; ;ECANPoll.c: 179: (1-1);
+"179
+[e = _BRGCON3 -> | | << -> 0 `i -> 7 `i << -> 0 `i -> 6 `i - -> 1 `i -> 1 `i `uc ]
+[; ;ECANPoll.c: 182: CIOCON = 0 << 7 | 0 << 6 | 1 << 5 | 1 << 4;
+"182
+[e = _CIOCON -> | | | << -> 0 `i -> 7 `i << -> 0 `i -> 6 `i << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i `uc ]
+[; ;ECANPoll.c: 189: MDSEL1 = 0x00 >> 7;
+"189
+[e = _MDSEL1 -> >> -> 0 `i -> 7 `i `b ]
+[; ;ECANPoll.c: 190: MDSEL0 = 0x00 >> 6;
+"190
+[e = _MDSEL0 -> >> -> 0 `i -> 6 `i `b ]
+[; ;ECANPoll.c: 195: RXB0CON = (0 << 5) | (0 << 2);
+"195
+[e = _RXB0CON -> | << -> 0 `i -> 5 `i << -> 0 `i -> 2 `i `uc ]
+[; ;ECANPoll.c: 196: RXB1CON = 0 << 5;
+"196
+[e = _RXB1CON -> << -> 0 `i -> 5 `i `uc ]
+[; ;ECANPoll.c: 290: RXF0SIDH = (long)0x0L >> 3L;RXF0SIDL = (long)0x0L << 5L;
+"290
+[e = _RXF0SIDH -> >> -> 0 `l -> 3 `l `uc ]
+[e = _RXF0SIDL -> << -> 0 `l -> 5 `l `uc ]
+[; ;ECANPoll.c: 298: RXF1SIDH = (long)0x0L >> 3L;RXF1SIDL = (long)0x0L << 5L;
+"298
+[e = _RXF1SIDH -> >> -> 0 `l -> 3 `l `uc ]
+[e = _RXF1SIDL -> << -> 0 `l -> 5 `l `uc ]
+[; ;ECANPoll.c: 307: RXF2SIDH = (long)0x0L >> 3L;RXF2SIDL = (long)0x0L << 5L;
+"307
+[e = _RXF2SIDH -> >> -> 0 `l -> 3 `l `uc ]
+[e = _RXF2SIDL -> << -> 0 `l -> 5 `l `uc ]
+[; ;ECANPoll.c: 316: RXF3SIDH = (long)0x0L >> 3L;RXF3SIDL = (long)0x0L << 5L;
+"316
+[e = _RXF3SIDH -> >> -> 0 `l -> 3 `l `uc ]
+[e = _RXF3SIDL -> << -> 0 `l -> 5 `l `uc ]
+[; ;ECANPoll.c: 325: RXF4SIDH = (long)0x0L >> 3L;RXF4SIDL = (long)0x0L << 5L;
+"325
+[e = _RXF4SIDH -> >> -> 0 `l -> 3 `l `uc ]
+[e = _RXF4SIDL -> << -> 0 `l -> 5 `l `uc ]
+[; ;ECANPoll.c: 333: RXF5SIDH = (long)0x0L >> 3L;RXF5SIDL = (long)0x0L << 5L;
+"333
+[e = _RXF5SIDH -> >> -> 0 `l -> 3 `l `uc ]
+[e = _RXF5SIDL -> << -> 0 `l -> 5 `l `uc ]
+[; ;ECANPoll.c: 475: RXM0SIDH = (long)0x0L >> 3L; RXM0SIDL = (long)0x0L << 5L;
+"475
+[e = _RXM0SIDH -> >> -> 0 `l -> 3 `l `uc ]
+[e = _RXM0SIDL -> << -> 0 `l -> 5 `l `uc ]
+[; ;ECANPoll.c: 476: RXM0EXIDM = 0;
+"476
+[e = _RXM0EXIDM -> -> 0 `i `b ]
+[; ;ECANPoll.c: 483: RXM1SIDH = (long)0x0L >> 3L; RXM1SIDL = (long)0x0L << 5L;
+"483
+[e = _RXM1SIDH -> >> -> 0 `l -> 3 `l `uc ]
+[e = _RXM1SIDL -> << -> 0 `l -> 5 `l `uc ]
+[; ;ECANPoll.c: 484: RXM1EXIDEN = 0;
+"484
+[e = _RXM1EXIDEN -> -> 0 `i `b ]
+[; ;ECANPoll.c: 495: ECANSetOperationMode(0x00);
+"495
+[e ( _ECANSetOperationMode (1 -> -> 0 `i `E19311 ]
+[; ;ECANPoll.c: 497: }
+"497
+[e :UE 2669 ]
 }
-[e :U 2677 ]
-[; ;interrupts.c: 60: }
-[; ;interrupts.c: 65: }
-"65
-[e :UE 2676 ]
-}
-[v F19458 `(v ~T0 @X0 1 tf ]
-"70
-[v _low_isr `ILF19458 ~T0 @X0 1 e ]
-"78
+"610
+[v _ECANSendMessage `(E18559 ~T0 @X0 1 ef4`ul`*uc`uc`E19280 ]
+"614
 {
-[; ;interrupts.c: 70: void low_priority interrupt low_isr(void)
-[; ;interrupts.c: 78: {
-[e :U _low_isr ]
+[; ;ECANPoll.c: 610: BOOL ECANSendMessage( unsigned long id,
+[; ;ECANPoll.c: 611: BYTE* data,
+[; ;ECANPoll.c: 612: BYTE dataLen,
+[; ;ECANPoll.c: 613: ECAN_TX_MSG_FLAGS msgFlags)
+[; ;ECANPoll.c: 614: {
+[e :U _ECANSendMessage ]
+"610
+[v _id `ul ~T0 @X0 1 r1 ]
+"611
+[v _data `*uc ~T0 @X0 1 r2 ]
+"612
+[v _dataLen `uc ~T0 @X0 1 r3 ]
+"613
+[v _msgFlags `E19280 ~T0 @X0 1 r4 ]
+"614
 [f ]
-"80
+"625
+[v _i `uc ~T0 @X0 1 a ]
+[v _j `uc ~T0 @X0 1 a ]
+"626
+[v _ptr `*uc ~T0 @X0 1 a ]
+[v _tempPtr `*uc ~T0 @X0 1 a ]
+"627
+[v _pb `*uc ~T0 @X0 -> 9 `i a ]
+"628
 [v _temp `uc ~T0 @X0 1 a ]
-[; ;interrupts.c: 80: unsigned char temp;
-[; ;interrupts.c: 82: if(INTCONbits.TMR0IF)
-"82
-[e $ ! != -> . . _INTCONbits 0 2 `i -> -> -> 0 `i `Vuc `i 2679  ]
-[; ;interrupts.c: 83: {
-"83
+[; ;ECANPoll.c: 625: BYTE i,j;
+[; ;ECANPoll.c: 626: BYTE *ptr, *tempPtr;
+[; ;ECANPoll.c: 627: BYTE* pb[9];
+[; ;ECANPoll.c: 628: BYTE temp;
+[; ;ECANPoll.c: 638: pb[0]=(BYTE*)&TXB0CON;
+"638
+[e = *U + &U _pb * -> -> -> 0 `i `ui `ux -> -> # *U &U _pb `ui `ux -> &U _TXB0CON `*uc ]
+[; ;ECANPoll.c: 639: pb[1]=(BYTE*)&TXB1CON;
+"639
+[e = *U + &U _pb * -> -> -> 1 `i `ui `ux -> -> # *U &U _pb `ui `ux -> &U _TXB1CON `*uc ]
+[; ;ECANPoll.c: 640: pb[2]=(BYTE*)&TXB2CON;
+"640
+[e = *U + &U _pb * -> -> -> 2 `i `ui `ux -> -> # *U &U _pb `ui `ux -> &U _TXB2CON `*uc ]
+[; ;ECANPoll.c: 670: for ( i = 0; i < 2; i++ )
+"670
 {
-[; ;interrupts.c: 84: INTCONbits.TMR0IF=0;
-"84
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-[; ;interrupts.c: 86: TickCounter.AccelTick_ms ++;
-"86
-[e ++ . _TickCounter 0 -> -> 1 `i `uc ]
-[; ;interrupts.c: 87: TickCounter.GyroTick_ms ++;
-"87
-[e ++ . _TickCounter 1 -> -> 1 `i `uc ]
-[; ;interrupts.c: 88: TickCounter.MagnetTick_ms ++;
-"88
-[e ++ . _TickCounter 2 -> -> 1 `i `uc ]
-[; ;interrupts.c: 90: TMR0H = 0xFB;
-"90
-[e = _TMR0H -> -> 251 `i `uc ]
-[; ;interrupts.c: 91: TMR0L = 0x1E;
-"91
-[e = _TMR0L -> -> 30 `i `uc ]
-"93
-}
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 2 `i 2671  ]
+[e $U 2672  ]
+"685
+[e :U 2671 ]
+[; ;ECANPoll.c: 685: {
+{
+[; ;ECANPoll.c: 690: ptr = pb[i];
+"690
+[e = _ptr *U + &U _pb * -> _i `ux -> -> # *U &U _pb `ui `ux ]
+[; ;ECANPoll.c: 691: tempPtr = ptr;
+"691
+[e = _tempPtr _ptr ]
+[; ;ECANPoll.c: 717: if ( !(*ptr & 0x08) )
+"717
+[e $ ! ! != & -> *U _ptr `i -> 8 `i -> 0 `i 2674  ]
+[; ;ECANPoll.c: 718: {
+"718
+{
+[; ;ECANPoll.c: 720: *ptr &= ~ECAN_TX_PRIORITY_BITS;
+"720
+[e =& *U _ptr -> ~ -> . `E19280 0 `i `uc ]
+[; ;ECANPoll.c: 721: *ptr |= msgFlags & ECAN_TX_PRIORITY_BITS;
+"721
+[e =| *U _ptr -> & -> _msgFlags `i -> . `E19280 0 `i `uc ]
+[; ;ECANPoll.c: 724: if ( msgFlags & ECAN_TX_RTR_BIT )
+"724
+[e $ ! != & -> _msgFlags `i -> . `E19280 8 `i -> 0 `i 2675  ]
+[; ;ECANPoll.c: 725: temp = 0x40 | dataLen;
+"725
+[e = _temp -> | -> 64 `i -> _dataLen `i `uc ]
+[e $U 2676  ]
+"726
+[e :U 2675 ]
+[; ;ECANPoll.c: 726: else
+[; ;ECANPoll.c: 727: temp = dataLen;
+"727
+[e = _temp _dataLen ]
+[e :U 2676 ]
+[; ;ECANPoll.c: 729: *(ptr+5) = temp;
+"729
+[e = *U + _ptr * -> -> 5 `i `x -> -> # *U _ptr `i `x _temp ]
+[; ;ECANPoll.c: 732: if ( msgFlags & ECAN_TX_FRAME_BIT )
+"732
+[e $ ! != & -> _msgFlags `i -> . `E19280 5 `i -> 0 `i 2677  ]
+[; ;ECANPoll.c: 733: temp = 1;
+"733
+[e = _temp -> -> 1 `i `uc ]
+[e $U 2678  ]
+"735
+[e :U 2677 ]
+[; ;ECANPoll.c: 735: else
+[; ;ECANPoll.c: 736: temp = 0;
+"736
+[e = _temp -> -> 0 `i `uc ]
+[e :U 2678 ]
+[; ;ECANPoll.c: 739: _CANIDToRegs((BYTE*)(ptr+1), id, temp);
+"739
+[e ( __CANIDToRegs (3 , , + _ptr * -> -> 1 `i `x -> -> # *U _ptr `i `x _id _temp ]
+[; ;ECANPoll.c: 742: ptr += 6;
+"742
+[e =+ _ptr * -> -> 6 `i `x -> -> # *U _ptr `i `x ]
+[; ;ECANPoll.c: 744: for ( j = 0 ; j < dataLen; j++ )
+"744
+{
+[e = _j -> -> 0 `i `uc ]
+[e $U 2682  ]
+"745
 [e :U 2679 ]
-[; ;interrupts.c: 93: }
-[; ;interrupts.c: 95: if(PIR1bits.RCIF)
-"95
-[e $ ! != -> . . _PIR1bits 1 2 `i -> -> -> 0 `i `Vuc `i 2680  ]
-[; ;interrupts.c: 96: {
-"96
-{
-[; ;interrupts.c: 97: PIR1bits.RCIF=0;
-"97
-[e = . . _PIR1bits 1 2 -> -> 0 `i `uc ]
-[; ;interrupts.c: 98: temp= RCREG;
-"98
-[e = _temp _RCREG ]
-[; ;interrupts.c: 99: PutUSART1RxFifo(temp);
-"99
-[e ( _PutUSART1RxFifo (1 _temp ]
-[; ;interrupts.c: 100: if(RCSTA1bits.OERR)
-"100
-[e $ ! != -> . . _RCSTA1bits 0 1 `i -> -> -> 0 `i `Vuc `i 2681  ]
-[; ;interrupts.c: 101: {
-"101
-{
-[; ;interrupts.c: 102: RCSTA1bits.CREN=0;
-"102
-[e = . . _RCSTA1bits 0 4 -> -> 0 `i `uc ]
-[; ;interrupts.c: 103: RCSTA1bits.CREN=1;
-"103
-[e = . . _RCSTA1bits 0 4 -> -> 1 `i `uc ]
-"104
-}
-[e :U 2681 ]
-"105
-}
-[e :U 2680 ]
-[; ;interrupts.c: 104: }
-[; ;interrupts.c: 105: }
-[; ;interrupts.c: 107: if(PIR3bits.RC2IF)
-"107
-[e $ ! != -> . . _PIR3bits 0 5 `i -> -> -> 0 `i `Vuc `i 2682  ]
-[; ;interrupts.c: 108: {
-"108
-{
-[; ;interrupts.c: 109: PIR3bits.RC2IF=0;
-"109
-[e = . . _PIR3bits 0 5 -> -> 0 `i `uc ]
-[; ;interrupts.c: 110: temp= RCREG2;
-"110
-[e = _temp _RCREG2 ]
-[; ;interrupts.c: 111: PutUSART2RxFifo(temp);
-"111
-[e ( _PutUSART2RxFifo (1 _temp ]
-[; ;interrupts.c: 112: if(RCSTA2bits.OERR)
-"112
-[e $ ! != -> . . _RCSTA2bits 0 1 `i -> -> -> 0 `i `Vuc `i 2683  ]
-[; ;interrupts.c: 113: {
-"113
-{
-[; ;interrupts.c: 114: RCSTA2bits.CREN=0;
-"114
-[e = . . _RCSTA2bits 0 4 -> -> 0 `i `uc ]
-[; ;interrupts.c: 115: RCSTA2bits.CREN=1;
-"115
-[e = . . _RCSTA2bits 0 4 -> -> 1 `i `uc ]
-"116
-}
-[e :U 2683 ]
-"117
-}
+[; ;ECANPoll.c: 745: *ptr++ = *data++;
+[e = *U ++ _ptr * -> -> 1 `i `x -> -> # *U _ptr `i `x *U ++ _data * -> -> 1 `i `x -> -> # *U _data `i `x ]
+"744
+[e ++ _j -> -> 1 `i `uc ]
 [e :U 2682 ]
-[; ;interrupts.c: 116: }
-[; ;interrupts.c: 117: }
-[; ;interrupts.c: 119: }
-"119
-[e :UE 2678 ]
+[e $ < -> _j `i -> _dataLen `i 2679  ]
+[e :U 2680 ]
+"745
+}
+[; ;ECANPoll.c: 749: if ( !(*tempPtr & 0x04) )
+"749
+[e $ ! ! != & -> *U _tempPtr `i -> 4 `i -> 0 `i 2683  ]
+[; ;ECANPoll.c: 750: *tempPtr |= 0x08;
+"750
+[e =| *U _tempPtr -> -> 8 `i `uc ]
+[e :U 2683 ]
+[; ;ECANPoll.c: 752: return TRUE;
+"752
+[e ) -> . `E18559 1 `E18559 ]
+[e $UE 2670  ]
+"753
+}
+[e :U 2674 ]
+"754
+}
+"670
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 2 `i 2671  ]
+[e :U 2672 ]
+"754
+}
+[; ;ECANPoll.c: 753: }
+[; ;ECANPoll.c: 754: }
+[; ;ECANPoll.c: 757: return FALSE;
+"757
+[e ) -> . `E18559 0 `E18559 ]
+[e $UE 2670  ]
+[; ;ECANPoll.c: 758: }
+"758
+[e :UE 2670 ]
+}
+"796
+[v _ECANReceiveMessage `(E18559 ~T0 @X0 1 ef4`*ul`*uc`*uc`*E19298 ]
+"800
+{
+[; ;ECANPoll.c: 796: BOOL ECANReceiveMessage(unsigned long *id,
+[; ;ECANPoll.c: 797: BYTE *data,
+[; ;ECANPoll.c: 798: BYTE *dataLen,
+[; ;ECANPoll.c: 799: ECAN_RX_MSG_FLAGS *msgFlags)
+[; ;ECANPoll.c: 800: {
+[e :U _ECANReceiveMessage ]
+"796
+[v _id `*ul ~T0 @X0 1 r1 ]
+"797
+[v _data `*uc ~T0 @X0 1 r2 ]
+"798
+[v _dataLen `*uc ~T0 @X0 1 r3 ]
+"799
+[v _msgFlags `*E19298 ~T0 @X0 1 r4 ]
+"800
+[f ]
+"805
+[v _ptr `*uc ~T0 @X0 1 a ]
+[v _savedPtr `*uc ~T0 @X0 1 a ]
+"806
+[v _i `uc ~T0 @X0 1 a ]
+"807
+[v _temp `S2647 ~T0 @X0 1 a ]
+[; ;ECANPoll.c: 805: BYTE *ptr, *savedPtr;
+[; ;ECANPoll.c: 806: char i;
+[; ;ECANPoll.c: 807: BYTE_VAL temp;
+[; ;ECANPoll.c: 809: _ECANRxFilterHitInfo.Val = 0;
+"809
+[e = . __ECANRxFilterHitInfo 0 -> -> 0 `i `uc ]
+[; ;ECANPoll.c: 819: {
+"819
+{
+[; ;ECANPoll.c: 821: if ( RXB0FUL )
+"821
+[e $ ! _RXB0FUL 2685  ]
+[; ;ECANPoll.c: 822: {
+"822
+{
+[; ;ECANPoll.c: 824: RXB0IF = 0;
+"824
+[e = _RXB0IF -> -> 0 `i `b ]
+[; ;ECANPoll.c: 827: if ( RXB0OVFL )
+"827
+[e $ ! _RXB0OVFL 2686  ]
+[; ;ECANPoll.c: 828: {
+"828
+{
+[; ;ECANPoll.c: 829: *msgFlags |= ECAN_RX_OVERFLOW;
+"829
+[e =| *U _msgFlags -> . `E19298 0 `E19298 ]
+[; ;ECANPoll.c: 830: RXB0OVFL = 0;
+"830
+[e = _RXB0OVFL -> -> 0 `i `b ]
+"831
+}
+[e :U 2686 ]
+[; ;ECANPoll.c: 831: }
+[; ;ECANPoll.c: 833: _ECANRxFilterHitInfo.bits.b0 = RXB0FILHIT0;
+"833
+[e = . . __ECANRxFilterHitInfo 1 0 -> -> _RXB0FILHIT0 `i `uc ]
+[; ;ECANPoll.c: 835: ptr = (BYTE*)&RXB0CON;
+"835
+[e = _ptr -> &U _RXB0CON `*uc ]
+"837
+}
+[; ;ECANPoll.c: 837: }
+[e $U 2687  ]
+"838
+[e :U 2685 ]
+[; ;ECANPoll.c: 838: else if ( RXB1FUL )
+[e $ ! _RXB1FUL 2688  ]
+[; ;ECANPoll.c: 839: {
+"839
+{
+[; ;ECANPoll.c: 841: RXB1IF = 0;
+"841
+[e = _RXB1IF -> -> 0 `i `b ]
+[; ;ECANPoll.c: 844: if ( RXB1OVFL )
+"844
+[e $ ! _RXB1OVFL 2689  ]
+[; ;ECANPoll.c: 845: {
+"845
+{
+[; ;ECANPoll.c: 846: *msgFlags |= ECAN_RX_OVERFLOW;
+"846
+[e =| *U _msgFlags -> . `E19298 0 `E19298 ]
+[; ;ECANPoll.c: 847: RXB1OVFL = 0;
+"847
+[e = _RXB1OVFL -> -> 0 `i `b ]
+"848
+}
+[e :U 2689 ]
+[; ;ECANPoll.c: 848: }
+[; ;ECANPoll.c: 850: _ECANRxFilterHitInfo.Val = RXB1CON & 0x07;
+"850
+[e = . __ECANRxFilterHitInfo 0 -> & -> _RXB1CON `i -> 7 `i `uc ]
+[; ;ECANPoll.c: 852: if ( _ECANRxFilterHitInfo.Val < 0x02 )
+"852
+[e $ ! < -> . __ECANRxFilterHitInfo 0 `i -> 2 `i 2690  ]
+[; ;ECANPoll.c: 853: *msgFlags |= ECAN_RX_DBL_BUFFERED;
+"853
+[e =| *U _msgFlags -> . `E19298 4 `E19298 ]
+[e :U 2690 ]
+[; ;ECANPoll.c: 856: ptr = (BYTE*)&RXB1CON;
+"856
+[e = _ptr -> &U _RXB1CON `*uc ]
+"857
+}
+[; ;ECANPoll.c: 857: }
+[e $U 2691  ]
+"858
+[e :U 2688 ]
+[; ;ECANPoll.c: 858: else
+[; ;ECANPoll.c: 859: return FALSE;
+"859
+[e ) -> . `E18559 0 `E18559 ]
+[e $UE 2684  ]
+[e :U 2691 ]
+[e :U 2687 ]
+[; ;ECANPoll.c: 861: goto _SaveMessage;
+"861
+[e $U 2692  ]
+"862
+}
+[; ;ECANPoll.c: 862: }
+[; ;ECANPoll.c: 938: _SaveMessage:
+"938
+[e :U 2692 ]
+[; ;ECANPoll.c: 939: savedPtr = ptr;
+"939
+[e = _savedPtr _ptr ]
+[; ;ECANPoll.c: 940: *msgFlags = 0;
+"940
+[e = *U _msgFlags -> -> 0 `i `E19298 ]
+[; ;ECANPoll.c: 943: temp.Val = *(ptr+5);
+"943
+[e = . _temp 0 *U + _ptr * -> -> 5 `i `x -> -> # *U _ptr `i `x ]
+[; ;ECANPoll.c: 944: *dataLen = temp.Val & 0b00001111;
+"944
+[e = *U _dataLen -> & -> . _temp 0 `i -> 15 `i `uc ]
+[; ;ECANPoll.c: 947: if ( temp.bits.b6 )
+"947
+[e $ ! != -> . . _temp 1 6 `i -> -> -> 0 `i `uc `i 2693  ]
+[; ;ECANPoll.c: 948: *msgFlags |= ECAN_RX_RTR_FRAME;
+"948
+[e =| *U _msgFlags -> . `E19298 3 `E19298 ]
+[e :U 2693 ]
+[; ;ECANPoll.c: 951: temp.Val = *(ptr+2);
+"951
+[e = . _temp 0 *U + _ptr * -> -> 2 `i `x -> -> # *U _ptr `i `x ]
+[; ;ECANPoll.c: 952: if ( temp.bits.b3 )
+"952
+[e $ ! != -> . . _temp 1 3 `i -> -> -> 0 `i `uc `i 2694  ]
+[; ;ECANPoll.c: 953: {
+"953
+{
+[; ;ECANPoll.c: 954: *msgFlags |= ECAN_RX_XTD_FRAME;
+"954
+[e =| *U _msgFlags -> . `E19298 2 `E19298 ]
+[; ;ECANPoll.c: 955: temp.Val = 1;
+"955
+[e = . _temp 0 -> -> 1 `i `uc ]
+"956
+}
+[; ;ECANPoll.c: 956: }
+[e $U 2695  ]
+"957
+[e :U 2694 ]
+[; ;ECANPoll.c: 957: else
+[; ;ECANPoll.c: 958: temp.Val = 0;
+"958
+[e = . _temp 0 -> -> 0 `i `uc ]
+[e :U 2695 ]
+[; ;ECANPoll.c: 960: _RegsToCANID(ptr+1, id, temp.Val);
+"960
+[e ( __RegsToCANID (3 , , + _ptr * -> -> 1 `i `x -> -> # *U _ptr `i `x _id . _temp 0 ]
+[; ;ECANPoll.c: 963: ptr += 6;
+"963
+[e =+ _ptr * -> -> 6 `i `x -> -> # *U _ptr `i `x ]
+[; ;ECANPoll.c: 964: temp.Val = *dataLen;
+"964
+[e = . _temp 0 *U _dataLen ]
+[; ;ECANPoll.c: 965: for ( i = 0; i < temp.Val; i++ )
+"965
+{
+[e = _i -> -> 0 `i `uc ]
+[e $U 2699  ]
+"966
+[e :U 2696 ]
+[; ;ECANPoll.c: 966: *data++ = *ptr++;
+[e = *U ++ _data * -> -> 1 `i `x -> -> # *U _data `i `x *U ++ _ptr * -> -> 1 `i `x -> -> # *U _ptr `i `x ]
+"965
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 2699 ]
+[e $ < -> _i `i -> . _temp 0 `i 2696  ]
+[e :U 2697 ]
+"966
+}
+[; ;ECANPoll.c: 969: if ( IRXIF )
+"969
+[e $ ! _IRXIF 2700  ]
+[; ;ECANPoll.c: 970: {
+"970
+{
+[; ;ECANPoll.c: 971: *msgFlags |= ECAN_RX_INVALID_MSG;
+"971
+[e =| *U _msgFlags -> . `E19298 1 `E19298 ]
+[; ;ECANPoll.c: 972: IRXIF = 0;
+"972
+[e = _IRXIF -> -> 0 `i `b ]
+"973
+}
+[e :U 2700 ]
+[; ;ECANPoll.c: 973: }
+[; ;ECANPoll.c: 976: *savedPtr &= 0x7f;
+"976
+[e =& *U _savedPtr -> -> 127 `i `uc ]
+[; ;ECANPoll.c: 991: return TRUE;
+"991
+[e ) -> . `E18559 1 `E18559 ]
+[e $UE 2684  ]
+[; ;ECANPoll.c: 992: }
+"992
+[e :UE 2684 ]
+}
+"1012
+[v _ECANSetOperationMode `(v ~T0 @X0 1 ef1`E19311 ]
+"1013
+{
+[; ;ECANPoll.c: 1012: void ECANSetOperationMode(ECAN_OP_MODE mode)
+[; ;ECANPoll.c: 1013: {
+[e :U _ECANSetOperationMode ]
+"1012
+[v _mode `E19311 ~T0 @X0 1 r1 ]
+"1013
+[f ]
+[; ;ECANPoll.c: 1014: CANCON &= 0x1F;
+"1014
+[e =& _CANCON -> -> 31 `i `uc ]
+[; ;ECANPoll.c: 1015: CANCON |= mode;
+"1015
+[e =| _CANCON -> _mode `uc ]
+[; ;ECANPoll.c: 1017: while( (CANSTAT & ECAN_OP_MODE_BITS) != mode );
+"1017
+[e $U 2702  ]
+[e :U 2703 ]
+[e :U 2702 ]
+[e $ != & -> _CANSTAT `i -> . `E19311 0 `i -> _mode `i 2703  ]
+[e :U 2704 ]
+[; ;ECANPoll.c: 1018: }
+"1018
+[e :UE 2701 ]
+}
+[; ;ECANPoll.c: 1058: typedef union _CAN_MESSAGE_ID
+[; ;ECANPoll.c: 1059: {
+[; ;ECANPoll.c: 1060: unsigned long ID;
+[; ;ECANPoll.c: 1062: struct
+[; ;ECANPoll.c: 1063: {
+[; ;ECANPoll.c: 1064: struct
+[; ;ECANPoll.c: 1065: {
+[; ;ECANPoll.c: 1066: unsigned SIDL:3;
+[; ;ECANPoll.c: 1067: unsigned SIDH:5;
+[; ;ECANPoll.c: 1068: } BYTE1;
+[; ;ECANPoll.c: 1069: struct
+[; ;ECANPoll.c: 1070: {
+[; ;ECANPoll.c: 1071: unsigned SIDHU:3;
+[; ;ECANPoll.c: 1072: unsigned EIDL_LN:5;
+[; ;ECANPoll.c: 1073: } BYTE2;
+[; ;ECANPoll.c: 1074: struct
+[; ;ECANPoll.c: 1075: {
+[; ;ECANPoll.c: 1076: unsigned EIDL_UN:3;
+[; ;ECANPoll.c: 1077: unsigned EIDH_LN:5;
+[; ;ECANPoll.c: 1078: } BYTE3;
+[; ;ECANPoll.c: 1079: struct
+[; ;ECANPoll.c: 1080: {
+[; ;ECANPoll.c: 1081: unsigned EIDH_UN:3;
+[; ;ECANPoll.c: 1082: unsigned EIDHU:2;
+[; ;ECANPoll.c: 1083: unsigned :3;
+[; ;ECANPoll.c: 1084: } BYTE4;
+[; ;ECANPoll.c: 1085: } ID_VALS;
+[; ;ECANPoll.c: 1088: struct
+[; ;ECANPoll.c: 1089: {
+[; ;ECANPoll.c: 1090: BYTE BYTE_1;
+[; ;ECANPoll.c: 1091: BYTE BYTE_2;
+[; ;ECANPoll.c: 1092: BYTE BYTE_3;
+[; ;ECANPoll.c: 1093: BYTE BYTE_4;
+[; ;ECANPoll.c: 1094: } BYTES;
+[; ;ECANPoll.c: 1095: } CAN_MESSAGE_ID;
+"1097
+[v __CANIDToRegs `(v ~T0 @X0 1 ef3`*uc`ul`uc ]
+"1100
+{
+[; ;ECANPoll.c: 1097: void _CANIDToRegs(BYTE* ptr,
+[; ;ECANPoll.c: 1098: unsigned long val,
+[; ;ECANPoll.c: 1099: BYTE type)
+[; ;ECANPoll.c: 1100: {
+[e :U __CANIDToRegs ]
+"1097
+[v _ptr `*uc ~T0 @X0 1 r1 ]
+"1098
+[v _val `ul ~T0 @X0 1 r2 ]
+"1099
+[v _type `uc ~T0 @X0 1 r3 ]
+"1100
+[f ]
+"1101
+[v _Value `*S2705 ~T0 @X0 1 a ]
+[; ;ECANPoll.c: 1101: CAN_MESSAGE_ID *Value;
+[; ;ECANPoll.c: 1103: Value = (CAN_MESSAGE_ID*)&val;
+"1103
+[e = _Value -> &U _val `*S2705 ]
+[; ;ECANPoll.c: 1105: if ( type == 0 )
+"1105
+[e $ ! == -> _type `i -> 0 `i 2713  ]
+[; ;ECANPoll.c: 1106: {
+"1106
+{
+[; ;ECANPoll.c: 1108: *ptr = Value->BYTES.BYTE_1 >> 3;
+"1108
+[e = *U _ptr -> >> -> . . *U _Value 2 0 `i -> 3 `i `uc ]
+[; ;ECANPoll.c: 1109: *ptr |= (Value->BYTES.BYTE_2 << 5);
+"1109
+[e =| *U _ptr -> << -> . . *U _Value 2 1 `i -> 5 `i `uc ]
+[; ;ECANPoll.c: 1110: ptr++;
+"1110
+[e ++ _ptr * -> -> 1 `i `x -> -> # *U _ptr `i `x ]
+[; ;ECANPoll.c: 1111: *ptr = Value->BYTES.BYTE_1 << 5;
+"1111
+[e = *U _ptr -> << -> . . *U _Value 2 0 `i -> 5 `i `uc ]
+"1112
+}
+[; ;ECANPoll.c: 1112: }
+[e $U 2714  ]
+"1113
+[e :U 2713 ]
+[; ;ECANPoll.c: 1113: else
+[; ;ECANPoll.c: 1114: {
+"1114
+{
+[; ;ECANPoll.c: 1116: *ptr = Value->BYTES.BYTE_3 >> 5;
+"1116
+[e = *U _ptr -> >> -> . . *U _Value 2 2 `i -> 5 `i `uc ]
+[; ;ECANPoll.c: 1117: *ptr |= Value->BYTES.BYTE_4 << 3;
+"1117
+[e =| *U _ptr -> << -> . . *U _Value 2 3 `i -> 3 `i `uc ]
+[; ;ECANPoll.c: 1118: ptr++;
+"1118
+[e ++ _ptr * -> -> 1 `i `x -> -> # *U _ptr `i `x ]
+[; ;ECANPoll.c: 1119: *ptr = (Value->BYTES.BYTE_3 << 3) & 0xE0;
+"1119
+[e = *U _ptr -> & << -> . . *U _Value 2 2 `i -> 3 `i -> 224 `i `uc ]
+[; ;ECANPoll.c: 1121: *ptr |= 0b00001000;
+"1121
+[e =| *U _ptr -> -> 8 `i `uc ]
+[; ;ECANPoll.c: 1122: *ptr |= Value->BYTES.BYTE_3 & 0x03;
+"1122
+[e =| *U _ptr -> & -> . . *U _Value 2 2 `i -> 3 `i `uc ]
+[; ;ECANPoll.c: 1123: ptr++;
+"1123
+[e ++ _ptr * -> -> 1 `i `x -> -> # *U _ptr `i `x ]
+[; ;ECANPoll.c: 1124: *ptr = Value->BYTES.BYTE_2;
+"1124
+[e = *U _ptr . . *U _Value 2 1 ]
+[; ;ECANPoll.c: 1125: ptr++;
+"1125
+[e ++ _ptr * -> -> 1 `i `x -> -> # *U _ptr `i `x ]
+[; ;ECANPoll.c: 1126: *ptr = Value->BYTES.BYTE_1;
+"1126
+[e = *U _ptr . . *U _Value 2 0 ]
+"1127
+}
+[e :U 2714 ]
+[; ;ECANPoll.c: 1127: }
+[; ;ECANPoll.c: 1128: }
+"1128
+[e :UE 2712 ]
+}
+"1154
+[v __RegsToCANID `(v ~T0 @X0 1 ef3`*uc`*ul`uc ]
+"1157
+{
+[; ;ECANPoll.c: 1154: void _RegsToCANID( BYTE* ptr,
+[; ;ECANPoll.c: 1155: unsigned long *val,
+[; ;ECANPoll.c: 1156: BYTE type )
+[; ;ECANPoll.c: 1157: {
+[e :U __RegsToCANID ]
+"1154
+[v _ptr `*uc ~T0 @X0 1 r1 ]
+"1155
+[v _val `*ul ~T0 @X0 1 r2 ]
+"1156
+[v _type `uc ~T0 @X0 1 r3 ]
+"1157
+[f ]
+"1158
+[v _Value `*S2705 ~T0 @X0 1 a ]
+[; ;ECANPoll.c: 1158: CAN_MESSAGE_ID *Value;
+[; ;ECANPoll.c: 1160: Value = (CAN_MESSAGE_ID*)val;
+"1160
+[e = _Value -> _val `*S2705 ]
+[; ;ECANPoll.c: 1162: if ( type == 0 )
+"1162
+[e $ ! == -> _type `i -> 0 `i 2716  ]
+[; ;ECANPoll.c: 1163: {
+"1163
+{
+[; ;ECANPoll.c: 1165: Value->BYTES.BYTE_1 = (*ptr << 3);
+"1165
+[e = . . *U _Value 2 0 -> << -> *U _ptr `i -> 3 `i `uc ]
+[; ;ECANPoll.c: 1166: Value->BYTES.BYTE_2 = *ptr >> 5;
+"1166
+[e = . . *U _Value 2 1 -> >> -> *U _ptr `i -> 5 `i `uc ]
+[; ;ECANPoll.c: 1167: ptr++;
+"1167
+[e ++ _ptr * -> -> 1 `i `x -> -> # *U _ptr `i `x ]
+[; ;ECANPoll.c: 1168: Value->BYTES.BYTE_1 |= (*ptr >> 5);
+"1168
+[e =| . . *U _Value 2 0 -> >> -> *U _ptr `i -> 5 `i `uc ]
+[; ;ECANPoll.c: 1169: Value->BYTES.BYTE_3 = 0x00;
+"1169
+[e = . . *U _Value 2 2 -> -> 0 `i `uc ]
+[; ;ECANPoll.c: 1170: Value->BYTES.BYTE_4 = 0x00;
+"1170
+[e = . . *U _Value 2 3 -> -> 0 `i `uc ]
+"1171
+}
+[; ;ECANPoll.c: 1171: }
+[e $U 2717  ]
+"1172
+[e :U 2716 ]
+[; ;ECANPoll.c: 1172: else
+[; ;ECANPoll.c: 1173: {
+"1173
+{
+[; ;ECANPoll.c: 1175: Value->BYTES.BYTE_3 = (*ptr << 5);
+"1175
+[e = . . *U _Value 2 2 -> << -> *U _ptr `i -> 5 `i `uc ]
+[; ;ECANPoll.c: 1176: Value->BYTES.BYTE_4 = (*ptr >> 3);
+"1176
+[e = . . *U _Value 2 3 -> >> -> *U _ptr `i -> 3 `i `uc ]
+[; ;ECANPoll.c: 1177: ptr++;
+"1177
+[e ++ _ptr * -> -> 1 `i `x -> -> # *U _ptr `i `x ]
+[; ;ECANPoll.c: 1178: Value->BYTES.BYTE_3 |= (*ptr & 0x03);
+"1178
+[e =| . . *U _Value 2 2 -> & -> *U _ptr `i -> 3 `i `uc ]
+[; ;ECANPoll.c: 1180: Value->BYTES.BYTE_3 |= ((*ptr & 0xe0) >> 3);
+"1180
+[e =| . . *U _Value 2 2 -> >> & -> *U _ptr `i -> 224 `i -> 3 `i `uc ]
+[; ;ECANPoll.c: 1181: ptr++;
+"1181
+[e ++ _ptr * -> -> 1 `i `x -> -> # *U _ptr `i `x ]
+[; ;ECANPoll.c: 1182: Value->BYTES.BYTE_2 = *ptr;
+"1182
+[e = . . *U _Value 2 1 *U _ptr ]
+[; ;ECANPoll.c: 1183: ptr++;
+"1183
+[e ++ _ptr * -> -> 1 `i `x -> -> # *U _ptr `i `x ]
+[; ;ECANPoll.c: 1184: Value->BYTES.BYTE_1 = *ptr;
+"1184
+[e = . . *U _Value 2 0 *U _ptr ]
+"1185
+}
+[e :U 2717 ]
+[; ;ECANPoll.c: 1185: }
+[; ;ECANPoll.c: 1186: }
+"1186
+[e :UE 2715 ]
 }

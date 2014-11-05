@@ -1,106 +1,4 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"45 interrupts.c
-[c E19327 8 16 32 64 128 .. ]
-[n E19327 _ECAN_RX_MSG_FLAGS ECAN_RX_OVERFLOW ECAN_RX_INVALID_MSG ECAN_RX_XTD_FRAME ECAN_RX_RTR_FRAME ECAN_RX_DBL_BUFFERED  ]
-"56 system.h
-[s S2672 `ul 1 `uc -> 8 `i `uc 1 `E19327 1 ]
-[n S2672 CANRxMsg id data_RX dataLen flags ]
-[s S2100 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2100 . RXB0IF RXB1IF TXB0IF TXB1IF TXB2IF ERRIF WAKIF IRXIF ]
-[s S2101 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S2101 . FIFOWMIF RXBnIF . TXBnIF ]
-[u S2099 `S2100 1 `S2101 1 ]
-[n S2099 . . . ]
-"32238 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
-[v _PIR5bits `VS2099 ~T0 @X0 0 e@3959 ]
-"55 interrupts.c
-[c E18559 0 1 .. ]
-[n E18559 _BOOL FALSE TRUE  ]
-"313 ECANPoll.h
-[v _ECANReceiveMessage `(E18559 ~T0 @X0 0 ef4`*ul`*uc`*uc`*E19327 ]
-"29 Can_HL.h
-[v _PutCANRxFifo `(v ~T0 @X0 0 ef1`S2672 ]
-[s S2591 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2591 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
-[s S2592 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2592 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
-[s S2593 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2593 . . GIEL GIEH ]
-[s S2594 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2594 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
-[s S2595 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2595 . . GIEL GIEH ]
-[u S2590 `S2591 1 `S2592 1 `S2593 1 `S2594 1 `S2595 1 ]
-[n S2590 . . . . . . ]
-"40122 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
-[v _INTCONbits `VS2590 ~T0 @X0 0 e@4082 ]
-"40 system.h
-[s S2670 `uc 1 `uc 1 `uc 1 ]
-[n S2670 RTC_counter AccelTick_ms GyroTick_ms MagnetTick_ms ]
-"23 interrupts.c
-[v _TickCounter `S2670 ~T0 @X0 0 e ]
-"39315 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
-[v _TMR0H `Vuc ~T0 @X0 0 e@4055 ]
-"39296
-[v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
-[s S2248 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2248 . TMR1IF TMR2IF TMR1GIF SSPIF TX1IF RC1IF ADIF PSPIF ]
-[s S2249 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2249 . . TXIF RCIF ]
-[u S2247 `S2248 1 `S2249 1 ]
-[n S2247 . . . ]
-"34563
-[v _PIR1bits `VS2247 ~T0 @X0 0 e@3998 ]
-"36249
-[v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
-"129 system.h
-[v _PutUSART1RxFifo `(v ~T0 @X0 0 ef1`uc ]
-[s S2312 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2312 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
-[s S2313 :1 `uc 1 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S2313 . RCD8 . ADEN . RC9 ]
-[s S2314 :6 `uc 1 :1 `uc 1 ]
-[n S2314 . . NOT_RC8 ]
-[s S2315 :6 `uc 1 :1 `uc 1 ]
-[n S2315 . . nRC8 ]
-[s S2316 :6 `uc 1 :1 `uc 1 ]
-[n S2316 . . RC8_9 ]
-[s S2317 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2317 . RX9D1 OERR1 FERR1 ADDEN1 CREN1 SREN1 RX91 SPEN1 ]
-[s S2318 :5 `uc 1 :1 `uc 1 ]
-[n S2318 . . SRENA ]
-[u S2311 `S2312 1 `S2313 1 `S2314 1 `S2315 1 `S2316 1 `S2317 1 `S2318 1 ]
-[n S2311 . . . . . . . . ]
-"35638 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
-[v _RCSTA1bits `VS2311 ~T0 @X0 0 e@4011 ]
-[s S2271 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2271 . . CCP1IF CCP2IF CTMUIF TX2IF RC2IF ]
-[s S2272 :1 `uc 1 :1 `uc 1 ]
-[n S2272 . . RXBNIF ]
-[s S2273 :4 `uc 1 :1 `uc 1 ]
-[n S2273 . . TXBNIF ]
-[u S2270 `S2271 1 `S2272 1 `S2273 1 ]
-[n S2270 . . . . ]
-"34973
-[v _PIR3bits `VS2270 ~T0 @X0 0 e@4004 ]
-"32433
-[v _RCREG2 `Vuc ~T0 @X0 0 e@3962 ]
-"132 system.h
-[v _PutUSART2RxFifo `(v ~T0 @X0 0 ef1`uc ]
-[s S2279 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2279 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
-[s S2280 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2280 . RX9D2 OERR2 FERR2 ADDEN2 CREN2 SREN2 RX92 SPEN2 ]
-[s S2281 :6 `uc 1 :1 `uc 1 ]
-[n S2281 . . RC8_92 ]
-[s S2282 :6 `uc 1 :1 `uc 1 ]
-[n S2282 . . RC92 ]
-[s S2283 :1 `uc 1 ]
-[n S2283 . RCD82 ]
-[u S2278 `S2279 1 `S2280 1 `S2281 1 `S2282 1 `S2283 1 ]
-[n S2278 . . . . . . ]
-"35112 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
-[v _RCSTA2bits `VS2278 ~T0 @X0 0 e@4006 ]
 [; ;htc.h: 22: extern void __builtin_software_breakpoint(void);
 [; ;pic18f45k80.h: 44: extern volatile unsigned char RXERRCNT @ 0xE41;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
@@ -17665,327 +17563,77 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 147: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 149: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 151: extern __nonreentrant void _delay3(unsigned char);
-[; ;stdint.h: 13: typedef signed char int8_t;
-[; ;stdint.h: 20: typedef signed int int16_t;
-[; ;stdint.h: 28: typedef signed short long int int24_t;
-[; ;stdint.h: 36: typedef signed long int int32_t;
-[; ;stdint.h: 43: typedef unsigned char uint8_t;
-[; ;stdint.h: 49: typedef unsigned int uint16_t;
-[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
-[; ;stdint.h: 63: typedef unsigned long int uint32_t;
-[; ;stdint.h: 71: typedef signed char int_least8_t;
-[; ;stdint.h: 78: typedef signed int int_least16_t;
-[; ;stdint.h: 90: typedef signed short long int int_least24_t;
-[; ;stdint.h: 98: typedef signed long int int_least32_t;
-[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
-[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
-[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
-[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
-[; ;stdint.h: 137: typedef signed char int_fast8_t;
-[; ;stdint.h: 144: typedef signed int int_fast16_t;
-[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
-[; ;stdint.h: 164: typedef signed long int int_fast32_t;
-[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
-[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
-[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
-[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
-[; ;stdint.h: 200: typedef int32_t intmax_t;
-[; ;stdint.h: 205: typedef uint32_t uintmax_t;
-[; ;stdint.h: 210: typedef int16_t intptr_t;
-[; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;ECANPoll.h: 79: typedef unsigned char BYTE;
-[; ;ECANPoll.h: 81: typedef union _BYTE_VAL
-[; ;ECANPoll.h: 82: {
-[; ;ECANPoll.h: 83: struct
-[; ;ECANPoll.h: 84: {
-[; ;ECANPoll.h: 85: unsigned int b0:1;
-[; ;ECANPoll.h: 86: unsigned int b1:1;
-[; ;ECANPoll.h: 87: unsigned int b2:1;
-[; ;ECANPoll.h: 88: unsigned int b3:1;
-[; ;ECANPoll.h: 89: unsigned int b4:1;
-[; ;ECANPoll.h: 90: unsigned int b5:1;
-[; ;ECANPoll.h: 91: unsigned int b6:1;
-[; ;ECANPoll.h: 92: unsigned int b7:1;
-[; ;ECANPoll.h: 93: } bits;
-[; ;ECANPoll.h: 94: BYTE Val;
-[; ;ECANPoll.h: 95: } BYTE_VAL;
-[; ;ECANPoll.h: 145: void ECANInitialize(void);
-[; ;ECANPoll.h: 157: typedef enum _ECAN_TX_MSG_FLAGS
-[; ;ECANPoll.h: 158: {
-[; ;ECANPoll.h: 159: ECAN_TX_PRIORITY_BITS = 0b00000011,
-[; ;ECANPoll.h: 160: ECAN_TX_PRIORITY_0 = 0b00000000,
-[; ;ECANPoll.h: 161: ECAN_TX_PRIORITY_1 = 0b00000001,
-[; ;ECANPoll.h: 162: ECAN_TX_PRIORITY_2 = 0b00000010,
-[; ;ECANPoll.h: 163: ECAN_TX_PRIORITY_3 = 0b00000011,
-[; ;ECANPoll.h: 165: ECAN_TX_FRAME_BIT = 0b00100000,
-[; ;ECANPoll.h: 166: ECAN_TX_STD_FRAME = 0b00000000,
-[; ;ECANPoll.h: 167: ECAN_TX_XTD_FRAME = 0b00100000,
-[; ;ECANPoll.h: 169: ECAN_TX_RTR_BIT = 0b01000000,
-[; ;ECANPoll.h: 170: ECAN_TX_NO_RTR_FRAME = 0b00000000,
-[; ;ECANPoll.h: 171: ECAN_TX_RTR_FRAME = 0b01000000
-[; ;ECANPoll.h: 172: } ECAN_TX_MSG_FLAGS;
-[; ;ECANPoll.h: 206: BOOL ECANSendMessage( unsigned long id,
-[; ;ECANPoll.h: 207: BYTE *data,
-[; ;ECANPoll.h: 208: BYTE dataLen,
-[; ;ECANPoll.h: 209: ECAN_TX_MSG_FLAGS msgFlags);
-[; ;ECANPoll.h: 270: typedef enum _ECAN_RX_MSG_FLAGS
-[; ;ECANPoll.h: 271: {
-[; ;ECANPoll.h: 272: ECAN_RX_OVERFLOW = 0b00001000,
-[; ;ECANPoll.h: 273: ECAN_RX_INVALID_MSG = 0b00010000,
-[; ;ECANPoll.h: 274: ECAN_RX_XTD_FRAME = 0b00100000,
-[; ;ECANPoll.h: 275: ECAN_RX_RTR_FRAME = 0b01000000,
-[; ;ECANPoll.h: 276: ECAN_RX_DBL_BUFFERED = 0b10000000
-[; ;ECANPoll.h: 277: } ECAN_RX_MSG_FLAGS;
-[; ;ECANPoll.h: 313: BOOL ECANReceiveMessage( unsigned long* id,
-[; ;ECANPoll.h: 314: BYTE *Data,
-[; ;ECANPoll.h: 315: BYTE *DataLen,
-[; ;ECANPoll.h: 316: ECAN_RX_MSG_FLAGS *MsgFlags);
-[; ;ECANPoll.h: 341: extern BYTE_VAL _ECANRxFilterHitInfo;
-[; ;ECANPoll.h: 354: typedef enum _ECAN_OP_MODE
-[; ;ECANPoll.h: 355: {
-[; ;ECANPoll.h: 356: ECAN_OP_MODE_BITS = 0xe0,
-[; ;ECANPoll.h: 357: ECAN_OP_MODE_NORMAL = 0x00,
-[; ;ECANPoll.h: 358: ECAN_OP_MODE_SLEEP = 0x20,
-[; ;ECANPoll.h: 359: ECAN_OP_MODE_LOOP = 0x40,
-[; ;ECANPoll.h: 360: ECAN_OP_MODE_LISTEN = 0x60,
-[; ;ECANPoll.h: 361: ECAN_OP_MODE_CONFIG = 0x80
-[; ;ECANPoll.h: 362: } ECAN_OP_MODE;
-[; ;ECANPoll.h: 385: void ECANSetOperationMode(ECAN_OP_MODE mode);
-[; ;ECANPoll.h: 1330: void _CANIDToRegs(BYTE* ptr,
-[; ;ECANPoll.h: 1331: unsigned long val,
-[; ;ECANPoll.h: 1332: BYTE type );
-"1705 ECANPoll.h
-[v _RXBODBEN `VNb ~T0 @X0 1 s@31490 ]
-[; ;ECANPoll.h: 1705: static volatile near bit RXBODBEN @ ((unsigned)&RXB0CON*8)+2;
-[; ;system.h: 20: struct IMUData {
-[; ;system.h: 22: unsigned int XAccelerationData;
-[; ;system.h: 23: unsigned int YAccelerationData;
-[; ;system.h: 24: unsigned int ZAccelerationData;
-[; ;system.h: 26: unsigned int XGyroscopeData;
-[; ;system.h: 27: unsigned int YGyroscopeData;
-[; ;system.h: 28: unsigned int ZGyroscopeData;
-[; ;system.h: 30: unsigned int XMagnetData;
-[; ;system.h: 31: unsigned int YMagnetData;
-[; ;system.h: 32: unsigned int ZMagnetData;
-[; ;system.h: 34: unsigned int MagnetResistance;
-[; ;system.h: 36: unsigned char Temperature;
-[; ;system.h: 38: };
-[; ;system.h: 40: struct RTC_counter {
-[; ;system.h: 41: unsigned char AccelTick_ms;
-[; ;system.h: 42: unsigned char GyroTick_ms;
-[; ;system.h: 43: unsigned char MagnetTick_ms;
-[; ;system.h: 45: };
-[; ;system.h: 47: struct CANTxMsg{
-[; ;system.h: 49: unsigned long id;
-[; ;system.h: 50: BYTE data_TX[8];
-[; ;system.h: 51: BYTE dataLen;
-[; ;system.h: 52: ECAN_TX_MSG_FLAGS flags;
-[; ;system.h: 54: };
-[; ;system.h: 56: struct CANRxMsg{
-[; ;system.h: 58: unsigned long id;
-[; ;system.h: 59: BYTE data_RX[8];
-[; ;system.h: 60: BYTE dataLen;
-[; ;system.h: 61: ECAN_RX_MSG_FLAGS flags;
-[; ;system.h: 63: };
-[; ;system.h: 65: struct CANTxFifo{
-[; ;system.h: 67: struct CANTxMsg CANMsg[10];
-[; ;system.h: 69: unsigned char LowIndex;
-[; ;system.h: 70: unsigned char HighIndex;
-[; ;system.h: 71: unsigned char Fifofull;
-[; ;system.h: 72: unsigned char FifoEmpty;
-[; ;system.h: 74: };
-[; ;system.h: 76: struct CANRxFifo{
-[; ;system.h: 78: struct CANRxMsg CANMsg[10];
-[; ;system.h: 80: unsigned char LowIndex;
-[; ;system.h: 81: unsigned char HighIndex;
-[; ;system.h: 82: unsigned char Fifofull;
-[; ;system.h: 83: unsigned char FifoEmpty;
-[; ;system.h: 85: };
-[; ;system.h: 87: struct USARTRxFifo {
-[; ;system.h: 89: unsigned char USARTMsg [10];
-[; ;system.h: 90: unsigned char LowIndex;
-[; ;system.h: 91: unsigned char HighIndex;
-[; ;system.h: 92: unsigned char Fifofull;
-[; ;system.h: 93: unsigned char FifoEmpty;
-[; ;system.h: 95: };
-[; ;system.h: 110: void ConfigureOscillator(void);
-[; ;system.h: 111: void ConfigureGPIO(void);
-[; ;system.h: 112: void ConfigureUSART1(void);
-[; ;system.h: 113: void ConfigureUSART2(void);
-[; ;system.h: 114: void ConfigureAnalog(void);
-[; ;system.h: 115: void ConfigureSPI(void);
-[; ;system.h: 116: void ConfigureInterrupts(void);
-[; ;system.h: 118: void ConfigureTimers(void);
-[; ;system.h: 120: void USART1Write(char data);
-[; ;system.h: 121: void USART2Write(char data);
-[; ;system.h: 123: signed char SPIWrite(char data);
-[; ;system.h: 124: char SPIRead(char DummyData);
-[; ;system.h: 126: void USARTFifoInit (void);
-[; ;system.h: 128: char GetUSART1RxFifo(void);
-[; ;system.h: 129: void PutUSART1RxFifo(char ByteToWrite);
-[; ;system.h: 131: char GetUSART2RxFifo(void);
-[; ;system.h: 132: void PutUSART2RxFifo(char ByteToWrite);
-[; ;Can_HL.h: 24: void CANTxFifoInit(void);
-[; ;Can_HL.h: 25: void CANRxFifoInit(void);
-[; ;Can_HL.h: 27: void PutCANTxFifo(struct CANTxMsg PutMessage);
-[; ;Can_HL.h: 28: struct CANTxMsg GetCANTxFifo(void);
-[; ;Can_HL.h: 29: void PutCANRxFifo(struct CANRxMsg PutMessage);
-[; ;Can_HL.h: 30: struct CANRxMsg GetCANRxFifo(void);
-[; ;Can_HL.h: 32: void ECANFiltersInit(void);
-[; ;interrupts.c: 23: extern struct RTC_counter TickCounter;
-[; ;interrupts.c: 24: extern struct USARTRxFifo USART1RxFifo;
-[; ;interrupts.c: 25: extern struct USARTRxFifo USART2RxFifo;
-[; ;interrupts.c: 26: extern struct CANRxFifo CANRxFifo;
-[v F19454 `(v ~T0 @X0 1 tf ]
-"35 interrupts.c
-[v _high_isr `IF19454 ~T0 @X0 1 e ]
-"44
-{
-[; ;interrupts.c: 35: void interrupt high_isr(void)
-[; ;interrupts.c: 44: {
-[e :U _high_isr ]
-[f ]
-"45
-[v _CANRxNewMessage `S2672 ~T0 @X0 1 a ]
-[; ;interrupts.c: 45: struct CANRxMsg CANRxNewMessage;
-[; ;interrupts.c: 52: if(PIR5bits.RXB0IF==1 | PIR5bits.RXB1IF==1)
-"52
-[e $ ! | == -> . . _PIR5bits 0 0 `i -> 1 `i == -> . . _PIR5bits 0 1 `i -> 1 `i 2677  ]
-[; ;interrupts.c: 53: {
-"53
-{
-[; ;interrupts.c: 55: ECANReceiveMessage(&CANRxNewMessage.id, CANRxNewMessage.data_RX, &CANRxNewMessage.dataLen, &CANRxNewMessage.flags);
+"54 configuration_bits.c
+[p x RETEN=ON ]
 "55
-[e ( _ECANReceiveMessage (4 , , , &U . _CANRxNewMessage 0 &U . _CANRxNewMessage 1 &U . _CANRxNewMessage 2 &U . _CANRxNewMessage 3 ]
-[; ;interrupts.c: 56: PutCANRxFifo(CANRxNewMessage);
+[p x INTOSCSEL=HIGH ]
 "56
-[e ( _PutCANRxFifo (1 _CANRxNewMessage ]
-[; ;interrupts.c: 58: PIR5bits.RXB0IF=0;
-"58
-[e = . . _PIR5bits 0 0 -> -> 0 `i `uc ]
-[; ;interrupts.c: 59: PIR5bits.RXB1IF=0;
-"59
-[e = . . _PIR5bits 0 1 -> -> 0 `i `uc ]
+[p x SOSCSEL=DIG ]
+"57
+[p x XINST=OFF ]
 "60
-}
-[e :U 2677 ]
-[; ;interrupts.c: 60: }
-[; ;interrupts.c: 65: }
-"65
-[e :UE 2676 ]
-}
-[v F19458 `(v ~T0 @X0 1 tf ]
-"70
-[v _low_isr `ILF19458 ~T0 @X0 1 e ]
+[p x FOSC=HS1 ]
+"61
+[p x PLLCFG=ON ]
+"62
+[p x FCMEN=OFF ]
+"63
+[p x IESO=OFF ]
+"66
+[p x PWRTEN=ON ]
+"67
+[p x BOREN=SBORDIS ]
+"68
+[p x BORV=3 ]
+"69
+[p x BORPWR=ZPBORMV ]
+"72
+[p x WDTEN=OFF ]
+"73
+[p x WDTPS=1048576 ]
+"76
+[p x CANMX=PORTB ]
+"77
+[p x MSSPMSK=MSK7 ]
 "78
-{
-[; ;interrupts.c: 70: void low_priority interrupt low_isr(void)
-[; ;interrupts.c: 78: {
-[e :U _low_isr ]
-[f ]
-"80
-[v _temp `uc ~T0 @X0 1 a ]
-[; ;interrupts.c: 80: unsigned char temp;
-[; ;interrupts.c: 82: if(INTCONbits.TMR0IF)
+[p x MCLRE=ON ]
+"81
+[p x STVREN=ON ]
 "82
-[e $ ! != -> . . _INTCONbits 0 2 `i -> -> -> 0 `i `Vuc `i 2679  ]
-[; ;interrupts.c: 83: {
-"83
-{
-[; ;interrupts.c: 84: INTCONbits.TMR0IF=0;
-"84
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-[; ;interrupts.c: 86: TickCounter.AccelTick_ms ++;
+[p x BBSIZ=BB2K ]
+"85
+[p x CP0=OFF ]
 "86
-[e ++ . _TickCounter 0 -> -> 1 `i `uc ]
-[; ;interrupts.c: 87: TickCounter.GyroTick_ms ++;
+[p x CP1=OFF ]
 "87
-[e ++ . _TickCounter 1 -> -> 1 `i `uc ]
-[; ;interrupts.c: 88: TickCounter.MagnetTick_ms ++;
+[p x CP2=OFF ]
 "88
-[e ++ . _TickCounter 2 -> -> 1 `i `uc ]
-[; ;interrupts.c: 90: TMR0H = 0xFB;
-"90
-[e = _TMR0H -> -> 251 `i `uc ]
-[; ;interrupts.c: 91: TMR0L = 0x1E;
+[p x CP3=OFF ]
 "91
-[e = _TMR0L -> -> 30 `i `uc ]
-"93
-}
-[e :U 2679 ]
-[; ;interrupts.c: 93: }
-[; ;interrupts.c: 95: if(PIR1bits.RCIF)
+[p x CPB=OFF ]
+"92
+[p x CPD=OFF ]
 "95
-[e $ ! != -> . . _PIR1bits 1 2 `i -> -> -> 0 `i `Vuc `i 2680  ]
-[; ;interrupts.c: 96: {
+[p x WRT0=OFF ]
 "96
-{
-[; ;interrupts.c: 97: PIR1bits.RCIF=0;
+[p x WRT1=OFF ]
 "97
-[e = . . _PIR1bits 1 2 -> -> 0 `i `uc ]
-[; ;interrupts.c: 98: temp= RCREG;
+[p x WRT2=OFF ]
 "98
-[e = _temp _RCREG ]
-[; ;interrupts.c: 99: PutUSART1RxFifo(temp);
-"99
-[e ( _PutUSART1RxFifo (1 _temp ]
-[; ;interrupts.c: 100: if(RCSTA1bits.OERR)
-"100
-[e $ ! != -> . . _RCSTA1bits 0 1 `i -> -> -> 0 `i `Vuc `i 2681  ]
-[; ;interrupts.c: 101: {
+[p x WRT3=OFF ]
 "101
-{
-[; ;interrupts.c: 102: RCSTA1bits.CREN=0;
+[p x WRTC=OFF ]
 "102
-[e = . . _RCSTA1bits 0 4 -> -> 0 `i `uc ]
-[; ;interrupts.c: 103: RCSTA1bits.CREN=1;
+[p x WRTB=OFF ]
 "103
-[e = . . _RCSTA1bits 0 4 -> -> 1 `i `uc ]
-"104
-}
-[e :U 2681 ]
-"105
-}
-[e :U 2680 ]
-[; ;interrupts.c: 104: }
-[; ;interrupts.c: 105: }
-[; ;interrupts.c: 107: if(PIR3bits.RC2IF)
+[p x WRTD=OFF ]
+"106
+[p x EBTR0=OFF ]
 "107
-[e $ ! != -> . . _PIR3bits 0 5 `i -> -> -> 0 `i `Vuc `i 2682  ]
-[; ;interrupts.c: 108: {
+[p x EBTR1=OFF ]
 "108
-{
-[; ;interrupts.c: 109: PIR3bits.RC2IF=0;
+[p x EBTR2=OFF ]
 "109
-[e = . . _PIR3bits 0 5 -> -> 0 `i `uc ]
-[; ;interrupts.c: 110: temp= RCREG2;
-"110
-[e = _temp _RCREG2 ]
-[; ;interrupts.c: 111: PutUSART2RxFifo(temp);
-"111
-[e ( _PutUSART2RxFifo (1 _temp ]
-[; ;interrupts.c: 112: if(RCSTA2bits.OERR)
+[p x EBTR3=OFF ]
 "112
-[e $ ! != -> . . _RCSTA2bits 0 1 `i -> -> -> 0 `i `Vuc `i 2683  ]
-[; ;interrupts.c: 113: {
-"113
-{
-[; ;interrupts.c: 114: RCSTA2bits.CREN=0;
-"114
-[e = . . _RCSTA2bits 0 4 -> -> 0 `i `uc ]
-[; ;interrupts.c: 115: RCSTA2bits.CREN=1;
-"115
-[e = . . _RCSTA2bits 0 4 -> -> 1 `i `uc ]
-"116
-}
-[e :U 2683 ]
-"117
-}
-[e :U 2682 ]
-[; ;interrupts.c: 116: }
-[; ;interrupts.c: 117: }
-[; ;interrupts.c: 119: }
-"119
-[e :UE 2678 ]
-}
+[p x EBTRB=OFF ]

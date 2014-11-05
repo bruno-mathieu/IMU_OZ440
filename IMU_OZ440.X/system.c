@@ -45,11 +45,24 @@ void ConfigureOscillator(void)
 void ConfigureGPIO(void)
 {
 
+    ADCON0bits.CHS = 0;     // AN0 selection
+    ADCON0bits.ADON=1;       // A/D is operating
+    ADCON1 = 0;             // reference and negative channel selection
+
+    ADCON2bits.ADFM = 1;    // result right justified
+    ADCON2bits.ACQT = 0x07; // 20TAD acisition time
+    ADCON2bits.ADCS = 0x06; // Fosc/64 clock source for ADC
+
+    ANCON0 = 0b0000001;     // only AN0 configured as analog
+    ANCON1 = 0;             // all digital (AN8--AN14)
+
+    TRISA = 0b00000101;    // inputs for ADDRCAN, and CTS lines
+    LATA = 0b00001000;     // fix RTS line to 1 (standby)
+
     TRISB = 0b11111011;    // output for TX CAN
     LATBbits.LATB2=1;      // fix output TXCAN
 
-
-    TRISC = 0b10010000;    // outputs for IMU SPI CS, EUSART1 TX and SPI signals
+    TRISC = 0b10010000;    // outputs for IMU SPI CS, EUSART1 TiiX and SPI signals
     ACCEL_SPI_CS = 1;      // IMU CS set to 1     
     GYRO_SPI_CS = 1;
     MAGNET_SPI_CS = 1;
@@ -70,8 +83,8 @@ void ConfigureGPIO(void)
 void ConfigureUSART1(void)
 {
     /* USART used for GSM module: default configuration:
-        - 115200 bd
-        - BRG HIGH*/
+        - 9600 bd
+        - BRG LOW*/
 
     TXSTA1 = 0;             // Reset USART registers to POR state
     RCSTA1 = 0;
@@ -85,15 +98,14 @@ void ConfigureUSART1(void)
 
     RCSTA1bits.CREN = 1;   // enable receiver
 
-    TXSTA1bits.BRGH = 1;    //high speed baud rate generator
-    BAUDCON1bits.BRG16 = 1; // 16 Bits Baud rate generator
+    TXSTA1bits.BRGH = 0;    // low speed baud rate generator
+    BAUDCON1bits.BRG16 = 0; // 16 Bits Baud rate generator disabled
 
     PIE1bits.RC1IE = 1;     // interrupt on RX
     PIE1bits.TX1IE = 0;     // no interrupt on TX
 
-    SPBRG1 = 138;           // Write baudrate to SPBRG1 & SPBRGH1
-    SPBRGH1 = 0;            // 138= 115200 BAUD, see datasheet p340
-
+    SPBRG1 = 103;           // Write baudrate to SPBRG1 
+    
     TXSTA1bits.TXEN = 1;    // Enable transmitter
     RCSTA1bits.SPEN = 1;    // Enable receiver
 

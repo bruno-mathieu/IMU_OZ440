@@ -21,7 +21,7 @@ extern "C" {
 
 #endif	/* DEFINE_H */
 #define MAJOR_SW_VERSION 1
-#define MINOR_SW_VERSION 0
+#define MINOR_SW_VERSION 1
 
 #define BOARD_NUMBER 1
 #define BOARD_REVISION 1
@@ -75,6 +75,11 @@ extern "C" {
 #define GPS_DATA_MESSAGE_ADRESS 0x0
 #define GPS_DATA_MESSAGE_LEN 1
 
+#define GSM_DATARX_MESSAGE_ADRESS 0x0
+#define GSM_DATARX_MESSAGE_LEN 1
+
+#define GSM_DATATX_MESSAGE_ADRESS 0x1
+#define GSM_DATATX_MESSAGE_LEN 1
 
 #define CANTX_FIFO_SIZE 10
 #define CANRX_FIFO_SIZE 10
@@ -86,6 +91,8 @@ extern "C" {
 
 #define LED1    LATDbits.LATD0
 #define LED2    LATDbits.LATD1
+
+#define GSM_RTS LATAbits.LATA3
 
 #define TRUE    1
 #define FALSE   0
