@@ -107,7 +107,7 @@ struct IMUData IMUUpdateData(void)
     unsigned int Temp_Var1=0;
     unsigned int Temp_Var2=0;
 
-    //------ accel sensor Acquisition -----
+   //------ accel sensor Acquisition -----
 
     Temp_Var1= (IMURead(0x02,ACCEL_ID) & 0xF0)>>4;      // get and store X accel LSB data with 4 bit shift
     Temp_Var2 = IMURead(0x03,ACCEL_ID);                 // get X accel MSB data

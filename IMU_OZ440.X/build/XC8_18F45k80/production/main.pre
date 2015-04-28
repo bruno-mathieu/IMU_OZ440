@@ -22519,7 +22519,10 @@ struct CANTxMsg TempCANTxMsg;
 
 struct CANRxMsg TempCANRxMsg;
 
-# 72
+# 71
+asm(" clrwdt");
+
+
 ConfigureOscillator();
 _delay((unsigned long)((10)*(64000000/4000.0)));
 
@@ -22528,8 +22531,10 @@ _delay((unsigned long)((10)*(64000000/4000.0)));
 ConfigureGPIO();
 
 
+
 ConfigureUSART1();
 ConfigureUSART2();
+
 
 
 ConfigureSPI();
@@ -22542,7 +22547,7 @@ ECANFiltersInit();
 
 ConfigureTimers();
 
-# 99
+# 104
 TickCounter.AccelTick_ms=0;
 TickCounter.GyroTick_ms=1;
 TickCounter.MagnetTick_ms=2;
@@ -22554,7 +22559,7 @@ CANRxFifoInit();
 
 USARTFifoInit ();
 
-# 115
+# 120
 _delay((unsigned long)((10)*(64000000/4000.0)));
 
 LATDbits.LATD2 = 0;
@@ -22562,22 +22567,25 @@ LATDbits.LATD2 = 0;
 IMUInitRegisters();
 IMUAutotestResult=IMUAutotest();
 
-# 127
+# 132
 LATAbits.LATA3=1;
 for(char i=0;i<200;i++)
 {
 _delay((unsigned long)((10)*(64000000/4000.0)));
+asm(" clrwdt");
+
 }
 LATAbits.LATA3=0;
 
 _delay((unsigned long)((10)*(64000000/4000.0)));
 _delay((unsigned long)((10)*(64000000/4000.0)));
 
-# 143
+# 150
 ConfigureInterrupts();
+
 LATDbits.LATD0=1;
 
-# 150
+# 158
 USART1Write('A');
 USART1Write('T');
 USART1Write(0x0D);
@@ -22587,13 +22595,14 @@ for(char i=0;i<10;i++)
 _delay((unsigned long)((10)*(64000000/4000.0)));
 }
 
-# 164
+# 172
 while(1)
 {
 
-# 171
+# 179
 if(TickCounter.AccelTick_ms>0)
 {
+asm(" clrwdt");
 
 LATDbits.LATD1=1;
 TickCounter.AccelTick_ms=0;
@@ -22642,7 +22651,6 @@ TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
 if(!CANTxFifo.Fifofull)
 PutCANTxFifo(TempCANTxMsg);
 
-
 }
 
 if(TickCounter.MagnetTick_ms>0)
@@ -22671,7 +22679,7 @@ PutCANTxFifo(TempCANTxMsg);
 
 }
 
-# 258
+# 266
 if(!CANRxFifo.FifoEmpty && !CANTxFifo.Fifofull)
 {
 TempCANRxMsg = GetCANRxFifo();
@@ -22681,7 +22689,7 @@ TempCANRxMsg = GetCANRxFifo();
 if( TempCANRxMsg.id == (3 << 7 | 0 <<4 | 0x4 ) && TempCANRxMsg.flags== ECAN_RX_RTR_FRAME )
 {
 TempCANTxMsg.data_TX[0]=1;
-TempCANTxMsg.data_TX[1]=1;
+TempCANTxMsg.data_TX[1]=3;
 TempCANTxMsg.dataLen= 2;
 TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0x4 );
 TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
@@ -22720,7 +22728,7 @@ USART1Write(TempCANRxMsg.data_RX[0]);
 
 }
 
-# 311
+# 319
 if(!USART2RxFifo.FifoEmpty && !CANTxFifo.Fifofull)
 {
 TempVar = GetUSART2RxFifo();
@@ -22729,12 +22737,11 @@ TempCANTxMsg.data_TX[0]=TempVar;
 TempCANTxMsg.dataLen= 1;
 TempCANTxMsg.id = (4 << 7 | 0 <<4 | 0x0 );
 TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-
 PutCANTxFifo(TempCANTxMsg);
 
 }
 
-# 328
+# 335
 if(!USART1RxFifo.FifoEmpty && !CANTxFifo.Fifofull)
 {
 TempVar = GetUSART1RxFifo();
@@ -22745,7 +22752,7 @@ TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
 PutCANTxFifo(TempCANTxMsg);
 }
 
-# 342
+# 349
 if(!CANTxFifo.FifoEmpty && !TXB0CONbits.TXREQ)
 {
 LATDbits.LATD1=1;

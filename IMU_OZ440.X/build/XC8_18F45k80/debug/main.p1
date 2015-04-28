@@ -35,24 +35,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p i __delay ]
 "111 system.h
 [v _ConfigureGPIO `(v ~T0 @X0 0 ef ]
-"112
-[v _ConfigureUSART1 `(v ~T0 @X0 0 ef ]
-"113
-[v _ConfigureUSART2 `(v ~T0 @X0 0 ef ]
-"115
-[v _ConfigureSPI `(v ~T0 @X0 0 ef ]
-"145 ECANPoll.h
-[v _ECANInitialize `(v ~T0 @X0 0 ef ]
-"32 Can_HL.h
-[v _ECANFiltersInit `(v ~T0 @X0 0 ef ]
-"118 system.h
-[v _ConfigureTimers `(v ~T0 @X0 0 ef ]
-"24 Can_HL.h
-[v _CANTxFifoInit `(v ~T0 @X0 0 ef ]
-"25
-[v _CANRxFifoInit `(v ~T0 @X0 0 ef ]
-"126 system.h
-[v _USARTFifoInit `(v ~T0 @X0 0 ef ]
 [s S2200 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S2200 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
 [s S2201 :1 `uc 1 ]
@@ -75,6 +57,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S2199 . . . . . . . . . . ]
 "33664 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
 [v _LATDbits `VS2199 ~T0 @X0 0 e@3980 ]
+"112 system.h
+[v _ConfigureUSART1 `(v ~T0 @X0 0 ef ]
+"113
+[v _ConfigureUSART2 `(v ~T0 @X0 0 ef ]
+"115
+[v _ConfigureSPI `(v ~T0 @X0 0 ef ]
+"145 ECANPoll.h
+[v _ECANInitialize `(v ~T0 @X0 0 ef ]
+"32 Can_HL.h
+[v _ECANFiltersInit `(v ~T0 @X0 0 ef ]
+"118 system.h
+[v _ConfigureTimers `(v ~T0 @X0 0 ef ]
+"24 Can_HL.h
+[v _CANTxFifoInit `(v ~T0 @X0 0 ef ]
+"25
+[v _CANRxFifoInit `(v ~T0 @X0 0 ef ]
+"126 system.h
+[v _USARTFifoInit `(v ~T0 @X0 0 ef ]
 "27 IMUModule.h
 [v _IMUInitRegisters `(v ~T0 @X0 0 ef ]
 "30
@@ -17962,422 +17962,425 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 77: ConfigureGPIO();
 "77
 [e ( _ConfigureGPIO ..  ]
-[; ;main.c: 80: ConfigureUSART1();
-"80
+[; ;main.c: 79: LATDbits.LATD0=1;
+"79
+[e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
+[; ;main.c: 82: ConfigureUSART1();
+"82
 [e ( _ConfigureUSART1 ..  ]
-[; ;main.c: 81: ConfigureUSART2();
-"81
+[; ;main.c: 83: ConfigureUSART2();
+"83
 [e ( _ConfigureUSART2 ..  ]
-[; ;main.c: 84: ConfigureSPI();
-"84
+[; ;main.c: 86: ConfigureSPI();
+"86
 [e ( _ConfigureSPI ..  ]
-[; ;main.c: 87: ECANInitialize();
-"87
-[e ( _ECANInitialize ..  ]
-[; ;main.c: 89: ECANFiltersInit();
+[; ;main.c: 89: ECANInitialize();
 "89
+[e ( _ECANInitialize ..  ]
+[; ;main.c: 91: ECANFiltersInit();
+"91
 [e ( _ECANFiltersInit ..  ]
-[; ;main.c: 92: ConfigureTimers();
-"92
+[; ;main.c: 94: ConfigureTimers();
+"94
 [e ( _ConfigureTimers ..  ]
-[; ;main.c: 99: TickCounter.AccelTick_ms=0;
-"99
-[e = . _TickCounter 0 -> -> 0 `i `uc ]
-[; ;main.c: 100: TickCounter.GyroTick_ms=1;
-"100
-[e = . _TickCounter 1 -> -> 1 `i `uc ]
-[; ;main.c: 101: TickCounter.MagnetTick_ms=2;
+[; ;main.c: 101: TickCounter.AccelTick_ms=0;
 "101
+[e = . _TickCounter 0 -> -> 0 `i `uc ]
+[; ;main.c: 102: TickCounter.GyroTick_ms=1;
+"102
+[e = . _TickCounter 1 -> -> 1 `i `uc ]
+[; ;main.c: 103: TickCounter.MagnetTick_ms=2;
+"103
 [e = . _TickCounter 2 -> -> 2 `i `uc ]
-[; ;main.c: 104: CANTxFifoInit();
-"104
+[; ;main.c: 106: CANTxFifoInit();
+"106
 [e ( _CANTxFifoInit ..  ]
-[; ;main.c: 105: CANRxFifoInit();
-"105
+[; ;main.c: 107: CANRxFifoInit();
+"107
 [e ( _CANRxFifoInit ..  ]
-[; ;main.c: 108: USARTFifoInit ();
-"108
+[; ;main.c: 110: USARTFifoInit ();
+"110
 [e ( _USARTFifoInit ..  ]
-[; ;main.c: 115: _delay((unsigned long)((10)*(64000000/4000.0)));
-"115
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 117: LATDbits.LATD2 = 0;
+[; ;main.c: 117: _delay((unsigned long)((10)*(64000000/4000.0)));
 "117
-[e = . . _LATDbits 0 2 -> -> 0 `i `uc ]
-[; ;main.c: 119: IMUInitRegisters();
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;main.c: 119: LATDbits.LATD2 = 0;
 "119
+[e = . . _LATDbits 0 2 -> -> 0 `i `uc ]
+[; ;main.c: 121: IMUInitRegisters();
+"121
 [e ( _IMUInitRegisters ..  ]
-[; ;main.c: 120: IMUAutotestResult=IMUAutotest();
-"120
+[; ;main.c: 122: IMUAutotestResult=IMUAutotest();
+"122
 [e = _IMUAutotestResult ( _IMUAutotest ..  ]
-[; ;main.c: 127: LATAbits.LATA3=1;
-"127
+[; ;main.c: 129: LATAbits.LATA3=1;
+"129
 [e = . . _LATAbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 128: for(char i=0;i<200;i++)
-"128
+[; ;main.c: 130: for(char i=0;i<200;i++)
+"130
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 200 `i 2678  ]
 [e $U 2679  ]
-"129
-[e :U 2678 ]
-[; ;main.c: 129: {
-{
-[; ;main.c: 130: _delay((unsigned long)((10)*(64000000/4000.0)));
-"130
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 "131
+[e :U 2678 ]
+[; ;main.c: 131: {
+{
+[; ;main.c: 132: _delay((unsigned long)((10)*(64000000/4000.0)));
+"132
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"133
 }
-"128
+"130
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 200 `i 2678  ]
 [e :U 2679 ]
-"131
+"133
 }
-[; ;main.c: 131: }
-[; ;main.c: 132: LATAbits.LATA3=0;
-"132
-[e = . . _LATAbits 0 3 -> -> 0 `i `uc ]
-[; ;main.c: 134: _delay((unsigned long)((10)*(64000000/4000.0)));
+[; ;main.c: 133: }
+[; ;main.c: 134: LATAbits.LATA3=0;
 "134
+[e = . . _LATAbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 136: _delay((unsigned long)((10)*(64000000/4000.0)));
+"136
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 135: _delay((unsigned long)((10)*(64000000/4000.0)));
-"135
+[; ;main.c: 137: _delay((unsigned long)((10)*(64000000/4000.0)));
+"137
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-[; ;main.c: 143: ConfigureInterrupts();
-"143
+[; ;main.c: 145: ConfigureInterrupts();
+"145
 [e ( _ConfigureInterrupts ..  ]
-[; ;main.c: 144: LATDbits.LATD0=1;
-"144
+[; ;main.c: 146: LATDbits.LATD0=1;
+"146
 [e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 150: USART1Write('A');
-"150
-[e ( _USART1Write (1 -> -> 65 `ui `uc ]
-[; ;main.c: 151: USART1Write('T');
-"151
-[e ( _USART1Write (1 -> -> 84 `ui `uc ]
-[; ;main.c: 152: USART1Write(0x0D);
+[; ;main.c: 152: USART1Write('A');
 "152
-[e ( _USART1Write (1 -> -> 13 `i `uc ]
-[; ;main.c: 154: for(char i=0;i<10;i++)
+[e ( _USART1Write (1 -> -> 65 `ui `uc ]
+[; ;main.c: 153: USART1Write('T');
+"153
+[e ( _USART1Write (1 -> -> 84 `ui `uc ]
+[; ;main.c: 154: USART1Write(0x0D);
 "154
+[e ( _USART1Write (1 -> -> 13 `i `uc ]
+[; ;main.c: 156: for(char i=0;i<10;i++)
+"156
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 10 `i 2681  ]
 [e $U 2682  ]
-"155
-[e :U 2681 ]
-[; ;main.c: 155: {
-{
-[; ;main.c: 156: _delay((unsigned long)((10)*(64000000/4000.0)));
-"156
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 "157
+[e :U 2681 ]
+[; ;main.c: 157: {
+{
+[; ;main.c: 158: _delay((unsigned long)((10)*(64000000/4000.0)));
+"158
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"159
 }
-"154
+"156
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 10 `i 2681  ]
 [e :U 2682 ]
-"157
+"159
 }
-[; ;main.c: 157: }
-[; ;main.c: 164: while(1)
-"164
+[; ;main.c: 159: }
+[; ;main.c: 166: while(1)
+"166
 [e :U 2685 ]
-[; ;main.c: 165: {
-"165
+[; ;main.c: 167: {
+"167
 {
-[; ;main.c: 171: if(TickCounter.AccelTick_ms>0)
-"171
+[; ;main.c: 173: if(TickCounter.AccelTick_ms>0)
+"173
 [e $ ! > -> . _TickCounter 0 `i -> 0 `i 2687  ]
-[; ;main.c: 172: {
-"172
-{
-[; ;main.c: 174: LATDbits.LATD1=1;
+[; ;main.c: 174: {
 "174
-[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 175: TickCounter.AccelTick_ms=0;
-"175
-[e = . _TickCounter 0 -> -> 0 `i `uc ]
-[; ;main.c: 176: CurrentIMUData = IMUUpdateData();
+{
+[; ;main.c: 176: LATDbits.LATD1=1;
 "176
+[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
+[; ;main.c: 177: TickCounter.AccelTick_ms=0;
+"177
+[e = . _TickCounter 0 -> -> 0 `i `uc ]
+[; ;main.c: 178: CurrentIMUData = IMUUpdateData();
+"178
 [e = _CurrentIMUData ( _IMUUpdateData ..  ]
-[; ;main.c: 180: TempCANTxMsg.data_TX[0]=(char)(CurrentIMUData.XAccelerationData>>8);
-"180
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 0 -> 8 `i `uc ]
-[; ;main.c: 181: TempCANTxMsg.data_TX[1]=(char)(CurrentIMUData.XAccelerationData);
-"181
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 0 `uc ]
-[; ;main.c: 182: TempCANTxMsg.data_TX[2]=(char)(CurrentIMUData.YAccelerationData>>8);
+[; ;main.c: 182: TempCANTxMsg.data_TX[0]=(char)(CurrentIMUData.XAccelerationData>>8);
 "182
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 1 -> 8 `i `uc ]
-[; ;main.c: 183: TempCANTxMsg.data_TX[3]=(char)(CurrentIMUData.YAccelerationData);
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 0 -> 8 `i `uc ]
+[; ;main.c: 183: TempCANTxMsg.data_TX[1]=(char)(CurrentIMUData.XAccelerationData);
 "183
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 3 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 1 `uc ]
-[; ;main.c: 184: TempCANTxMsg.data_TX[4]=(char)(CurrentIMUData.ZAccelerationData>>8);
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 0 `uc ]
+[; ;main.c: 184: TempCANTxMsg.data_TX[2]=(char)(CurrentIMUData.YAccelerationData>>8);
 "184
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 4 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 2 -> 8 `i `uc ]
-[; ;main.c: 185: TempCANTxMsg.data_TX[5]=(char)(CurrentIMUData.ZAccelerationData);
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 1 -> 8 `i `uc ]
+[; ;main.c: 185: TempCANTxMsg.data_TX[3]=(char)(CurrentIMUData.YAccelerationData);
 "185
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 5 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 2 `uc ]
-[; ;main.c: 186: TempCANTxMsg.data_TX[6]=0;
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 3 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 1 `uc ]
+[; ;main.c: 186: TempCANTxMsg.data_TX[4]=(char)(CurrentIMUData.ZAccelerationData>>8);
 "186
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 6 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 0 `i `uc ]
-[; ;main.c: 187: TempCANTxMsg.data_TX[7]=0;
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 4 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 2 -> 8 `i `uc ]
+[; ;main.c: 187: TempCANTxMsg.data_TX[5]=(char)(CurrentIMUData.ZAccelerationData);
 "187
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 7 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 0 `i `uc ]
-[; ;main.c: 189: TempCANTxMsg.dataLen= 6;
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 5 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 2 `uc ]
+[; ;main.c: 188: TempCANTxMsg.data_TX[6]=0;
+"188
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 6 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 0 `i `uc ]
+[; ;main.c: 189: TempCANTxMsg.data_TX[7]=0;
 "189
-[e = . _TempCANTxMsg 2 -> -> 6 `i `uc ]
-[; ;main.c: 190: TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0x0 );
-"190
-[e = . _TempCANTxMsg 0 -> -> | | << -> 3 `i -> 7 `i << -> 0 `i -> 4 `i -> 0 `i `l `ul ]
-[; ;main.c: 191: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 7 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 0 `i `uc ]
+[; ;main.c: 191: TempCANTxMsg.dataLen= 6;
 "191
-[e = . _TempCANTxMsg 3 -> . `E19369 6 `E19369 ]
-[; ;main.c: 193: if(!CANTxFifo.Fifofull)
+[e = . _TempCANTxMsg 2 -> -> 6 `i `uc ]
+[; ;main.c: 192: TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0x0 );
+"192
+[e = . _TempCANTxMsg 0 -> -> | | << -> 3 `i -> 7 `i << -> 0 `i -> 4 `i -> 0 `i `l `ul ]
+[; ;main.c: 193: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
 "193
+[e = . _TempCANTxMsg 3 -> . `E19369 6 `E19369 ]
+[; ;main.c: 195: if(!CANTxFifo.Fifofull)
+"195
 [e $ ! ! != -> . _CANTxFifo 3 `i -> -> -> 0 `i `uc `i 2688  ]
-[; ;main.c: 194: PutCANTxFifo(TempCANTxMsg);
-"194
+[; ;main.c: 196: PutCANTxFifo(TempCANTxMsg);
+"196
 [e ( _PutCANTxFifo (1 _TempCANTxMsg ]
 [e :U 2688 ]
-[; ;main.c: 196: LATDbits.LATD1=0;
-"196
-[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 198: LATDbits.LATD1=0;
 "198
+[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+"200
 }
 [e :U 2687 ]
-[; ;main.c: 198: }
-[; ;main.c: 200: if(TickCounter.GyroTick_ms>0)
-"200
+[; ;main.c: 200: }
+[; ;main.c: 202: if(TickCounter.GyroTick_ms>0)
+"202
 [e $ ! > -> . _TickCounter 1 `i -> 0 `i 2689  ]
-[; ;main.c: 201: {
-"201
-{
-[; ;main.c: 203: TickCounter.GyroTick_ms=0;
+[; ;main.c: 203: {
 "203
+{
+[; ;main.c: 205: TickCounter.GyroTick_ms=0;
+"205
 [e = . _TickCounter 1 -> -> 0 `i `uc ]
-[; ;main.c: 207: TempCANTxMsg.data_TX[0]=(char)(CurrentIMUData.XGyroscopeData>>8);
-"207
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 3 -> 8 `i `uc ]
-[; ;main.c: 208: TempCANTxMsg.data_TX[1]=(char)(CurrentIMUData.XGyroscopeData);
-"208
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 3 `uc ]
-[; ;main.c: 209: TempCANTxMsg.data_TX[2]=(char)(CurrentIMUData.YGyroscopeData>>8);
+[; ;main.c: 209: TempCANTxMsg.data_TX[0]=(char)(CurrentIMUData.XGyroscopeData>>8);
 "209
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 4 -> 8 `i `uc ]
-[; ;main.c: 210: TempCANTxMsg.data_TX[3]=(char)(CurrentIMUData.YGyroscopeData);
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 3 -> 8 `i `uc ]
+[; ;main.c: 210: TempCANTxMsg.data_TX[1]=(char)(CurrentIMUData.XGyroscopeData);
 "210
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 3 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 4 `uc ]
-[; ;main.c: 211: TempCANTxMsg.data_TX[4]=(char)(CurrentIMUData.ZGyroscopeData>>8);
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 3 `uc ]
+[; ;main.c: 211: TempCANTxMsg.data_TX[2]=(char)(CurrentIMUData.YGyroscopeData>>8);
 "211
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 4 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 5 -> 8 `i `uc ]
-[; ;main.c: 212: TempCANTxMsg.data_TX[5]=(char)(CurrentIMUData.ZGyroscopeData);
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 4 -> 8 `i `uc ]
+[; ;main.c: 212: TempCANTxMsg.data_TX[3]=(char)(CurrentIMUData.YGyroscopeData);
 "212
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 5 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 5 `uc ]
-[; ;main.c: 214: TempCANTxMsg.dataLen= 6;
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 3 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 4 `uc ]
+[; ;main.c: 213: TempCANTxMsg.data_TX[4]=(char)(CurrentIMUData.ZGyroscopeData>>8);
+"213
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 4 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 5 -> 8 `i `uc ]
+[; ;main.c: 214: TempCANTxMsg.data_TX[5]=(char)(CurrentIMUData.ZGyroscopeData);
 "214
-[e = . _TempCANTxMsg 2 -> -> 6 `i `uc ]
-[; ;main.c: 215: TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0x1 );
-"215
-[e = . _TempCANTxMsg 0 -> -> | | << -> 3 `i -> 7 `i << -> 0 `i -> 4 `i -> 1 `i `l `ul ]
-[; ;main.c: 216: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 5 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 5 `uc ]
+[; ;main.c: 216: TempCANTxMsg.dataLen= 6;
 "216
-[e = . _TempCANTxMsg 3 -> . `E19369 6 `E19369 ]
-[; ;main.c: 218: if(!CANTxFifo.Fifofull)
+[e = . _TempCANTxMsg 2 -> -> 6 `i `uc ]
+[; ;main.c: 217: TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0x1 );
+"217
+[e = . _TempCANTxMsg 0 -> -> | | << -> 3 `i -> 7 `i << -> 0 `i -> 4 `i -> 1 `i `l `ul ]
+[; ;main.c: 218: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
 "218
+[e = . _TempCANTxMsg 3 -> . `E19369 6 `E19369 ]
+[; ;main.c: 220: if(!CANTxFifo.Fifofull)
+"220
 [e $ ! ! != -> . _CANTxFifo 3 `i -> -> -> 0 `i `uc `i 2690  ]
-[; ;main.c: 219: PutCANTxFifo(TempCANTxMsg);
-"219
+[; ;main.c: 221: PutCANTxFifo(TempCANTxMsg);
+"221
 [e ( _PutCANTxFifo (1 _TempCANTxMsg ]
 [e :U 2690 ]
-"222
+"223
 }
 [e :U 2689 ]
-[; ;main.c: 222: }
-[; ;main.c: 224: if(TickCounter.MagnetTick_ms>0)
-"224
-[e $ ! > -> . _TickCounter 2 `i -> 0 `i 2691  ]
-[; ;main.c: 225: {
+[; ;main.c: 223: }
+[; ;main.c: 225: if(TickCounter.MagnetTick_ms>0)
 "225
+[e $ ! > -> . _TickCounter 2 `i -> 0 `i 2691  ]
+[; ;main.c: 226: {
+"226
 {
-[; ;main.c: 227: TickCounter.MagnetTick_ms=0;
-"227
+[; ;main.c: 228: TickCounter.MagnetTick_ms=0;
+"228
 [e = . _TickCounter 2 -> -> 0 `i `uc ]
-[; ;main.c: 231: TempCANTxMsg.data_TX[0]=(char)(CurrentIMUData.XMagnetData>>8);
-"231
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 6 -> 8 `i `uc ]
-[; ;main.c: 232: TempCANTxMsg.data_TX[1]=(char)(CurrentIMUData.XMagnetData);
+[; ;main.c: 232: TempCANTxMsg.data_TX[0]=(char)(CurrentIMUData.XMagnetData>>8);
 "232
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 6 `uc ]
-[; ;main.c: 233: TempCANTxMsg.data_TX[2]=(char)(CurrentIMUData.YMagnetData>>8);
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 6 -> 8 `i `uc ]
+[; ;main.c: 233: TempCANTxMsg.data_TX[1]=(char)(CurrentIMUData.XMagnetData);
 "233
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 7 -> 8 `i `uc ]
-[; ;main.c: 234: TempCANTxMsg.data_TX[3]=(char)(CurrentIMUData.YMagnetData);
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 6 `uc ]
+[; ;main.c: 234: TempCANTxMsg.data_TX[2]=(char)(CurrentIMUData.YMagnetData>>8);
 "234
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 3 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 7 `uc ]
-[; ;main.c: 235: TempCANTxMsg.data_TX[4]=(char)(CurrentIMUData.ZMagnetData>>8);
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 7 -> 8 `i `uc ]
+[; ;main.c: 235: TempCANTxMsg.data_TX[3]=(char)(CurrentIMUData.YMagnetData);
 "235
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 4 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 8 -> 8 `i `uc ]
-[; ;main.c: 236: TempCANTxMsg.data_TX[5]=(char)(CurrentIMUData.ZMagnetData);
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 3 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 7 `uc ]
+[; ;main.c: 236: TempCANTxMsg.data_TX[4]=(char)(CurrentIMUData.ZMagnetData>>8);
 "236
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 5 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 8 `uc ]
-[; ;main.c: 237: TempCANTxMsg.data_TX[6]=(char)(CurrentIMUData.MagnetResistance >>8);
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 4 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 8 -> 8 `i `uc ]
+[; ;main.c: 237: TempCANTxMsg.data_TX[5]=(char)(CurrentIMUData.ZMagnetData);
 "237
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 6 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 9 -> 8 `i `uc ]
-[; ;main.c: 238: TempCANTxMsg.data_TX[7]=(char)(CurrentIMUData.MagnetResistance);
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 5 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 8 `uc ]
+[; ;main.c: 238: TempCANTxMsg.data_TX[6]=(char)(CurrentIMUData.MagnetResistance >>8);
 "238
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 6 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> >> . _CurrentIMUData 9 -> 8 `i `uc ]
+[; ;main.c: 239: TempCANTxMsg.data_TX[7]=(char)(CurrentIMUData.MagnetResistance);
+"239
 [e = *U + &U . _TempCANTxMsg 1 * -> -> -> 7 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> . _CurrentIMUData 9 `uc ]
-[; ;main.c: 240: TempCANTxMsg.dataLen= 8;
-"240
-[e = . _TempCANTxMsg 2 -> -> 8 `i `uc ]
-[; ;main.c: 241: TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0x2 );
+[; ;main.c: 241: TempCANTxMsg.dataLen= 8;
 "241
-[e = . _TempCANTxMsg 0 -> -> | | << -> 3 `i -> 7 `i << -> 0 `i -> 4 `i -> 2 `i `l `ul ]
-[; ;main.c: 242: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
+[e = . _TempCANTxMsg 2 -> -> 8 `i `uc ]
+[; ;main.c: 242: TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0x2 );
 "242
+[e = . _TempCANTxMsg 0 -> -> | | << -> 3 `i -> 7 `i << -> 0 `i -> 4 `i -> 2 `i `l `ul ]
+[; ;main.c: 243: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
+"243
 [e = . _TempCANTxMsg 3 -> . `E19369 6 `E19369 ]
-[; ;main.c: 244: if(!CANTxFifo.Fifofull)
-"244
-[e $ ! ! != -> . _CANTxFifo 3 `i -> -> -> 0 `i `uc `i 2692  ]
-[; ;main.c: 245: PutCANTxFifo(TempCANTxMsg);
+[; ;main.c: 245: if(!CANTxFifo.Fifofull)
 "245
+[e $ ! ! != -> . _CANTxFifo 3 `i -> -> -> 0 `i `uc `i 2692  ]
+[; ;main.c: 246: PutCANTxFifo(TempCANTxMsg);
+"246
 [e ( _PutCANTxFifo (1 _TempCANTxMsg ]
 [e :U 2692 ]
-"248
+"249
 }
 [e :U 2691 ]
-[; ;main.c: 248: }
-[; ;main.c: 258: if(!CANRxFifo.FifoEmpty && !CANTxFifo.Fifofull)
-"258
-[e $ ! && ! != -> . _CANRxFifo 4 `i -> -> -> 0 `i `uc `i ! != -> . _CANTxFifo 3 `i -> -> -> 0 `i `uc `i 2693  ]
-[; ;main.c: 259: {
+[; ;main.c: 249: }
+[; ;main.c: 259: if(!CANRxFifo.FifoEmpty && !CANTxFifo.Fifofull)
 "259
-{
-[; ;main.c: 260: TempCANRxMsg = GetCANRxFifo();
+[e $ ! && ! != -> . _CANRxFifo 4 `i -> -> -> 0 `i `uc `i ! != -> . _CANTxFifo 3 `i -> -> -> 0 `i `uc `i 2693  ]
+[; ;main.c: 260: {
 "260
-[e = _TempCANRxMsg ( _GetCANRxFifo ..  ]
-[; ;main.c: 264: if( TempCANRxMsg.id == (3 << 7 | 0 <<4 | 0x4 ) && TempCANRxMsg.flags== ECAN_RX_RTR_FRAME )
-"264
-[e $ ! && == . _TempCANRxMsg 0 -> -> | | << -> 3 `i -> 7 `i << -> 0 `i -> 4 `i -> 4 `i `l `ul == -> . _TempCANRxMsg 3 `i -> . `E19387 3 `i 2694  ]
-[; ;main.c: 265: {
-"265
 {
-[; ;main.c: 266: TempCANTxMsg.data_TX[0]=1;
+[; ;main.c: 261: TempCANRxMsg = GetCANRxFifo();
+"261
+[e = _TempCANRxMsg ( _GetCANRxFifo ..  ]
+[; ;main.c: 265: if( TempCANRxMsg.id == (3 << 7 | 0 <<4 | 0x4 ) && TempCANRxMsg.flags== ECAN_RX_RTR_FRAME )
+"265
+[e $ ! && == . _TempCANRxMsg 0 -> -> | | << -> 3 `i -> 7 `i << -> 0 `i -> 4 `i -> 4 `i `l `ul == -> . _TempCANRxMsg 3 `i -> . `E19387 3 `i 2694  ]
+[; ;main.c: 266: {
 "266
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 1 `i `uc ]
-[; ;main.c: 267: TempCANTxMsg.data_TX[1]=1;
+{
+[; ;main.c: 267: TempCANTxMsg.data_TX[0]=1;
 "267
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 1 `i `uc ]
-[; ;main.c: 268: TempCANTxMsg.dataLen= 2;
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 1 `i `uc ]
+[; ;main.c: 268: TempCANTxMsg.data_TX[1]=2;
 "268
-[e = . _TempCANTxMsg 2 -> -> 2 `i `uc ]
-[; ;main.c: 269: TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0x4 );
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 2 `i `uc ]
+[; ;main.c: 269: TempCANTxMsg.dataLen= 2;
 "269
-[e = . _TempCANTxMsg 0 -> -> | | << -> 3 `i -> 7 `i << -> 0 `i -> 4 `i -> 4 `i `l `ul ]
-[; ;main.c: 270: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
+[e = . _TempCANTxMsg 2 -> -> 2 `i `uc ]
+[; ;main.c: 270: TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0x4 );
 "270
-[e = . _TempCANTxMsg 3 -> . `E19369 6 `E19369 ]
-[; ;main.c: 271: PutCANTxFifo(TempCANTxMsg);
+[e = . _TempCANTxMsg 0 -> -> | | << -> 3 `i -> 7 `i << -> 0 `i -> 4 `i -> 4 `i `l `ul ]
+[; ;main.c: 271: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
 "271
-[e ( _PutCANTxFifo (1 _TempCANTxMsg ]
+[e = . _TempCANTxMsg 3 -> . `E19369 6 `E19369 ]
+[; ;main.c: 272: PutCANTxFifo(TempCANTxMsg);
 "272
+[e ( _PutCANTxFifo (1 _TempCANTxMsg ]
+"273
 }
 [e :U 2694 ]
-[; ;main.c: 272: }
-[; ;main.c: 276: if( TempCANRxMsg.id == (3 << 7 | 0 <<4 | 0xF ) && TempCANRxMsg.flags== ECAN_RX_RTR_FRAME )
-"276
-[e $ ! && == . _TempCANRxMsg 0 -> -> | | << -> 3 `i -> 7 `i << -> 0 `i -> 4 `i -> 15 `i `l `ul == -> . _TempCANRxMsg 3 `i -> . `E19387 3 `i 2695  ]
-[; ;main.c: 277: {
+[; ;main.c: 273: }
+[; ;main.c: 277: if( TempCANRxMsg.id == (3 << 7 | 0 <<4 | 0xF ) && TempCANRxMsg.flags== ECAN_RX_RTR_FRAME )
 "277
-{
-[; ;main.c: 278: TempCANTxMsg.data_TX[0]=1;
+[e $ ! && == . _TempCANRxMsg 0 -> -> | | << -> 3 `i -> 7 `i << -> 0 `i -> 4 `i -> 15 `i `l `ul == -> . _TempCANRxMsg 3 `i -> . `E19387 3 `i 2695  ]
+[; ;main.c: 278: {
 "278
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 1 `i `uc ]
-[; ;main.c: 279: TempCANTxMsg.data_TX[1]=1;
+{
+[; ;main.c: 279: TempCANTxMsg.data_TX[0]=1;
 "279
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 1 `i `uc ]
-[; ;main.c: 280: TempCANTxMsg.dataLen= 2;
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 1 `i `uc ]
+[; ;main.c: 280: TempCANTxMsg.data_TX[1]=1;
 "280
-[e = . _TempCANTxMsg 2 -> -> 2 `i `uc ]
-[; ;main.c: 281: TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0xF );
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux -> -> 1 `i `uc ]
+[; ;main.c: 281: TempCANTxMsg.dataLen= 2;
 "281
-[e = . _TempCANTxMsg 0 -> -> | | << -> 3 `i -> 7 `i << -> 0 `i -> 4 `i -> 15 `i `l `ul ]
-[; ;main.c: 282: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
+[e = . _TempCANTxMsg 2 -> -> 2 `i `uc ]
+[; ;main.c: 282: TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0xF );
 "282
-[e = . _TempCANTxMsg 3 -> . `E19369 6 `E19369 ]
-[; ;main.c: 283: PutCANTxFifo(TempCANTxMsg);
+[e = . _TempCANTxMsg 0 -> -> | | << -> 3 `i -> 7 `i << -> 0 `i -> 4 `i -> 15 `i `l `ul ]
+[; ;main.c: 283: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
 "283
-[e ( _PutCANTxFifo (1 _TempCANTxMsg ]
+[e = . _TempCANTxMsg 3 -> . `E19369 6 `E19369 ]
+[; ;main.c: 284: PutCANTxFifo(TempCANTxMsg);
 "284
+[e ( _PutCANTxFifo (1 _TempCANTxMsg ]
+"285
 }
 [e :U 2695 ]
-[; ;main.c: 284: }
-[; ;main.c: 288: if( TempCANRxMsg.id == (3 << 7 | 0 <<4 | 0x3 ) && TempCANRxMsg.flags== ECAN_RX_RTR_FRAME )
-"288
-[e $ ! && == . _TempCANRxMsg 0 -> -> | | << -> 3 `i -> 7 `i << -> 0 `i -> 4 `i -> 3 `i `l `ul == -> . _TempCANRxMsg 3 `i -> . `E19387 3 `i 2696  ]
-[; ;main.c: 289: {
+[; ;main.c: 285: }
+[; ;main.c: 289: if( TempCANRxMsg.id == (3 << 7 | 0 <<4 | 0x3 ) && TempCANRxMsg.flags== ECAN_RX_RTR_FRAME )
 "289
-{
-[; ;main.c: 290: TempCANTxMsg.data_TX[0]=CurrentIMUData.Temperature;
+[e $ ! && == . _TempCANRxMsg 0 -> -> | | << -> 3 `i -> 7 `i << -> 0 `i -> 4 `i -> 3 `i `l `ul == -> . _TempCANRxMsg 3 `i -> . `E19387 3 `i 2696  ]
+[; ;main.c: 290: {
 "290
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux . _CurrentIMUData 10 ]
-[; ;main.c: 291: TempCANTxMsg.dataLen= 1;
+{
+[; ;main.c: 291: TempCANTxMsg.data_TX[0]=CurrentIMUData.Temperature;
 "291
-[e = . _TempCANTxMsg 2 -> -> 1 `i `uc ]
-[; ;main.c: 292: TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0x3 );
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux . _CurrentIMUData 10 ]
+[; ;main.c: 292: TempCANTxMsg.dataLen= 1;
 "292
-[e = . _TempCANTxMsg 0 -> -> | | << -> 3 `i -> 7 `i << -> 0 `i -> 4 `i -> 3 `i `l `ul ]
-[; ;main.c: 293: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
+[e = . _TempCANTxMsg 2 -> -> 1 `i `uc ]
+[; ;main.c: 293: TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0x3 );
 "293
-[e = . _TempCANTxMsg 3 -> . `E19369 6 `E19369 ]
-[; ;main.c: 294: PutCANTxFifo(TempCANTxMsg);
+[e = . _TempCANTxMsg 0 -> -> | | << -> 3 `i -> 7 `i << -> 0 `i -> 4 `i -> 3 `i `l `ul ]
+[; ;main.c: 294: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
 "294
-[e ( _PutCANTxFifo (1 _TempCANTxMsg ]
+[e = . _TempCANTxMsg 3 -> . `E19369 6 `E19369 ]
+[; ;main.c: 295: PutCANTxFifo(TempCANTxMsg);
 "295
+[e ( _PutCANTxFifo (1 _TempCANTxMsg ]
+"296
 }
 [e :U 2696 ]
-[; ;main.c: 295: }
-[; ;main.c: 299: if( TempCANRxMsg.id == (5 << 7 | 0 <<4 | 0x1 ) && TempCANRxMsg.dataLen==1 )
-"299
-[e $ ! && == . _TempCANRxMsg 0 -> -> | | << -> 5 `i -> 7 `i << -> 0 `i -> 4 `i -> 1 `i `l `ul == -> . _TempCANRxMsg 2 `i -> 1 `i 2697  ]
-[; ;main.c: 300: {
+[; ;main.c: 296: }
+[; ;main.c: 300: if( TempCANRxMsg.id == (5 << 7 | 0 <<4 | 0x1 ) && TempCANRxMsg.dataLen==1 )
 "300
-{
-[; ;main.c: 301: USART1Write(TempCANRxMsg.data_RX[0]);
+[e $ ! && == . _TempCANRxMsg 0 -> -> | | << -> 5 `i -> 7 `i << -> 0 `i -> 4 `i -> 1 `i `l `ul == -> . _TempCANRxMsg 2 `i -> 1 `i 2697  ]
+[; ;main.c: 301: {
 "301
-[e ( _USART1Write (1 *U + &U . _TempCANRxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux ]
+{
+[; ;main.c: 302: USART1Write(TempCANRxMsg.data_RX[0]);
 "302
+[e ( _USART1Write (1 *U + &U . _TempCANRxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANRxMsg 1 `ui `ux ]
+"303
 }
 [e :U 2697 ]
-"304
+"305
 }
 [e :U 2693 ]
-[; ;main.c: 302: }
-[; ;main.c: 304: }
-[; ;main.c: 311: if(!USART2RxFifo.FifoEmpty && !CANTxFifo.Fifofull)
-"311
-[e $ ! && ! != -> . _USART2RxFifo 4 `i -> -> -> 0 `i `uc `i ! != -> . _CANTxFifo 3 `i -> -> -> 0 `i `uc `i 2698  ]
-[; ;main.c: 312: {
+[; ;main.c: 303: }
+[; ;main.c: 305: }
+[; ;main.c: 312: if(!USART2RxFifo.FifoEmpty && !CANTxFifo.Fifofull)
 "312
-{
-[; ;main.c: 313: TempVar = GetUSART2RxFifo();
+[e $ ! && ! != -> . _USART2RxFifo 4 `i -> -> -> 0 `i `uc `i ! != -> . _CANTxFifo 3 `i -> -> -> 0 `i `uc `i 2698  ]
+[; ;main.c: 313: {
 "313
+{
+[; ;main.c: 314: TempVar = GetUSART2RxFifo();
+"314
 [e = _TempVar ( _GetUSART2RxFifo ..  ]
-[; ;main.c: 315: TempCANTxMsg.data_TX[0]=TempVar;
-"315
-[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux _TempVar ]
-[; ;main.c: 316: TempCANTxMsg.dataLen= 1;
+[; ;main.c: 316: TempCANTxMsg.data_TX[0]=TempVar;
 "316
-[e = . _TempCANTxMsg 2 -> -> 1 `i `uc ]
-[; ;main.c: 317: TempCANTxMsg.id = (4 << 7 | 0 <<4 | 0x0 );
+[e = *U + &U . _TempCANTxMsg 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _TempCANTxMsg 1 `ui `ux _TempVar ]
+[; ;main.c: 317: TempCANTxMsg.dataLen= 1;
 "317
-[e = . _TempCANTxMsg 0 -> -> | | << -> 4 `i -> 7 `i << -> 0 `i -> 4 `i -> 0 `i `l `ul ]
-[; ;main.c: 318: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
+[e = . _TempCANTxMsg 2 -> -> 1 `i `uc ]
+[; ;main.c: 318: TempCANTxMsg.id = (4 << 7 | 0 <<4 | 0x0 );
 "318
+[e = . _TempCANTxMsg 0 -> -> | | << -> 4 `i -> 7 `i << -> 0 `i -> 4 `i -> 0 `i `l `ul ]
+[; ;main.c: 319: TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
+"319
 [e = . _TempCANTxMsg 3 -> . `E19369 6 `E19369 ]
 [; ;main.c: 320: PutCANTxFifo(TempCANTxMsg);
 "320
@@ -18438,7 +18441,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "351
 }
 [e :U 2684 ]
-"164
+"166
 [e $U 2685  ]
 [e :U 2686 ]
 [; ;main.c: 348: }

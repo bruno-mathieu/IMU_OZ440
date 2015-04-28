@@ -22527,6 +22527,8 @@ _delay((unsigned long)((10)*(64000000/4000.0)));
 
 ConfigureGPIO();
 
+LATDbits.LATD0=1;
+
 
 ConfigureUSART1();
 ConfigureUSART2();
@@ -22542,7 +22544,7 @@ ECANFiltersInit();
 
 ConfigureTimers();
 
-# 99
+# 101
 TickCounter.AccelTick_ms=0;
 TickCounter.GyroTick_ms=1;
 TickCounter.MagnetTick_ms=2;
@@ -22554,7 +22556,7 @@ CANRxFifoInit();
 
 USARTFifoInit ();
 
-# 115
+# 117
 _delay((unsigned long)((10)*(64000000/4000.0)));
 
 LATDbits.LATD2 = 0;
@@ -22562,7 +22564,7 @@ LATDbits.LATD2 = 0;
 IMUInitRegisters();
 IMUAutotestResult=IMUAutotest();
 
-# 127
+# 129
 LATAbits.LATA3=1;
 for(char i=0;i<200;i++)
 {
@@ -22573,11 +22575,11 @@ LATAbits.LATA3=0;
 _delay((unsigned long)((10)*(64000000/4000.0)));
 _delay((unsigned long)((10)*(64000000/4000.0)));
 
-# 143
+# 145
 ConfigureInterrupts();
 LATDbits.LATD0=1;
 
-# 150
+# 152
 USART1Write('A');
 USART1Write('T');
 USART1Write(0x0D);
@@ -22587,11 +22589,11 @@ for(char i=0;i<10;i++)
 _delay((unsigned long)((10)*(64000000/4000.0)));
 }
 
-# 164
+# 166
 while(1)
 {
 
-# 171
+# 173
 if(TickCounter.AccelTick_ms>0)
 {
 
@@ -22642,7 +22644,6 @@ TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
 if(!CANTxFifo.Fifofull)
 PutCANTxFifo(TempCANTxMsg);
 
-
 }
 
 if(TickCounter.MagnetTick_ms>0)
@@ -22671,7 +22672,7 @@ PutCANTxFifo(TempCANTxMsg);
 
 }
 
-# 258
+# 259
 if(!CANRxFifo.FifoEmpty && !CANTxFifo.Fifofull)
 {
 TempCANRxMsg = GetCANRxFifo();
@@ -22681,7 +22682,7 @@ TempCANRxMsg = GetCANRxFifo();
 if( TempCANRxMsg.id == (3 << 7 | 0 <<4 | 0x4 ) && TempCANRxMsg.flags== ECAN_RX_RTR_FRAME )
 {
 TempCANTxMsg.data_TX[0]=1;
-TempCANTxMsg.data_TX[1]=1;
+TempCANTxMsg.data_TX[1]=2;
 TempCANTxMsg.dataLen= 2;
 TempCANTxMsg.id = (3 << 7 | 0 <<4 | 0x4 );
 TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
@@ -22720,7 +22721,7 @@ USART1Write(TempCANRxMsg.data_RX[0]);
 
 }
 
-# 311
+# 312
 if(!USART2RxFifo.FifoEmpty && !CANTxFifo.Fifofull)
 {
 TempVar = GetUSART2RxFifo();
@@ -22729,7 +22730,6 @@ TempCANTxMsg.data_TX[0]=TempVar;
 TempCANTxMsg.dataLen= 1;
 TempCANTxMsg.id = (4 << 7 | 0 <<4 | 0x0 );
 TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-
 PutCANTxFifo(TempCANTxMsg);
 
 }

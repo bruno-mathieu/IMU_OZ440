@@ -22542,6 +22542,8 @@ SSPCON1bits.SSPEN = 1;
 void ConfigureInterrupts(void)
 {
 
+INTCONbits.GIE=0;
+INTCONbits.PEIE=0;
 
 RCONbits.IPEN = 1;
 
@@ -22566,6 +22568,7 @@ IPR2= 0 ;
 IPR3= 0 ;
 IPR4= 0 ;
 IPR5= 0b00000011 ;
+
 
 INTCONbits.GIE=1;
 INTCONbits.PEIE=1;

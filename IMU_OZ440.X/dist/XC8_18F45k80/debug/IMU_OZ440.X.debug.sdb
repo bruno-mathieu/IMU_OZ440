@@ -439,7 +439,7 @@ ECAN_RX_DBL_BUFFERED 128
 [v _SPBRG2 SPBRG2 `VEuc  1 e 1 @3963 ]
 "33225
 [v _LATA LATA `VEuc  1 e 1 @3977 ]
-[s S544 . 1 `uc 1 LATD0 1 0 :1:0 
+[s S508 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
 `uc 1 LATD2 1 0 :1:2 
 `uc 1 LATD3 1 0 :1:3 
@@ -449,50 +449,50 @@ ECAN_RX_DBL_BUFFERED 128
 `uc 1 LATD7 1 0 :1:7 
 ]
 "33273
-[s S553 . 1 `uc 1 LD0 1 0 :1:0 
+[s S517 . 1 `uc 1 LD0 1 0 :1:0 
 ]
 "33273
-[s S555 . 1 `uc 1 . 1 0 :1:0 
+[s S519 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 LD1 1 0 :1:1 
 ]
 "33273
-[s S558 . 1 `uc 1 . 1 0 :2:0 
+[s S522 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 LD2 1 0 :1:2 
 ]
 "33273
-[s S561 . 1 `uc 1 . 1 0 :3:0 
+[s S525 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 LD3 1 0 :1:3 
 ]
 "33273
-[s S564 . 1 `uc 1 . 1 0 :4:0 
+[s S528 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 LD4 1 0 :1:4 
 ]
 "33273
-[s S567 . 1 `uc 1 . 1 0 :5:0 
+[s S531 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 LD5 1 0 :1:5 
 ]
 "33273
-[s S570 . 1 `uc 1 . 1 0 :6:0 
+[s S534 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 LD6 1 0 :1:6 
 ]
 "33273
-[s S573 . 1 `uc 1 . 1 0 :7:0 
+[s S537 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 LD7 1 0 :1:7 
 ]
 "33273
-[u S576 . 1 `S544 1 . 1 0 `S553 1 . 1 0 `S555 1 . 1 0 `S558 1 . 1 0 `S561 1 . 1 0 `S564 1 . 1 0 `S567 1 . 1 0 `S570 1 . 1 0 `S573 1 . 1 0 ]
+[u S540 . 1 `S508 1 . 1 0 `S517 1 . 1 0 `S519 1 . 1 0 `S522 1 . 1 0 `S525 1 . 1 0 `S528 1 . 1 0 `S531 1 . 1 0 `S534 1 . 1 0 `S537 1 . 1 0 ]
 "33273
 "33273
-[v _LATAbits LATAbits `VES576  1 e 1 @3977 ]
+[v _LATAbits LATAbits `VES540  1 e 1 @3977 ]
 "33400
 "33400
-[v _LATBbits LATBbits `VES576  1 e 1 @3978 ]
+[v _LATBbits LATBbits `VES540  1 e 1 @3978 ]
 "33532
 "33532
-[v _LATCbits LATCbits `VES576  1 e 1 @3979 ]
+[v _LATCbits LATCbits `VES540  1 e 1 @3979 ]
 "33664
 "33664
-[v _LATDbits LATDbits `VES576  1 e 1 @3980 ]
+[v _LATDbits LATDbits `VES540  1 e 1 @3980 ]
 [s S1226 . 1 `uc 1 LATE0 1 0 :1:0 
 `uc 1 LATE1 1 0 :1:1 
 `uc 1 LATE2 1 0 :1:2 
@@ -1230,9 +1230,9 @@ ECAN_RX_DBL_BUFFERED 128
 "47
 [v _main main `(v  1 e 0 0 ]
 {
-"154
+"156
 [v main@i_888 i `uc  1 a 1 3 ]
-"128
+"130
 [v main@i i `uc  1 a 1 2 ]
 [s S482 IMUData 21 `ui 1 XAccelerationData 2 0 `ui 1 YAccelerationData 2 2 `ui 1 ZAccelerationData 2 4 `ui 1 XGyroscopeData 2 6 `ui 1 YGyroscopeData 2 8 `ui 1 ZGyroscopeData 2 10 `ui 1 XMagnetData 2 12 `ui 1 YMagnetData 2 14 `ui 1 ZMagnetData 2 16 `ui 1 MagnetResistance 2 18 `uc 1 Temperature 1 20 ]
 "55

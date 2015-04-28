@@ -38,7 +38,7 @@ ECAN_RX_XTD_FRAME 32
 ECAN_RX_RTR_FRAME 64
 ECAN_RX_DBL_BUFFERED 128
 ]
-"346
+"353
 [e E18559 _BOOL `uc
 FALSE 0
 TRUE 1
@@ -296,25 +296,25 @@ ECAN_RX_DBL_BUFFERED 128
 [v _ConfigureSPI ConfigureSPI `(v  1 e 0 0 ]
 "177
 [v _ConfigureInterrupts ConfigureInterrupts `(v  1 e 0 0 ]
-"209
+"212
 [v _ConfigureTimers ConfigureTimers `(v  1 e 0 0 ]
-"223
+"226
 [v _USART1Write USART1Write `(v  1 e 0 0 ]
-"229
+"232
 [v _USART2Write USART2Write `(v  1 e 0 0 ]
-"235
+"238
 [v _SPIWrite SPIWrite `(c  1 e 1 0 ]
-"259
+"262
 [v _SPIRead SPIRead `(uc  1 e 1 0 ]
-"277
+"280
 [v _USARTFifoInit USARTFifoInit `(v  1 e 0 0 ]
-"291
+"294
 [v _PutUSART1RxFifo PutUSART1RxFifo `(v  1 e 0 0 ]
-"311
+"314
 [v _GetUSART1RxFifo GetUSART1RxFifo `(uc  1 e 1 0 ]
-"341
+"344
 [v _PutUSART2RxFifo PutUSART2RxFifo `(v  1 e 0 0 ]
-"363
+"366
 [v _GetUSART2RxFifo GetUSART2RxFifo `(uc  1 e 1 0 ]
 "182 C:\Program Files (x86)\Microchip\xc8\v1.30\include\pic18f45k80.h
 [v _BRGCON1 BRGCON1 `VEuc  1 e 1 @3651 ]
@@ -1043,30 +1043,30 @@ ECAN_RX_DBL_BUFFERED 128
 [v _SSPSTATbits SSPSTATbits `VES1836  1 e 1 @4039 ]
 "38483
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
-[s S1919 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+[s S1961 . 1 `uc 1 NOT_BOR 1 0 :1:0 
 ]
 "38911
-[s S1921 . 1 `uc 1 . 1 0 :1:0 
+[s S1963 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_POR 1 0 :1:1 
 ]
 "38911
-[s S1924 . 1 `uc 1 . 1 0 :2:0 
+[s S1966 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_PD 1 0 :1:2 
 ]
 "38911
-[s S1927 . 1 `uc 1 . 1 0 :3:0 
+[s S1969 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 NOT_TO 1 0 :1:3 
 ]
 "38911
-[s S1930 . 1 `uc 1 . 1 0 :4:0 
+[s S1972 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 NOT_RI 1 0 :1:4 
 ]
 "38911
-[s S1933 . 1 `uc 1 . 1 0 :5:0 
+[s S1975 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_CM 1 0 :1:5 
 ]
 "38911
-[s S1936 . 1 `uc 1 nBOR 1 0 :1:0 
+[s S1978 . 1 `uc 1 nBOR 1 0 :1:0 
 `uc 1 nPOR 1 0 :1:1 
 `uc 1 nPD 1 0 :1:2 
 `uc 1 nTO 1 0 :1:3 
@@ -1076,7 +1076,7 @@ ECAN_RX_DBL_BUFFERED 128
 `uc 1 IPEN 1 0 :1:7 
 ]
 "38911
-[s S1945 . 1 `uc 1 BOR 1 0 :1:0 
+[s S1987 . 1 `uc 1 BOR 1 0 :1:0 
 `uc 1 POR 1 0 :1:1 
 `uc 1 PD 1 0 :1:2 
 `uc 1 TO 1 0 :1:3 
@@ -1084,10 +1084,10 @@ ECAN_RX_DBL_BUFFERED 128
 `uc 1 CM 1 0 :1:5 
 ]
 "38911
-[u S1952 . 1 `S1919 1 . 1 0 `S1921 1 . 1 0 `S1924 1 . 1 0 `S1927 1 . 1 0 `S1930 1 . 1 0 `S1933 1 . 1 0 `S1936 1 . 1 0 `S1945 1 . 1 0 ]
+[u S1994 . 1 `S1961 1 . 1 0 `S1963 1 . 1 0 `S1966 1 . 1 0 `S1969 1 . 1 0 `S1972 1 . 1 0 `S1975 1 . 1 0 `S1978 1 . 1 0 `S1987 1 . 1 0 ]
 "38911
 "38911
-[v _RCONbits RCONbits `VES1952  1 e 1 @4048 ]
+[v _RCONbits RCONbits `VES1994  1 e 1 @4048 ]
 [s S896 . 1 `uc 1 SCS 1 0 :2:0 
 `uc 1 HFIOFS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
@@ -1230,9 +1230,9 @@ ECAN_RX_DBL_BUFFERED 128
 "47
 [v _main main `(v  1 e 0 0 ]
 {
-"154
+"162
 [v main@i_888 i `uc  1 a 1 3 ]
-"128
+"133
 [v main@i i `uc  1 a 1 2 ]
 [s S482 IMUData 21 `ui 1 XAccelerationData 2 0 `ui 1 YAccelerationData 2 2 `ui 1 ZAccelerationData 2 4 `ui 1 XGyroscopeData 2 6 `ui 1 YGyroscopeData 2 8 `ui 1 ZGyroscopeData 2 10 `ui 1 XMagnetData 2 12 `ui 1 YMagnetData 2 14 `ui 1 ZMagnetData 2 16 `ui 1 MagnetResistance 2 18 `uc 1 Temperature 1 20 ]
 "55
@@ -1247,20 +1247,20 @@ ECAN_RX_DBL_BUFFERED 128
 [v main@TempVar TempVar `uc  1 a 1 1 ]
 "52
 [v main@IMUAutotestResult IMUAutotestResult `uc  1 a 1 0 ]
-"353
+"360
 } 0
-"277 F:\MPLAB\IMU_OZ440\IMU_OZ440.X\system.c
+"280 F:\MPLAB\IMU_OZ440\IMU_OZ440.X\system.c
 [v _USARTFifoInit USARTFifoInit `(v  1 e 0 0 ]
 {
-"289
+"292
 } 0
-"223
+"226
 [v _USART1Write USART1Write `(v  1 e 0 0 ]
 {
 [v USART1Write@data data `uc  1 a 1 wreg ]
 [v USART1Write@data data `uc  1 a 1 wreg ]
 [v USART1Write@data data `uc  1 a 1 14 ]
-"227
+"230
 } 0
 "43 F:\MPLAB\IMU_OZ440\IMU_OZ440.X\Can_HL.c
 [v _PutCANTxFifo PutCANTxFifo `(v  1 e 0 0 ]
@@ -1326,43 +1326,43 @@ ECAN_RX_DBL_BUFFERED 128
 [v IMURead@adress adress `uc  1 a 1 18 ]
 "221
 } 0
-"235 F:\MPLAB\IMU_OZ440\IMU_OZ440.X\system.c
+"238 F:\MPLAB\IMU_OZ440\IMU_OZ440.X\system.c
 [v _SPIWrite SPIWrite `(c  1 e 1 0 ]
 {
 [v SPIWrite@data data `uc  1 a 1 wreg ]
-"237
+"240
 [v SPIWrite@TempVar TempVar `uc  1 a 1 14 ]
-"235
-[v SPIWrite@data data `uc  1 a 1 wreg ]
 "238
+[v SPIWrite@data data `uc  1 a 1 wreg ]
+"241
 [v SPIWrite@data data `uc  1 a 1 15 ]
-"257
+"260
 } 0
-"259
+"262
 [v _SPIRead SPIRead `(uc  1 e 1 0 ]
 {
 [v SPIRead@DummyData DummyData `uc  1 a 1 wreg ]
-"261
+"264
 [v SPIRead@TempVar TempVar `uc  1 a 1 15 ]
-"259
+"262
 [v SPIRead@DummyData DummyData `uc  1 a 1 wreg ]
-"263
+"266
 [v SPIRead@DummyData DummyData `uc  1 a 1 14 ]
-"275
+"278
 } 0
-"363
+"366
 [v _GetUSART2RxFifo GetUSART2RxFifo `(uc  1 e 1 0 ]
 {
-"365
+"368
 [v GetUSART2RxFifo@CharToRead CharToRead `uc  1 a 1 15 ]
-"390
+"393
 } 0
-"311
+"314
 [v _GetUSART1RxFifo GetUSART1RxFifo `(uc  1 e 1 0 ]
 {
-"313
+"316
 [v GetUSART1RxFifo@CharToRead CharToRead `uc  1 a 1 15 ]
-"339
+"342
 } 0
 "47 F:\MPLAB\IMU_OZ440\IMU_OZ440.X\system.h
 [s S448 CANTxMsg 14 `ul 1 id 4 0 `[8]uc 1 data_TX 8 4 `uc 1 dataLen 1 12 `E19369 1 flags 1 13 ]
@@ -1466,10 +1466,10 @@ ECAN_RX_DBL_BUFFERED 128
 {
 "113
 } 0
-"209
+"212
 [v _ConfigureTimers ConfigureTimers `(v  1 e 0 0 ]
 {
-"221
+"224
 } 0
 "163
 [v _ConfigureSPI ConfigureSPI `(v  1 e 0 0 ]
@@ -1484,7 +1484,7 @@ ECAN_RX_DBL_BUFFERED 128
 "177
 [v _ConfigureInterrupts ConfigureInterrupts `(v  1 e 0 0 ]
 {
-"207
+"210
 } 0
 "45
 [v _ConfigureGPIO ConfigureGPIO `(v  1 e 0 0 ]
@@ -1508,23 +1508,23 @@ ECAN_RX_DBL_BUFFERED 128
 [v low_isr@temp temp `uc  1 a 1 19 ]
 "119
 } 0
-"341 F:\MPLAB\IMU_OZ440\IMU_OZ440.X\system.c
+"344 F:\MPLAB\IMU_OZ440\IMU_OZ440.X\system.c
 [v _PutUSART2RxFifo PutUSART2RxFifo `(v  1 e 0 0 ]
 {
 [v PutUSART2RxFifo@ByteToWrite ByteToWrite `uc  1 a 1 wreg ]
 [v PutUSART2RxFifo@ByteToWrite ByteToWrite `uc  1 a 1 wreg ]
-"344
+"347
 [v PutUSART2RxFifo@ByteToWrite ByteToWrite `uc  1 a 1 1 ]
-"361
+"364
 } 0
-"291
+"294
 [v _PutUSART1RxFifo PutUSART1RxFifo `(v  1 e 0 0 ]
 {
 [v PutUSART1RxFifo@ByteToWrite ByteToWrite `uc  1 a 1 wreg ]
 [v PutUSART1RxFifo@ByteToWrite ByteToWrite `uc  1 a 1 wreg ]
-"293
+"296
 [v PutUSART1RxFifo@ByteToWrite ByteToWrite `uc  1 a 1 1 ]
-"309
+"312
 } 0
 "35 F:\MPLAB\IMU_OZ440\IMU_OZ440.X\interrupts.c
 [v _high_isr high_isr `II(v  1 e 0 0 ]

@@ -331,6 +331,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S2455 . . . . . . . . . . . . . . . . . ]
 "38260
 [v _SSPSTATbits `VS2455 ~T0 @X0 0 e@4039 ]
+[s S2591 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2591 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+[s S2592 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2592 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+[s S2593 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2593 . . GIEL GIEH ]
+[s S2594 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2594 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+[s S2595 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2595 . . GIEL GIEH ]
+[u S2590 `S2591 1 `S2592 1 `S2593 1 `S2594 1 `S2595 1 ]
+[n S2590 . . . . . . ]
+"40122
+[v _INTCONbits `VS2590 ~T0 @X0 0 e@4082 ]
 [s S2507 :1 `uc 1 ]
 [n S2507 . NOT_BOR ]
 [s S2508 :1 `uc 1 :1 `uc 1 ]
@@ -387,20 +401,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _IPR4 `Vuc ~T0 @X0 0 e@4024 ]
 "32297
 [v _IPR5 `Vuc ~T0 @X0 0 e@3960 ]
-[s S2591 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2591 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
-[s S2592 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2592 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
-[s S2593 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2593 . . GIEL GIEH ]
-[s S2594 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2594 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
-[s S2595 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2595 . . GIEL GIEH ]
-[u S2590 `S2591 1 `S2592 1 `S2593 1 `S2594 1 `S2595 1 ]
-[n S2590 . . . . . . ]
-"40122
-[v _INTCONbits `VS2590 ~T0 @X0 0 e@4082 ]
 [s S2525 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S2525 . T0PS PSA T0SE T0CS T08BIT TMR0ON ]
 [s S2526 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -18426,559 +18426,565 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;system.c: 178: {
 [e :U _ConfigureInterrupts ]
 [f ]
-[; ;system.c: 181: RCONbits.IPEN = 1;
+[; ;system.c: 180: INTCONbits.GIE=0;
+"180
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+[; ;system.c: 181: INTCONbits.PEIE=0;
 "181
-[e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
-[; ;system.c: 183: INTCON = 0b00100000;
+[e = . . _INTCONbits 1 6 -> -> 0 `i `uc ]
+[; ;system.c: 183: RCONbits.IPEN = 1;
 "183
-[e = _INTCON -> -> 32 `i `uc ]
-[; ;system.c: 184: INTCON2 = 0b11111000;
-"184
-[e = _INTCON2 -> -> 248 `i `uc ]
-[; ;system.c: 185: INTCON3 = 0b00000000;
+[e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
+[; ;system.c: 185: INTCON = 0b00100000;
 "185
-[e = _INTCON3 -> -> 0 `i `uc ]
-[; ;system.c: 187: PIR1 = 0;
+[e = _INTCON -> -> 32 `i `uc ]
+[; ;system.c: 186: INTCON2 = 0b11111000;
+"186
+[e = _INTCON2 -> -> 248 `i `uc ]
+[; ;system.c: 187: INTCON3 = 0b00000000;
 "187
-[e = _PIR1 -> -> 0 `i `uc ]
-[; ;system.c: 188: PIR2 = 0;
-"188
-[e = _PIR2 -> -> 0 `i `uc ]
-[; ;system.c: 189: PIR3 = 0;
+[e = _INTCON3 -> -> 0 `i `uc ]
+[; ;system.c: 189: PIR1 = 0;
 "189
-[e = _PIR3 -> -> 0 `i `uc ]
-[; ;system.c: 190: PIR4 = 0;
+[e = _PIR1 -> -> 0 `i `uc ]
+[; ;system.c: 190: PIR2 = 0;
 "190
-[e = _PIR4 -> -> 0 `i `uc ]
-[; ;system.c: 191: PIR5 = 0;
+[e = _PIR2 -> -> 0 `i `uc ]
+[; ;system.c: 191: PIR3 = 0;
 "191
-[e = _PIR5 -> -> 0 `i `uc ]
-[; ;system.c: 193: PIE1 = 0b00100000;
+[e = _PIR3 -> -> 0 `i `uc ]
+[; ;system.c: 192: PIR4 = 0;
+"192
+[e = _PIR4 -> -> 0 `i `uc ]
+[; ;system.c: 193: PIR5 = 0;
 "193
-[e = _PIE1 -> -> 32 `i `uc ]
-[; ;system.c: 194: PIE2 = 0;
-"194
-[e = _PIE2 -> -> 0 `i `uc ]
-[; ;system.c: 195: PIE3 = 0b00100000;
+[e = _PIR5 -> -> 0 `i `uc ]
+[; ;system.c: 195: PIE1 = 0b00100000;
 "195
-[e = _PIE3 -> -> 32 `i `uc ]
-[; ;system.c: 196: PIE4 = 0;
+[e = _PIE1 -> -> 32 `i `uc ]
+[; ;system.c: 196: PIE2 = 0;
 "196
-[e = _PIE4 -> -> 0 `i `uc ]
-[; ;system.c: 197: PIE5 = 0b00000011;
+[e = _PIE2 -> -> 0 `i `uc ]
+[; ;system.c: 197: PIE3 = 0b00100000;
 "197
-[e = _PIE5 -> -> 3 `i `uc ]
-[; ;system.c: 199: IPR1= 0 ;
+[e = _PIE3 -> -> 32 `i `uc ]
+[; ;system.c: 198: PIE4 = 0;
+"198
+[e = _PIE4 -> -> 0 `i `uc ]
+[; ;system.c: 199: PIE5 = 0b00000011;
 "199
-[e = _IPR1 -> -> 0 `i `uc ]
-[; ;system.c: 200: IPR2= 0 ;
-"200
-[e = _IPR2 -> -> 0 `i `uc ]
-[; ;system.c: 201: IPR3= 0 ;
+[e = _PIE5 -> -> 3 `i `uc ]
+[; ;system.c: 201: IPR1= 0 ;
 "201
-[e = _IPR3 -> -> 0 `i `uc ]
-[; ;system.c: 202: IPR4= 0 ;
+[e = _IPR1 -> -> 0 `i `uc ]
+[; ;system.c: 202: IPR2= 0 ;
 "202
-[e = _IPR4 -> -> 0 `i `uc ]
-[; ;system.c: 203: IPR5= 0b00000011 ;
+[e = _IPR2 -> -> 0 `i `uc ]
+[; ;system.c: 203: IPR3= 0 ;
 "203
-[e = _IPR5 -> -> 3 `i `uc ]
-[; ;system.c: 205: INTCONbits.GIE=1;
+[e = _IPR3 -> -> 0 `i `uc ]
+[; ;system.c: 204: IPR4= 0 ;
+"204
+[e = _IPR4 -> -> 0 `i `uc ]
+[; ;system.c: 205: IPR5= 0b00000011 ;
 "205
+[e = _IPR5 -> -> 3 `i `uc ]
+[; ;system.c: 208: INTCONbits.GIE=1;
+"208
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;system.c: 206: INTCONbits.PEIE=1;
-"206
+[; ;system.c: 209: INTCONbits.PEIE=1;
+"209
 [e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;system.c: 207: }
-"207
+[; ;system.c: 210: }
+"210
 [e :UE 2682 ]
 }
-"209
+"212
 [v _ConfigureTimers `(v ~T0 @X0 1 ef ]
-"210
+"213
 {
-[; ;system.c: 209: void ConfigureTimers(void)
-[; ;system.c: 210: {
+[; ;system.c: 212: void ConfigureTimers(void)
+[; ;system.c: 213: {
 [e :U _ConfigureTimers ]
 [f ]
-[; ;system.c: 211: T0CONbits.T08BIT = 0;
-"211
-[e = . . _T0CONbits 0 4 -> -> 0 `i `uc ]
-[; ;system.c: 212: T0CONbits.T0CS = 0;
-"212
-[e = . . _T0CONbits 0 3 -> -> 0 `i `uc ]
-[; ;system.c: 213: T0CONbits.PSA = 0;
-"213
-[e = . . _T0CONbits 0 1 -> -> 0 `i `uc ]
-[; ;system.c: 214: T0CONbits.T0PS=6;
+[; ;system.c: 214: T0CONbits.T08BIT = 0;
 "214
-[e = . . _T0CONbits 0 0 -> -> 6 `i `uc ]
-[; ;system.c: 216: TMR0H = 0xFB;
+[e = . . _T0CONbits 0 4 -> -> 0 `i `uc ]
+[; ;system.c: 215: T0CONbits.T0CS = 0;
+"215
+[e = . . _T0CONbits 0 3 -> -> 0 `i `uc ]
+[; ;system.c: 216: T0CONbits.PSA = 0;
 "216
-[e = _TMR0H -> -> 251 `i `uc ]
-[; ;system.c: 217: TMR0L = 0x1E;
+[e = . . _T0CONbits 0 1 -> -> 0 `i `uc ]
+[; ;system.c: 217: T0CONbits.T0PS=6;
 "217
-[e = _TMR0L -> -> 30 `i `uc ]
-[; ;system.c: 219: T0CONbits.TMR0ON = 1;
+[e = . . _T0CONbits 0 0 -> -> 6 `i `uc ]
+[; ;system.c: 219: TMR0H = 0xFB;
 "219
+[e = _TMR0H -> -> 251 `i `uc ]
+[; ;system.c: 220: TMR0L = 0x1E;
+"220
+[e = _TMR0L -> -> 30 `i `uc ]
+[; ;system.c: 222: T0CONbits.TMR0ON = 1;
+"222
 [e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
-[; ;system.c: 221: }
-"221
+[; ;system.c: 224: }
+"224
 [e :UE 2683 ]
 }
-"223
+"226
 [v _USART1Write `(v ~T0 @X0 1 ef1`uc ]
-"224
+"227
 {
-[; ;system.c: 223: void USART1Write(char data)
-[; ;system.c: 224: {
+[; ;system.c: 226: void USART1Write(char data)
+[; ;system.c: 227: {
 [e :U _USART1Write ]
-"223
+"226
 [v _data `uc ~T0 @X0 1 r1 ]
-"224
+"227
 [f ]
-[; ;system.c: 225: while(TXSTA1bits.TRMT==0);
-"225
+[; ;system.c: 228: while(TXSTA1bits.TRMT==0);
+"228
 [e $U 2685  ]
 [e :U 2686 ]
 [e :U 2685 ]
 [e $ == -> . . _TXSTA1bits 0 1 `i -> 0 `i 2686  ]
 [e :U 2687 ]
-[; ;system.c: 226: TXREG1=data;
-"226
+[; ;system.c: 229: TXREG1=data;
+"229
 [e = _TXREG1 _data ]
-[; ;system.c: 227: }
-"227
+[; ;system.c: 230: }
+"230
 [e :UE 2684 ]
 }
-"229
+"232
 [v _USART2Write `(v ~T0 @X0 1 ef1`uc ]
-"230
+"233
 {
-[; ;system.c: 229: void USART2Write(char data)
-[; ;system.c: 230: {
+[; ;system.c: 232: void USART2Write(char data)
+[; ;system.c: 233: {
 [e :U _USART2Write ]
-"229
+"232
 [v _data `uc ~T0 @X0 1 r1 ]
-"230
+"233
 [f ]
-[; ;system.c: 231: while(TXSTA2bits.TRMT==0);
-"231
+[; ;system.c: 234: while(TXSTA2bits.TRMT==0);
+"234
 [e $U 2689  ]
 [e :U 2690 ]
 [e :U 2689 ]
 [e $ == -> . . _TXSTA2bits 0 1 `i -> 0 `i 2690  ]
 [e :U 2691 ]
-[; ;system.c: 232: TXREG2=data;
-"232
+[; ;system.c: 235: TXREG2=data;
+"235
 [e = _TXREG2 _data ]
-[; ;system.c: 233: }
-"233
+[; ;system.c: 236: }
+"236
 [e :UE 2688 ]
 }
-"235
-[v _SPIWrite `(c ~T0 @X0 1 ef1`uc ]
-"236
-{
-[; ;system.c: 235: signed char SPIWrite(char data)
-[; ;system.c: 236: {
-[e :U _SPIWrite ]
-"235
-[v _data `uc ~T0 @X0 1 r1 ]
-"236
-[f ]
-"237
-[v _TempVar `uc ~T0 @X0 1 a ]
-[; ;system.c: 237: unsigned char TempVar;
-[; ;system.c: 238: INTCONbits.GIE=0;
 "238
-[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-[; ;system.c: 240: TempVar = SSPBUF;
-"240
-[e = _TempVar _SSPBUF ]
-[; ;system.c: 241: PIR1bits.SSPIF = 0;
-"241
-[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-[; ;system.c: 242: SSPCON1bits.WCOL = 0;
-"242
-[e = . . _SSPCON1bits 0 4 -> -> 0 `i `uc ]
-[; ;system.c: 243: SSPBUF = data;
-"243
-[e = _SSPBUF _data ]
-[; ;system.c: 244: if ( SSPCON1 & 0x80 )
-"244
-[e $ ! != & -> _SSPCON1 `i -> 128 `i -> 0 `i 2693  ]
-[; ;system.c: 245: {
-"245
+[v _SPIWrite `(c ~T0 @X0 1 ef1`uc ]
+"239
 {
-[; ;system.c: 246: INTCONbits.GIE=1;
+[; ;system.c: 238: signed char SPIWrite(char data)
+[; ;system.c: 239: {
+[e :U _SPIWrite ]
+"238
+[v _data `uc ~T0 @X0 1 r1 ]
+"239
+[f ]
+"240
+[v _TempVar `uc ~T0 @X0 1 a ]
+[; ;system.c: 240: unsigned char TempVar;
+[; ;system.c: 241: INTCONbits.GIE=0;
+"241
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+[; ;system.c: 243: TempVar = SSPBUF;
+"243
+[e = _TempVar _SSPBUF ]
+[; ;system.c: 244: PIR1bits.SSPIF = 0;
+"244
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;system.c: 245: SSPCON1bits.WCOL = 0;
+"245
+[e = . . _SSPCON1bits 0 4 -> -> 0 `i `uc ]
+[; ;system.c: 246: SSPBUF = data;
 "246
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;system.c: 247: return ( -1 );
+[e = _SSPBUF _data ]
+[; ;system.c: 247: if ( SSPCON1 & 0x80 )
 "247
+[e $ ! != & -> _SSPCON1 `i -> 128 `i -> 0 `i 2693  ]
+[; ;system.c: 248: {
+"248
+{
+[; ;system.c: 249: INTCONbits.GIE=1;
+"249
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;system.c: 250: return ( -1 );
+"250
 [e ) -> -U -> 1 `i `c ]
 [e $UE 2692  ]
-"248
-}
-[; ;system.c: 248: }
-[e $U 2694  ]
-"250
-[e :U 2693 ]
-[; ;system.c: 250: else
-[; ;system.c: 251: while( !SSPSTATbits.BF );
 "251
+}
+[; ;system.c: 251: }
+[e $U 2694  ]
+"253
+[e :U 2693 ]
+[; ;system.c: 253: else
+[; ;system.c: 254: while( !SSPSTATbits.BF );
+"254
 [e $U 2695  ]
 [e :U 2696 ]
 [e :U 2695 ]
 [e $ ! != -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `Vuc `i 2696  ]
 [e :U 2697 ]
 [e :U 2694 ]
-[; ;system.c: 254: INTCONbits.GIE=1;
-"254
+[; ;system.c: 257: INTCONbits.GIE=1;
+"257
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;system.c: 255: return ( 0 );
-"255
+[; ;system.c: 258: return ( 0 );
+"258
 [e ) -> -> 0 `i `c ]
 [e $UE 2692  ]
-[; ;system.c: 257: }
-"257
+[; ;system.c: 260: }
+"260
 [e :UE 2692 ]
 }
-"259
+"262
 [v _SPIRead `(uc ~T0 @X0 1 ef1`uc ]
-"260
-{
-[; ;system.c: 259: char SPIRead(char DummyData)
-[; ;system.c: 260: {
-[e :U _SPIRead ]
-"259
-[v _DummyData `uc ~T0 @X0 1 r1 ]
-"260
-[f ]
-"261
-[v _TempVar `uc ~T0 @X0 1 a ]
-[; ;system.c: 261: unsigned char TempVar;
-[; ;system.c: 263: INTCONbits.GIE=0;
 "263
-[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-[; ;system.c: 264: TempVar = SSPBUF;
+{
+[; ;system.c: 262: char SPIRead(char DummyData)
+[; ;system.c: 263: {
+[e :U _SPIRead ]
+"262
+[v _DummyData `uc ~T0 @X0 1 r1 ]
+"263
+[f ]
 "264
-[e = _TempVar _SSPBUF ]
-[; ;system.c: 265: PIR1bits.SSPIF = 0;
-"265
-[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-[; ;system.c: 266: SSPCON1bits.WCOL = 0;
+[v _TempVar `uc ~T0 @X0 1 a ]
+[; ;system.c: 264: unsigned char TempVar;
+[; ;system.c: 266: INTCONbits.GIE=0;
 "266
-[e = . . _SSPCON1bits 0 4 -> -> 0 `i `uc ]
-[; ;system.c: 267: SSPBUF = DummyData;
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+[; ;system.c: 267: TempVar = SSPBUF;
 "267
-[e = _SSPBUF _DummyData ]
-[; ;system.c: 269: while( !SSPSTATbits.BF );
+[e = _TempVar _SSPBUF ]
+[; ;system.c: 268: PIR1bits.SSPIF = 0;
+"268
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;system.c: 269: SSPCON1bits.WCOL = 0;
 "269
+[e = . . _SSPCON1bits 0 4 -> -> 0 `i `uc ]
+[; ;system.c: 270: SSPBUF = DummyData;
+"270
+[e = _SSPBUF _DummyData ]
+[; ;system.c: 272: while( !SSPSTATbits.BF );
+"272
 [e $U 2699  ]
 [e :U 2700 ]
 [e :U 2699 ]
 [e $ ! != -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `Vuc `i 2700  ]
 [e :U 2701 ]
-[; ;system.c: 271: TempVar = SSPBUF;
-"271
-[e = _TempVar _SSPBUF ]
-[; ;system.c: 273: INTCONbits.GIE=1;
-"273
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;system.c: 274: return ( TempVar );
+[; ;system.c: 274: TempVar = SSPBUF;
 "274
+[e = _TempVar _SSPBUF ]
+[; ;system.c: 276: INTCONbits.GIE=1;
+"276
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;system.c: 277: return ( TempVar );
+"277
 [e ) _TempVar ]
 [e $UE 2698  ]
-[; ;system.c: 275: }
-"275
+[; ;system.c: 278: }
+"278
 [e :UE 2698 ]
 }
-"277
+"280
 [v _USARTFifoInit `(v ~T0 @X0 1 ef ]
-"278
+"281
 {
-[; ;system.c: 277: void USARTFifoInit (void)
-[; ;system.c: 278: {
+[; ;system.c: 280: void USARTFifoInit (void)
+[; ;system.c: 281: {
 [e :U _USARTFifoInit ]
 [f ]
-[; ;system.c: 279: USART1RxFifo.FifoEmpty=1;
-"279
-[e = . _USART1RxFifo 4 -> -> 1 `i `uc ]
-[; ;system.c: 280: USART1RxFifo.Fifofull=0;
-"280
-[e = . _USART1RxFifo 3 -> -> 0 `i `uc ]
-[; ;system.c: 281: USART1RxFifo.HighIndex=0;
-"281
-[e = . _USART1RxFifo 2 -> -> 0 `i `uc ]
-[; ;system.c: 282: USART1RxFifo.LowIndex=0;
+[; ;system.c: 282: USART1RxFifo.FifoEmpty=1;
 "282
-[e = . _USART1RxFifo 1 -> -> 0 `i `uc ]
-[; ;system.c: 284: USART2RxFifo.FifoEmpty=1;
+[e = . _USART1RxFifo 4 -> -> 1 `i `uc ]
+[; ;system.c: 283: USART1RxFifo.Fifofull=0;
+"283
+[e = . _USART1RxFifo 3 -> -> 0 `i `uc ]
+[; ;system.c: 284: USART1RxFifo.HighIndex=0;
 "284
-[e = . _USART2RxFifo 4 -> -> 1 `i `uc ]
-[; ;system.c: 285: USART2RxFifo.Fifofull=0;
+[e = . _USART1RxFifo 2 -> -> 0 `i `uc ]
+[; ;system.c: 285: USART1RxFifo.LowIndex=0;
 "285
-[e = . _USART2RxFifo 3 -> -> 0 `i `uc ]
-[; ;system.c: 286: USART2RxFifo.HighIndex=0;
-"286
-[e = . _USART2RxFifo 2 -> -> 0 `i `uc ]
-[; ;system.c: 287: USART2RxFifo.LowIndex=0;
+[e = . _USART1RxFifo 1 -> -> 0 `i `uc ]
+[; ;system.c: 287: USART2RxFifo.FifoEmpty=1;
 "287
-[e = . _USART2RxFifo 1 -> -> 0 `i `uc ]
-[; ;system.c: 289: }
+[e = . _USART2RxFifo 4 -> -> 1 `i `uc ]
+[; ;system.c: 288: USART2RxFifo.Fifofull=0;
+"288
+[e = . _USART2RxFifo 3 -> -> 0 `i `uc ]
+[; ;system.c: 289: USART2RxFifo.HighIndex=0;
 "289
+[e = . _USART2RxFifo 2 -> -> 0 `i `uc ]
+[; ;system.c: 290: USART2RxFifo.LowIndex=0;
+"290
+[e = . _USART2RxFifo 1 -> -> 0 `i `uc ]
+[; ;system.c: 292: }
+"292
 [e :UE 2702 ]
 }
-"291
+"294
 [v _PutUSART1RxFifo `(v ~T0 @X0 1 ef1`uc ]
-"292
-{
-[; ;system.c: 291: void PutUSART1RxFifo(char ByteToWrite)
-[; ;system.c: 292: {
-[e :U _PutUSART1RxFifo ]
-"291
-[v _ByteToWrite `uc ~T0 @X0 1 r1 ]
-"292
-[f ]
-[; ;system.c: 293: INTCONbits.GIE=0;
-"293
-[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-[; ;system.c: 295: if(!USART1RxFifo.Fifofull)
 "295
-[e $ ! ! != -> . _USART1RxFifo 3 `i -> -> -> 0 `i `uc `i 2704  ]
-[; ;system.c: 296: {
-"296
 {
-[; ;system.c: 297: USART1RxFifo.USARTMsg[USART1RxFifo.HighIndex] = ByteToWrite;
-"297
-[e = *U + &U . _USART1RxFifo 0 * -> . _USART1RxFifo 2 `ux -> -> # *U &U . _USART1RxFifo 0 `ui `ux _ByteToWrite ]
-[; ;system.c: 298: USART1RxFifo.FifoEmpty=0;
+[; ;system.c: 294: void PutUSART1RxFifo(char ByteToWrite)
+[; ;system.c: 295: {
+[e :U _PutUSART1RxFifo ]
+"294
+[v _ByteToWrite `uc ~T0 @X0 1 r1 ]
+"295
+[f ]
+[; ;system.c: 296: INTCONbits.GIE=0;
+"296
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+[; ;system.c: 298: if(!USART1RxFifo.Fifofull)
 "298
-[e = . _USART1RxFifo 4 -> -> 0 `i `uc ]
-[; ;system.c: 299: USART1RxFifo.HighIndex++;
+[e $ ! ! != -> . _USART1RxFifo 3 `i -> -> -> 0 `i `uc `i 2704  ]
+[; ;system.c: 299: {
 "299
-[e ++ . _USART1RxFifo 2 -> -> 1 `i `uc ]
-[; ;system.c: 301: if(USART1RxFifo.HighIndex==(10))
+{
+[; ;system.c: 300: USART1RxFifo.USARTMsg[USART1RxFifo.HighIndex] = ByteToWrite;
+"300
+[e = *U + &U . _USART1RxFifo 0 * -> . _USART1RxFifo 2 `ux -> -> # *U &U . _USART1RxFifo 0 `ui `ux _ByteToWrite ]
+[; ;system.c: 301: USART1RxFifo.FifoEmpty=0;
 "301
-[e $ ! == -> . _USART1RxFifo 2 `i -> 10 `i 2705  ]
-[; ;system.c: 302: USART1RxFifo.HighIndex=0;
+[e = . _USART1RxFifo 4 -> -> 0 `i `uc ]
+[; ;system.c: 302: USART1RxFifo.HighIndex++;
 "302
+[e ++ . _USART1RxFifo 2 -> -> 1 `i `uc ]
+[; ;system.c: 304: if(USART1RxFifo.HighIndex==(10))
+"304
+[e $ ! == -> . _USART1RxFifo 2 `i -> 10 `i 2705  ]
+[; ;system.c: 305: USART1RxFifo.HighIndex=0;
+"305
 [e = . _USART1RxFifo 2 -> -> 0 `i `uc ]
 [e :U 2705 ]
-[; ;system.c: 304: if(USART1RxFifo.HighIndex==USART1RxFifo.LowIndex)
-"304
+[; ;system.c: 307: if(USART1RxFifo.HighIndex==USART1RxFifo.LowIndex)
+"307
 [e $ ! == -> . _USART1RxFifo 2 `i -> . _USART1RxFifo 1 `i 2706  ]
-[; ;system.c: 305: USART1RxFifo.Fifofull=1;
-"305
+[; ;system.c: 308: USART1RxFifo.Fifofull=1;
+"308
 [e = . _USART1RxFifo 3 -> -> 1 `i `uc ]
 [e :U 2706 ]
-"306
+"309
 }
 [e :U 2704 ]
-[; ;system.c: 306: }
-[; ;system.c: 307: INTCONbits.GIE=1;
-"307
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
 [; ;system.c: 309: }
-"309
+[; ;system.c: 310: INTCONbits.GIE=1;
+"310
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;system.c: 312: }
+"312
 [e :UE 2703 ]
 }
-"311
+"314
 [v _GetUSART1RxFifo `(uc ~T0 @X0 1 ef ]
-"312
+"315
 {
-[; ;system.c: 311: char GetUSART1RxFifo(void)
-[; ;system.c: 312: {
+[; ;system.c: 314: char GetUSART1RxFifo(void)
+[; ;system.c: 315: {
 [e :U _GetUSART1RxFifo ]
 [f ]
-"313
-[v _CharToRead `uc ~T0 @X0 1 a ]
-[; ;system.c: 313: char CharToRead;
-[; ;system.c: 316: if(!USART1RxFifo.FifoEmpty)
 "316
-[e $ ! ! != -> . _USART1RxFifo 4 `i -> -> -> 0 `i `uc `i 2708  ]
-[; ;system.c: 317: {
-"317
-{
-[; ;system.c: 319: INTCONbits.GIE=0;
+[v _CharToRead `uc ~T0 @X0 1 a ]
+[; ;system.c: 316: char CharToRead;
+[; ;system.c: 319: if(!USART1RxFifo.FifoEmpty)
 "319
-[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-[; ;system.c: 321: CharToRead=USART1RxFifo.USARTMsg[USART1RxFifo.LowIndex];
-"321
-[e = _CharToRead *U + &U . _USART1RxFifo 0 * -> . _USART1RxFifo 1 `ux -> -> # *U &U . _USART1RxFifo 0 `ui `ux ]
-[; ;system.c: 322: USART1RxFifo.Fifofull=0;
+[e $ ! ! != -> . _USART1RxFifo 4 `i -> -> -> 0 `i `uc `i 2708  ]
+[; ;system.c: 320: {
+"320
+{
+[; ;system.c: 322: INTCONbits.GIE=0;
 "322
-[e = . _USART1RxFifo 3 -> -> 0 `i `uc ]
-[; ;system.c: 323: USART1RxFifo.LowIndex++;
-"323
-[e ++ . _USART1RxFifo 1 -> -> 1 `i `uc ]
-[; ;system.c: 325: if(USART1RxFifo.LowIndex==(10))
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+[; ;system.c: 324: CharToRead=USART1RxFifo.USARTMsg[USART1RxFifo.LowIndex];
+"324
+[e = _CharToRead *U + &U . _USART1RxFifo 0 * -> . _USART1RxFifo 1 `ux -> -> # *U &U . _USART1RxFifo 0 `ui `ux ]
+[; ;system.c: 325: USART1RxFifo.Fifofull=0;
 "325
-[e $ ! == -> . _USART1RxFifo 1 `i -> 10 `i 2709  ]
-[; ;system.c: 326: USART1RxFifo.LowIndex=0;
+[e = . _USART1RxFifo 3 -> -> 0 `i `uc ]
+[; ;system.c: 326: USART1RxFifo.LowIndex++;
 "326
+[e ++ . _USART1RxFifo 1 -> -> 1 `i `uc ]
+[; ;system.c: 328: if(USART1RxFifo.LowIndex==(10))
+"328
+[e $ ! == -> . _USART1RxFifo 1 `i -> 10 `i 2709  ]
+[; ;system.c: 329: USART1RxFifo.LowIndex=0;
+"329
 [e = . _USART1RxFifo 1 -> -> 0 `i `uc ]
 [e :U 2709 ]
-[; ;system.c: 328: if(USART1RxFifo.HighIndex==USART1RxFifo.LowIndex)
-"328
+[; ;system.c: 331: if(USART1RxFifo.HighIndex==USART1RxFifo.LowIndex)
+"331
 [e $ ! == -> . _USART1RxFifo 2 `i -> . _USART1RxFifo 1 `i 2710  ]
-[; ;system.c: 329: USART1RxFifo.FifoEmpty=1;
-"329
+[; ;system.c: 332: USART1RxFifo.FifoEmpty=1;
+"332
 [e = . _USART1RxFifo 4 -> -> 1 `i `uc ]
 [e :U 2710 ]
-[; ;system.c: 331: INTCONbits.GIE=1;
-"331
+[; ;system.c: 334: INTCONbits.GIE=1;
+"334
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;system.c: 332: return CharToRead;
-"332
+[; ;system.c: 335: return CharToRead;
+"335
 [e ) _CharToRead ]
 [e $UE 2707  ]
-"333
-}
-[; ;system.c: 333: }
-[e $U 2711  ]
-"334
-[e :U 2708 ]
-[; ;system.c: 334: else
-[; ;system.c: 335: {
-"335
-{
-[; ;system.c: 336: return 0 ;
 "336
+}
+[; ;system.c: 336: }
+[e $U 2711  ]
+"337
+[e :U 2708 ]
+[; ;system.c: 337: else
+[; ;system.c: 338: {
+"338
+{
+[; ;system.c: 339: return 0 ;
+"339
 [e ) -> -> 0 `i `uc ]
 [e $UE 2707  ]
-"337
+"340
 }
 [e :U 2711 ]
-[; ;system.c: 337: }
-[; ;system.c: 339: }
-"339
+[; ;system.c: 340: }
+[; ;system.c: 342: }
+"342
 [e :UE 2707 ]
 }
-"341
-[v _PutUSART2RxFifo `(v ~T0 @X0 1 ef1`uc ]
-"342
-{
-[; ;system.c: 341: void PutUSART2RxFifo(char ByteToWrite)
-[; ;system.c: 342: {
-[e :U _PutUSART2RxFifo ]
-"341
-[v _ByteToWrite `uc ~T0 @X0 1 r1 ]
-"342
-[f ]
-[; ;system.c: 344: INTCONbits.GIE=0;
 "344
-[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-[; ;system.c: 346: if(!USART2RxFifo.Fifofull)
-"346
-[e $ ! ! != -> . _USART2RxFifo 3 `i -> -> -> 0 `i `uc `i 2713  ]
-[; ;system.c: 347: {
-"347
+[v _PutUSART2RxFifo `(v ~T0 @X0 1 ef1`uc ]
+"345
 {
-[; ;system.c: 348: USART2RxFifo.USARTMsg[USART2RxFifo.HighIndex] = ByteToWrite;
-"348
-[e = *U + &U . _USART2RxFifo 0 * -> . _USART2RxFifo 2 `ux -> -> # *U &U . _USART2RxFifo 0 `ui `ux _ByteToWrite ]
-[; ;system.c: 349: USART2RxFifo.FifoEmpty=0;
+[; ;system.c: 344: void PutUSART2RxFifo(char ByteToWrite)
+[; ;system.c: 345: {
+[e :U _PutUSART2RxFifo ]
+"344
+[v _ByteToWrite `uc ~T0 @X0 1 r1 ]
+"345
+[f ]
+[; ;system.c: 347: INTCONbits.GIE=0;
+"347
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+[; ;system.c: 349: if(!USART2RxFifo.Fifofull)
 "349
-[e = . _USART2RxFifo 4 -> -> 0 `i `uc ]
-[; ;system.c: 350: USART2RxFifo.HighIndex++;
+[e $ ! ! != -> . _USART2RxFifo 3 `i -> -> -> 0 `i `uc `i 2713  ]
+[; ;system.c: 350: {
 "350
-[e ++ . _USART2RxFifo 2 -> -> 1 `i `uc ]
-[; ;system.c: 352: if(USART2RxFifo.HighIndex==(10))
+{
+[; ;system.c: 351: USART2RxFifo.USARTMsg[USART2RxFifo.HighIndex] = ByteToWrite;
+"351
+[e = *U + &U . _USART2RxFifo 0 * -> . _USART2RxFifo 2 `ux -> -> # *U &U . _USART2RxFifo 0 `ui `ux _ByteToWrite ]
+[; ;system.c: 352: USART2RxFifo.FifoEmpty=0;
 "352
-[e $ ! == -> . _USART2RxFifo 2 `i -> 10 `i 2714  ]
-[; ;system.c: 353: USART2RxFifo.HighIndex=0;
+[e = . _USART2RxFifo 4 -> -> 0 `i `uc ]
+[; ;system.c: 353: USART2RxFifo.HighIndex++;
 "353
+[e ++ . _USART2RxFifo 2 -> -> 1 `i `uc ]
+[; ;system.c: 355: if(USART2RxFifo.HighIndex==(10))
+"355
+[e $ ! == -> . _USART2RxFifo 2 `i -> 10 `i 2714  ]
+[; ;system.c: 356: USART2RxFifo.HighIndex=0;
+"356
 [e = . _USART2RxFifo 2 -> -> 0 `i `uc ]
 [e :U 2714 ]
-[; ;system.c: 355: if(USART2RxFifo.HighIndex==USART2RxFifo.LowIndex)
-"355
+[; ;system.c: 358: if(USART2RxFifo.HighIndex==USART2RxFifo.LowIndex)
+"358
 [e $ ! == -> . _USART2RxFifo 2 `i -> . _USART2RxFifo 1 `i 2715  ]
-[; ;system.c: 356: USART2RxFifo.Fifofull=1;
-"356
+[; ;system.c: 359: USART2RxFifo.Fifofull=1;
+"359
 [e = . _USART2RxFifo 3 -> -> 1 `i `uc ]
 [e :U 2715 ]
-"357
+"360
 }
 [e :U 2713 ]
-[; ;system.c: 357: }
-[; ;system.c: 359: INTCONbits.GIE=1;
-"359
+[; ;system.c: 360: }
+[; ;system.c: 362: INTCONbits.GIE=1;
+"362
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;system.c: 361: }
-"361
+[; ;system.c: 364: }
+"364
 [e :UE 2712 ]
 }
-"363
+"366
 [v _GetUSART2RxFifo `(uc ~T0 @X0 1 ef ]
-"364
+"367
 {
-[; ;system.c: 363: char GetUSART2RxFifo(void)
-[; ;system.c: 364: {
+[; ;system.c: 366: char GetUSART2RxFifo(void)
+[; ;system.c: 367: {
 [e :U _GetUSART2RxFifo ]
 [f ]
-"365
-[v _CharToRead `uc ~T0 @X0 1 a ]
-[; ;system.c: 365: char CharToRead;
-[; ;system.c: 367: if(!USART2RxFifo.FifoEmpty)
-"367
-[e $ ! ! != -> . _USART2RxFifo 4 `i -> -> -> 0 `i `uc `i 2717  ]
-[; ;system.c: 368: {
 "368
-{
-[; ;system.c: 370: INTCONbits.GIE=0;
+[v _CharToRead `uc ~T0 @X0 1 a ]
+[; ;system.c: 368: char CharToRead;
+[; ;system.c: 370: if(!USART2RxFifo.FifoEmpty)
 "370
-[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-[; ;system.c: 372: CharToRead=USART2RxFifo.USARTMsg[USART2RxFifo.LowIndex];
-"372
-[e = _CharToRead *U + &U . _USART2RxFifo 0 * -> . _USART2RxFifo 1 `ux -> -> # *U &U . _USART2RxFifo 0 `ui `ux ]
-[; ;system.c: 373: USART2RxFifo.Fifofull=0;
+[e $ ! ! != -> . _USART2RxFifo 4 `i -> -> -> 0 `i `uc `i 2717  ]
+[; ;system.c: 371: {
+"371
+{
+[; ;system.c: 373: INTCONbits.GIE=0;
 "373
-[e = . _USART2RxFifo 3 -> -> 0 `i `uc ]
-[; ;system.c: 374: USART2RxFifo.LowIndex++;
-"374
-[e ++ . _USART2RxFifo 1 -> -> 1 `i `uc ]
-[; ;system.c: 376: if(USART2RxFifo.LowIndex==(10))
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+[; ;system.c: 375: CharToRead=USART2RxFifo.USARTMsg[USART2RxFifo.LowIndex];
+"375
+[e = _CharToRead *U + &U . _USART2RxFifo 0 * -> . _USART2RxFifo 1 `ux -> -> # *U &U . _USART2RxFifo 0 `ui `ux ]
+[; ;system.c: 376: USART2RxFifo.Fifofull=0;
 "376
-[e $ ! == -> . _USART2RxFifo 1 `i -> 10 `i 2718  ]
-[; ;system.c: 377: USART2RxFifo.LowIndex=0;
+[e = . _USART2RxFifo 3 -> -> 0 `i `uc ]
+[; ;system.c: 377: USART2RxFifo.LowIndex++;
 "377
+[e ++ . _USART2RxFifo 1 -> -> 1 `i `uc ]
+[; ;system.c: 379: if(USART2RxFifo.LowIndex==(10))
+"379
+[e $ ! == -> . _USART2RxFifo 1 `i -> 10 `i 2718  ]
+[; ;system.c: 380: USART2RxFifo.LowIndex=0;
+"380
 [e = . _USART2RxFifo 1 -> -> 0 `i `uc ]
 [e :U 2718 ]
-[; ;system.c: 379: if(USART2RxFifo.HighIndex==USART2RxFifo.LowIndex)
-"379
+[; ;system.c: 382: if(USART2RxFifo.HighIndex==USART2RxFifo.LowIndex)
+"382
 [e $ ! == -> . _USART2RxFifo 2 `i -> . _USART2RxFifo 1 `i 2719  ]
-[; ;system.c: 380: USART2RxFifo.FifoEmpty=1;
-"380
+[; ;system.c: 383: USART2RxFifo.FifoEmpty=1;
+"383
 [e = . _USART2RxFifo 4 -> -> 1 `i `uc ]
 [e :U 2719 ]
-[; ;system.c: 382: INTCONbits.GIE=1;
-"382
+[; ;system.c: 385: INTCONbits.GIE=1;
+"385
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;system.c: 383: return CharToRead;
-"383
+[; ;system.c: 386: return CharToRead;
+"386
 [e ) _CharToRead ]
 [e $UE 2716  ]
-"384
-}
-[; ;system.c: 384: }
-[e $U 2720  ]
-"385
-[e :U 2717 ]
-[; ;system.c: 385: else
-[; ;system.c: 386: {
-"386
-{
-[; ;system.c: 387: return 0 ;
 "387
+}
+[; ;system.c: 387: }
+[e $U 2720  ]
+"388
+[e :U 2717 ]
+[; ;system.c: 388: else
+[; ;system.c: 389: {
+"389
+{
+[; ;system.c: 390: return 0 ;
+"390
 [e ) -> -> 0 `i `uc ]
 [e $UE 2716  ]
-"388
+"391
 }
 [e :U 2720 ]
-[; ;system.c: 388: }
-[; ;system.c: 390: }
-"390
+[; ;system.c: 391: }
+[; ;system.c: 393: }
+"393
 [e :UE 2716 ]
 }

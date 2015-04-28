@@ -68,6 +68,8 @@ void main(void)
     //----------  CPU internal configurations: -----------
     //----------------------------------------------------
 
+    CLRWDT();                                 // clear watchdog timer at startup
+
     /* Configure the oscillator for the CPU */
     ConfigureOscillator();
     __delay_ms(10);             // wait for Oscillator to be stabilized
@@ -76,13 +78,15 @@ void main(void)
     // configure CPU GPIO for IMU board
     ConfigureGPIO();
 
+   
     //USART Initialize();
     ConfigureUSART1();
     ConfigureUSART2();
 
+    
     // SPI initialize
     ConfigureSPI();
-
+    
     //CAN controller Initialize
     ECANInitialize();
     //Set MASK and Filters for CAN
@@ -91,6 +95,7 @@ void main(void)
     // Timers configuration
     ConfigureTimers();
 
+    
     //----------------------------------------------------
     //----------  Global variables initialisation --------
     //----------------------------------------------------
@@ -119,7 +124,7 @@ void main(void)
     IMUInitRegisters();         // init of BMX055 chip
     IMUAutotestResult=IMUAutotest();              // launch IMU autotest
 
-    
+       
     //----------------------------------------------------
     //----------      GSM startup delay        -----------
     //----------------------------------------------------
@@ -128,6 +133,8 @@ void main(void)
     for(char i=0;i<200;i++)
     {
         __delay_ms(10);
+        CLRWDT();                                 // clear watchdog timer each loop
+
     }
     GSM_RTS=0;
 
@@ -139,8 +146,9 @@ void main(void)
     //----------    Ready to go in main loop:  -----------
     //----------    interrupts activation      -----------
     //----------------------------------------------------
-
+    
     ConfigureInterrupts();
+
     LED1=1;                     // everything is initialized: enable the PWR/booted LED
 
     //----------------------------------------------------
@@ -170,6 +178,7 @@ void main(void)
 
         if(TickCounter.AccelTick_ms>IMU_TICK_PERIOD)
         {
+            CLRWDT();                                 // clear watchdog timer each real time cycles
 
             LED2=1;
             TickCounter.AccelTick_ms=0;                // reset IMU tick counter to 0
@@ -217,7 +226,6 @@ void main(void)
 
             if(!CANTxFifo.Fifofull)
                  PutCANTxFifo(TempCANTxMsg);
-            //LED2=0;
 
         }
 
@@ -244,7 +252,7 @@ void main(void)
             if(!CANTxFifo.Fifofull)
                  PutCANTxFifo(TempCANTxMsg);
 
-            //LED2=0;
+            
         }
 
         //--------------------------------------------------------------------------------
@@ -316,7 +324,6 @@ void main(void)
             TempCANTxMsg.dataLen= GPS_DATA_MESSAGE_LEN;
             TempCANTxMsg.id = (CAN_MESSAGE_GPS_TYPE << 7 | CAN_DEVICE_ADRESS <<4 | GPS_DATA_MESSAGE_ADRESS );
             TempCANTxMsg.flags = ECAN_TX_STD_FRAME;
-
             PutCANTxFifo(TempCANTxMsg);
 
          }

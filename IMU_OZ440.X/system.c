@@ -177,7 +177,9 @@ void ConfigureSPI(void)
 void ConfigureInterrupts(void)
 {
     //all interrupts are low priority, except CAN module
-
+    INTCONbits.GIE=0;           // general IT disable
+    INTCONbits.PEIE=0;          // peripheral IT disable
+    
     RCONbits.IPEN = 1;           // enables priority logic for Interrupts.
             
     INTCON = 0b00100000;        // GIE interrupts disabled for the moment, TMRO OVF activated
@@ -201,7 +203,8 @@ void ConfigureInterrupts(void)
     IPR3= 0 ;                   // low priority IT's
     IPR4= 0 ;                   // low priority IT's
     IPR5= 0b00000011 ;          // High priority for CAN RX.
-   
+    
+    
     INTCONbits.GIE=1;           // general IT enable
     INTCONbits.PEIE=1;          // peripheral IT enable
 }
